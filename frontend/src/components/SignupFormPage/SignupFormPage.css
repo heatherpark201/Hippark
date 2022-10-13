@@ -1,0 +1,55 @@
+
+.modal {
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 3px;
+    width: 320px;
+    height: 620px;
+    box-shadow: 3px 3px 10px rgba(0 0 0 / 0.5);
+    animation: myEase 2s;
+}
+
+@keyframes myEase {
+    from {
+        top: -100%;
+    }
+    to {
+        top: 20%;
+    }
+}
+
+.logo {
+    margin: auto;
+    display: block;
+}
+
+h1, h3 {
+    text-align: center;
+}
+
+
+
+.log-in-button {
+    display: inline-block;
+    background-color: #FFFFFF;
+    color: black;
+    padding: 10px 20px;
+    height: 40px;
+    width: 75px;
+    font-family: inherit;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 2px;
+    border-width: 1px;
+    cursor: pointer;
+    transition: background 0.2s ease 0s;
+    white-space: nowrap;
+    margin-top: 15px;
+    margin-right: 15px;
+    position:absolute;
+    top:0;
+    right:0;
+}

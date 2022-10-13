@@ -1,0 +1,22 @@
+{
+  "name": "hippark",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heatherpark201/hippark.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heatherpark201/hippark/issues"
+  },
+  "homepage": "https://github.com/heatherpark201/hippark#readme",
+  "engines": {
+    "node": "16.16.0"
+  }
+}
