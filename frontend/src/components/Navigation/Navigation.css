@@ -4,7 +4,17 @@
     overflow: hidden;
     padding: 20px;
     justify-content: space-between;
-    z-index: auto;
+    z-index: 10;
+}
+
+.other-header {
+    display: flex;
+    background-color: white;
+    overflow: hidden;
+    padding: 20px;
+    justify-content: space-between;
+    z-index: 10;
+    
 }
 
 

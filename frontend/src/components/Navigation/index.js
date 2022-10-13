@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useRouteMatch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import tempLogo from '../../assets/tempLogo.png'
@@ -9,7 +9,7 @@ import './Navigation.css';
 
 function Navigation() {
     const sessionUser = useSelector(state => state.session.user);
-    const location = useLocation();
+    let match = useRouteMatch("/")
 
     let sessionLinks;
     if (sessionUser) {
@@ -27,7 +27,7 @@ function Navigation() {
     }
     
     return (
-        <header className={`main-header ${location.pathname === "/signin" ? 'main-header-active' : ""}  `}>
+        <header className={`${match ? "main-header" : "other-header"}`}>
             <NavLink exact to="/" className="nav-logo">
                 <a href="" className="logo"><img className="logo" src={tempLogo} alt=""/></a>
             </NavLink>
@@ -36,4 +36,4 @@ function Navigation() {
     )
 }
 
-export default Navigation; 
+export default Navigation;
