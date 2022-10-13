@@ -1,13 +1,13 @@
 
 body {
-  /* font-family: Calibre, "Helvetica Neue", sans-serif; */
-  font-size: 16px;
-  background-color: rgb(243, 242, 239);
-  /* background-image: url('/Users/heatherpark/Desktop/hippark/frontend/src/assets/bg.jpg'); */
+  font-family: Calibre, "Helvetica Neue", sans-serif;
+  /* font-size: 16px; */
+  /* background-color: rgb(243, 242, 239); */
+  
 } 
 
 html, body, header, nav, h1, a,
-ul, li, strong, main, button, i,
+ul, li, strong, main, button,
 section, img, div, h2, p, form,
 fieldset, label, input, textarea,
 span, article, footer, time, small {
@@ -33,11 +33,11 @@ span, article, footer, time, small {
   height: auto;
 } */
 
-input[type="password"],
+/* input[type="password"],
 input[type="email"],
 input[type="text"],
 input[type="submit"],
-textarea,
+textarea, */
 button {
   /*
   Get rid of native styling. Read more here:
@@ -46,8 +46,8 @@ button {
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-
+/* 
 button,
 input[type="submit"] {
   cursor: pointer;
-} 
+}  */

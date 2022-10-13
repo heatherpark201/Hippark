@@ -1,16 +1,17 @@
 
 input  {
-display: flex;
-flex-direction: column;
-align-items: center;
-font-family: Calibre, "Helvetica Neue", sans-serif;
-font-weight: 700 !important;
-box-sizing: border-box;
-border: 2px solid black;
-height: 60px;
-margin-bottom: 5px;
-text-indent: 3px;
-width: 300px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Calibre, "Helvetica Neue", sans-serif;
+  font-weight: 700 !important;
+  box-sizing: border-box;
+  border: 2px solid black;
+  height: 68px;
+  margin-bottom: 5px;
+  text-indent: 3px;
+  width: 300px;
 }
   
 
@@ -32,3 +33,4 @@ width: 300px;
     text-decoration: none;
     font-family: inherit;
   }
+

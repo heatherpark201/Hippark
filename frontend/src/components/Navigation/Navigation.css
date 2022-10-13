@@ -70,6 +70,23 @@
     font-family: inherit;
 }
 
+.sign-up-button:hover {
+    color: rgb(0, 197, 133);
+    background-color: transparent;
+    border: 1px solid rgb(0, 197, 133);
+    padding: 6px 16px 8px;
+    height: 36px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background 0.2s ease 0s;
+    white-space: nowrap;
+    text-decoration: none;
+    margin-left: 30px;
+    font-family: inherit;
+}
+
 .demo-user-button  {
     background-color: rgb(243, 242, 239);
     color: black;

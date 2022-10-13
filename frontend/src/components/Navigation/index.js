@@ -1,15 +1,19 @@
 import React from 'react';
-import { NavLink, useRouteMatch } from 'react-router-dom';
+import { NavLink, useLocation} from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import tempLogo from '../../assets/tempLogo.png'
-import DemoUserButton from './DemoUserButton';
 import './Navigation.css';
 
 
 function Navigation() {
     const sessionUser = useSelector(state => state.session.user);
-    let match = useRouteMatch("/")
+    const location = useLocation()
+
+    let active = false;
+    if (location.pathname === "/") {
+        active = true;
+    }
 
     let sessionLinks;
     if (sessionUser) {
@@ -20,14 +24,13 @@ function Navigation() {
         sessionLinks = (
             <>
                 <NavLink to="/signin" className="log-in-button-home" >Log In</NavLink>
-                <DemoUserButton />
                 <NavLink to="/signup" className="sign-up-button">Sign Up</NavLink>
             </>
         );
     }
     
     return (
-        <header className={`${match ? "main-header" : "other-header"}`}>
+        <header className={active ? "main-header" : "other-header"}>
             <NavLink exact to="/" className="nav-logo">
                 <a href="" className="logo"><img className="logo" src={tempLogo} alt=""/></a>
             </NavLink>
