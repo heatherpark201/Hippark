@@ -103,6 +103,58 @@ puts "Creating spots..."
       lng: -123.37559,
       is_live: 'true',
       max_guests: 14
+    },
+    {
+      title: '5th Ave Wonder by Ian',
+      description: random_description.call,
+      host_id: test3.id,
+      street_address: '100 5th Ave',
+      city: 'New York',
+      state: 'New York',
+      region: 'East Coast',
+      zip_code: '00000',
+      country: 'USA',
+      listing_type: 'tent',
+      price: 5000,
+      lat: 41.78897,
+      lng: -123.37559,
+      is_live: 'true',
+      max_guests: 2
+    },
+    {
+      title: 'National Treasure Beauty',
+      description: random_description.call,
+      host_id: test3.id,
+      street_address: '63822 CA-96',
+      city: 'Omaha',
+      state: 'Nebraska',
+      region: 'Pacific Northwest',
+      zip_code: '96039',
+      country: 'USA',
+      listing_type: 'campsite',
+      price: 30,
+      lat: 41.78897,
+      lng: -123.37559,
+      is_live: 'true',
+      max_guests: 14
+    },
+    {
+      title: 'Hi Baby Gorgeous',
+      description: random_description.call,
+      host_id: test3.id,
+      street_address: '63822 CA-96',
+      city: 'Salt Lake City',
+      state: 'Utah',
+      region: 'The Rockies',
+      zip_code: '96039',
+      country: 'USA',
+      listing_type: 'RV',
+      price: 120,
+      lat: 41.78897,
+      lng: -123.37559,
+      is_live: 'true',
+      max_guests: 14
     }
+
   ])
   end

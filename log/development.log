@@ -6682,3 +6682,2160 @@ Processing by Api::SessionsController#show as JSON
 Completed 200 OK in 28ms (Views: 4.0ms | ActiveRecord: 12.5ms | Allocations: 14901)
 
 
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 14:56:06 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (5.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.9ms | Allocations: 806)
+Completed 200 OK in 33ms (Views: 3.9ms | ActiveRecord: 18.0ms | Allocations: 14913)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2022-10-13 15:21:43 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mUser Exists? (5.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@user.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Update (6.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-13 19:21:43.718728"], ["id", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+Completed 200 OK in 128ms (Views: 0.5ms | ActiveRecord: 41.8ms | Allocations: 9935)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-13 15:21:52 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"demo@user.io", "password"=>"[FILTERED]", "session"=>{"credential"=>"demo@user.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@user.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37:in `find_by_credentials'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@user.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-13 19:21:52.774051"], ["id", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.9ms | Allocations: 290)
+Completed 200 OK in 293ms (Views: 1.1ms | ActiveRecord: 2.9ms | Allocations: 5453)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2022-10-13 15:21:56 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@user.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-13 19:21:56.947421"], ["id", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+Completed 200 OK in 24ms (Views: 0.2ms | ActiveRecord: 7.3ms | Allocations: 4883)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:23:13 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 20ms (Views: 2.2ms | ActiveRecord: 0.7ms | Allocations: 949)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-13 15:23:16 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"demo@user.io", "password"=>"[FILTERED]", "session"=>{"credential"=>"demo@user.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@user.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37:in `find_by_credentials'
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@user.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-13 19:23:16.427004"], ["id", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 285)
+Completed 200 OK in 290ms (Views: 0.5ms | ActiveRecord: 3.0ms | Allocations: 5274)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2022-10-13 15:27:27 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (8.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mUser Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@user.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-13 19:27:27.894685"], ["id", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+Completed 200 OK in 44ms (Views: 0.2ms | ActiveRecord: 12.0ms | Allocations: 4868)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:30:05 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (5.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 192ms (Views: 0.5ms | ActiveRecord: 5.9ms | Allocations: 915)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:30:26 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 900)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:31:55 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 900)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-13 15:31:56 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"demo@user.io", "password"=>"[FILTERED]", "session"=>{"credential"=>"demo@user.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (5.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@user.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37:in `find_by_credentials'
+  [1m[36mUser Exists? (7.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@user.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Update (8.0ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-13 19:31:56.630549"], ["id", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.8ms | Allocations: 281)
+Completed 200 OK in 308ms (Views: 1.6ms | ActiveRecord: 23.0ms | Allocations: 5262)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2022-10-13 15:32:00 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@user.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-13 19:32:00.243079"], ["id", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 4.1ms | Allocations: 4880)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:32:28 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 1.2ms | Allocations: 891)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:33:29 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 913)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:36:56 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 24ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 885)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:38:34 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 912)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:42:54 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 924)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:44:37 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 915)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:44:49 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 903)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:47:33 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 900)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:47:38 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 900)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:47:49 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 900)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:48:10 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:48:15 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 900)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:48:26 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 915)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:48:41 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.7ms | Allocations: 903)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:48:46 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 903)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:49:31 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 894)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:49:58 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 900)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:54:15 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 900)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:55:45 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (21.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 51ms (Views: 0.2ms | ActiveRecord: 21.0ms | Allocations: 906)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 15:59:21 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (8.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 8.6ms | Allocations: 903)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 16:00:37 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 897)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 16:01:48 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 888)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 16:18:11 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 52ms (Views: 0.5ms | ActiveRecord: 23.7ms | Allocations: 3783)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 16:26:36 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 31ms (Views: 0.3ms | ActiveRecord: 7.7ms | Allocations: 3744)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 16:33:03 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 63ms (Views: 0.5ms | ActiveRecord: 22.9ms | Allocations: 3750)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 16:37:41 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 888)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 16:40:30 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 4.2ms | Allocations: 922)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 17:15:37 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 78ms (Views: 0.1ms | ActiveRecord: 42.3ms | Allocations: 3755)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 17:15:50 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 6ms (Views: 1.3ms | ActiveRecord: 0.6ms | Allocations: 891)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 17:16:05 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (12.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 30ms (Views: 0.2ms | ActiveRecord: 12.1ms | Allocations: 900)
+
+
+Started GET "/api/spots/undefined" for 127.0.0.1 at 2022-10-13 17:28:24 -0400
+Processing by Api::SpotsController#show as JSON
+  Parameters: {"id"=>"undefined"}
+  [1m[36mSpot Load (10.7ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/api/spots_controller.rb:11:in `show'
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.8ms | Allocations: 107)
+
+ActiveRecord::RecordNotFound - Couldn't find Spot with 'id'=undefined:
+	app/controllers/api/spots_controller.rb:11:in `show'
+
+Completed 500 Internal Server Error in 37ms (Views: 4.2ms | ActiveRecord: 22.0ms | Allocations: 3536)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 17:29:21 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (7.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 34ms (Views: 21.0ms | ActiveRecord: 7.3ms | Allocations: 9499)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 17:33:27 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (6.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 6.0ms | Allocations: 955)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 17:33:27 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.8ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 8ms (Views: 4.9ms | ActiveRecord: 1.8ms | Allocations: 1538)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 17:38:15 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 909)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 17:38:57 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 894)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 17:39:51 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.6ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 10ms (Views: 7.8ms | ActiveRecord: 0.6ms | Allocations: 1526)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 17:40:03 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 14ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 894)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 17:40:03 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 1523)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 17:40:31 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 906)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 17:40:49 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.4ms | Allocations: 1517)
+
+
+Started GET "/api/session" for ::1 at 2022-10-13 17:41:37 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1027)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 17:42:20 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.6ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 3.6ms | ActiveRecord: 0.6ms | Allocations: 1514)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 17:42:21 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 894)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 17:42:21 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.5ms | Allocations: 1499)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 17:43:38 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 903)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 17:44:09 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 891)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 17:44:15 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 909)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 17:44:16 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.4ms | Allocations: 1517)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 17:44:29 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.3ms | Allocations: 1511)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 17:44:30 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (6.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 12ms (Views: 0.1ms | ActiveRecord: 6.5ms | Allocations: 909)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 17:44:30 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.4ms | Allocations: 1502)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 17:45:39 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 894)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 17:45:40 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (2.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 7ms (Views: 4.4ms | ActiveRecord: 2.3ms | Allocations: 1517)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 17:45:40 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 900)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 17:45:40 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 8ms (Views: 1.9ms | ActiveRecord: 1.4ms | Allocations: 1511)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 17:47:40 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.6ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 7ms (Views: 4.3ms | ActiveRecord: 0.6ms | Allocations: 1517)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 17:57:26 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (4.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 45ms (Views: 43.9ms | ActiveRecord: 20.8ms | Allocations: 4516)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 17:58:41 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.4ms | Allocations: 1517)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 18:02:22 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.6ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 14ms (Views: 12.3ms | ActiveRecord: 0.6ms | Allocations: 1514)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 18:04:19 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 2.3ms | Allocations: 927)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 18:04:19 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.3ms | Allocations: 1517)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 18:05:21 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 0.5ms | Allocations: 1529)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 18:05:24 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 1.2ms | Allocations: 906)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 18:05:24 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (6.9ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 15ms (Views: 7.9ms | ActiveRecord: 6.9ms | Allocations: 1515)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 18:07:01 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 897)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 18:07:01 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.4ms | Allocations: 1520)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 18:07:33 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.4ms | Allocations: 1523)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 18:07:41 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.3ms | Allocations: 1508)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 18:13:06 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.1ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 54ms (Views: 52.2ms | ActiveRecord: 18.0ms | Allocations: 4452)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 18:13:28 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (3.6ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 11ms (Views: 5.2ms | ActiveRecord: 3.6ms | Allocations: 1508)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 18:13:46 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.3ms | Allocations: 1517)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 20:11:16 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (6.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 21ms (Views: 0.1ms | ActiveRecord: 13.4ms | Allocations: 6347)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 20:12:11 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 964)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 20:12:11 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (6.1ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 19ms (Views: 7.8ms | ActiveRecord: 10.7ms | Allocations: 11020)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 20:16:14 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 1100)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 20:16:14 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 15ms (Views: 14.6ms | ActiveRecord: 0.4ms | Allocations: 1515)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 20:17:03 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.2ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms | Allocations: 1533)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 20:26:24 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 54ms (Views: 0.5ms | ActiveRecord: 21.0ms | Allocations: 3897)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 20:26:36 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 904)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 20:26:40 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 2.4ms | Allocations: 912)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 20:26:40 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (2.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 2.5ms | Allocations: 1612)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 20:27:17 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.2ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms | Allocations: 1520)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 20:27:55 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.3ms | Allocations: 1520)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 20:29:13 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 909)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 20:29:13 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms | Allocations: 1511)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 20:43:24 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 68ms (Views: 0.8ms | ActiveRecord: 32.9ms | Allocations: 3734)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 20:43:24 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (2.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 8ms (Views: 3.3ms | ActiveRecord: 2.3ms | Allocations: 1578)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 21:00:56 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 63ms (Views: 0.8ms | ActiveRecord: 18.5ms | Allocations: 3744)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 21:00:56 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (3.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 3.5ms | Allocations: 1597)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 21:15:02 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 80ms (Views: 0.8ms | ActiveRecord: 28.8ms | Allocations: 3728)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 21:15:02 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 1.5ms | Allocations: 1584)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 21:15:32 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 903)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 21:15:32 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.5ms | Allocations: 1529)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 21:17:26 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 894)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 21:17:26 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.5ms | Allocations: 1514)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 21:17:32 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 906)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 21:17:32 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.3ms | Allocations: 1514)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 21:19:00 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 900)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 21:19:00 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.4ms | Allocations: 1502)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 21:22:37 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (8.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 31ms (Views: 0.6ms | ActiveRecord: 8.0ms | Allocations: 891)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 21:22:37 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (14.8ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 18ms (Views: 2.5ms | ActiveRecord: 14.8ms | Allocations: 1511)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 21:22:39 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 888)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 21:22:39 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.3ms | Allocations: 1529)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 21:22:49 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 1.3ms | Allocations: 891)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 21:22:49 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.5ms | Allocations: 1517)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 21:22:50 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 897)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 21:22:50 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms | Allocations: 1511)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 21:24:02 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 25ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 900)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 21:24:02 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.7ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.7ms | Allocations: 1508)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 21:30:48 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 46ms (Views: 0.2ms | ActiveRecord: 14.6ms | Allocations: 3737)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 21:30:48 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (6.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 15ms (Views: 8.0ms | ActiveRecord: 6.4ms | Allocations: 1599)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 21:37:06 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 22ms (Views: 0.2ms | ActiveRecord: 4.8ms | Allocations: 3737)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 21:37:06 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.0ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 1.0ms | Allocations: 1594)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 21:44:37 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 6.4ms | Allocations: 3758)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 21:44:37 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.1ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 5ms (Views: 3.0ms | ActiveRecord: 1.1ms | Allocations: 1587)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 21:56:32 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 94ms (Views: 0.2ms | ActiveRecord: 14.1ms | Allocations: 3726)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-13 21:57:23 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"demo@user.io", "password"=>"[FILTERED]", "session"=>{"credential"=>"demo@user.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@user.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37:in `find_by_credentials'
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@user.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Update (11.0ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-14 01:57:23.660704"], ["id", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 1.0ms | Allocations: 653)
+Completed 200 OK in 300ms (Views: 6.8ms | ActiveRecord: 18.6ms | Allocations: 14302)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2022-10-13 21:57:34 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@user.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-14 01:57:34.283641"], ["id", 1]]
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:42:in `reset_session_token!'
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 5.1ms | Allocations: 5253)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:03:12 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 10ms (Views: 1.5ms | ActiveRecord: 0.7ms | Allocations: 901)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:03:12 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 1.3ms | Allocations: 1625)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:03:48 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 906)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:03:48 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.2ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms | Allocations: 1535)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:04:16 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 900)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:04:16 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.2ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 1529)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:05:30 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 897)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:05:30 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.4ms | Allocations: 1511)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:07:42 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 8ms (Views: 0.9ms | ActiveRecord: 0.7ms | Allocations: 906)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:07:42 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.4ms | Allocations: 1514)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:16:36 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 27ms (Views: 0.2ms | ActiveRecord: 9.6ms | Allocations: 3842)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:16:36 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.0ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 1.0ms | Allocations: 1596)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:17:18 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 22ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 885)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:17:18 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.3ms | Allocations: 1526)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:19:58 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 912)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:19:58 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.3ms | Allocations: 1523)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:20:00 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 903)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:20:00 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms | Allocations: 1523)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:20:07 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 906)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:20:07 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.2ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms | Allocations: 1514)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:21:10 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 885)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:21:10 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.3ms | Allocations: 1508)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:23:00 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 894)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:23:01 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.3ms | Allocations: 1520)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:23:56 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 891)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:23:56 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.0ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 1.0ms | Allocations: 1523)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:30:24 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 29ms (Views: 0.4ms | ActiveRecord: 8.5ms | Allocations: 3725)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:30:25 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 23ms (Views: 20.5ms | ActiveRecord: 1.5ms | Allocations: 1600)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:30:42 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 906)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:30:42 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.2ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms | Allocations: 1521)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:32:48 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 891)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:32:48 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.3ms | Allocations: 1502)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:33:02 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 903)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:33:02 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.2ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 1503)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:39:07 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 31ms (Views: 0.3ms | ActiveRecord: 7.8ms | Allocations: 3776)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:39:08 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.0ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 1.0ms | Allocations: 1590)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:40:50 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 894)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:40:51 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.4ms | Allocations: 1505)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:41:17 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 903)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:41:17 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 11ms (Views: 9.1ms | ActiveRecord: 1.3ms | Allocations: 1514)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:41:30 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 894)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:41:30 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.7ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.7ms | Allocations: 1520)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:46:40 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 0.9ms | Allocations: 906)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:46:40 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.4ms | Allocations: 1508)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:46:40 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 897)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:46:40 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms | Allocations: 1511)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:46:40 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.2ms | Allocations: 894)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:46:40 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.3ms | Allocations: 1514)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:47:16 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 909)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:47:16 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.6ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 10ms (Views: 5.7ms | ActiveRecord: 0.6ms | Allocations: 1523)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:47:58 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 17ms (Views: 3.5ms | ActiveRecord: 0.5ms | Allocations: 909)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:47:59 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.8ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.8ms | Allocations: 1520)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:48:44 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 1.4ms | Allocations: 903)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:48:44 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.7ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 1.7ms | Allocations: 1520)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:49:21 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 888)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:49:21 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.3ms | Allocations: 1535)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:52:26 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 900)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:52:26 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.4ms | Allocations: 1508)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:52:43 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 903)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:52:43 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.2ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms | Allocations: 1505)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 22:54:19 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 11ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 891)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 22:54:19 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.4ms | Allocations: 1523)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 23:31:51 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 76ms (Views: 0.8ms | ActiveRecord: 23.9ms | Allocations: 3737)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 23:31:51 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 3.3ms | ActiveRecord: 1.5ms | Allocations: 1584)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 23:32:05 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 900)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 23:32:05 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.3ms | Allocations: 1514)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 23:32:12 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 897)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 23:32:12 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.2ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms | Allocations: 1509)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 23:34:00 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 888)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 23:34:00 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (2.9ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 9ms (Views: 3.6ms | ActiveRecord: 2.9ms | Allocations: 1518)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 23:34:50 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 906)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 23:34:50 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.3ms | Allocations: 1517)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 23:35:51 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 0.7ms | Allocations: 885)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 23:35:51 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.4ms | Allocations: 1509)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 23:36:46 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 900)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 23:36:46 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.4ms | Allocations: 1505)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 23:39:41 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 912)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 23:39:41 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (3.1ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 10ms (Views: 4.8ms | ActiveRecord: 3.1ms | Allocations: 1517)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 23:41:13 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 903)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 23:41:13 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.4ms | Allocations: 1508)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 23:41:17 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 906)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 23:41:17 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 1505)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 23:45:00 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 28ms (Views: 0.4ms | ActiveRecord: 1.8ms | Allocations: 900)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 23:45:00 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (26.0ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 33ms (Views: 6.8ms | ActiveRecord: 26.0ms | Allocations: 1517)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 23:45:46 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 2.3ms | Allocations: 897)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 23:45:46 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (3.0ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 2.8ms | ActiveRecord: 3.0ms | Allocations: 1520)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 23:46:43 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (6.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 26ms (Views: 0.2ms | ActiveRecord: 6.5ms | Allocations: 903)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 23:46:43 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.5ms | Allocations: 1514)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-13 23:48:42 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 900)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-13 23:48:42 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.4ms | Allocations: 1535)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 00:00:11 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 81ms (Views: 0.8ms | ActiveRecord: 16.2ms | Allocations: 3791)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:00:11 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 1.3ms | Allocations: 1584)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 00:00:18 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 885)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:00:18 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.2ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms | Allocations: 1508)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 00:01:57 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 3.5ms | Allocations: 906)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:01:58 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.4ms | Allocations: 1502)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 00:02:19 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 903)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:02:19 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.3ms | Allocations: 1511)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 00:07:24 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (13.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 29ms (Views: 0.2ms | ActiveRecord: 13.6ms | Allocations: 891)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:07:24 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (3.1ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 3.1ms | Allocations: 1502)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 00:07:46 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 882)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:07:46 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.4ms | Allocations: 1529)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 00:08:15 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 2.9ms | Allocations: 894)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:08:15 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.5ms | Allocations: 1511)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (8.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (88.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "hip_park_development"[0m
+  [1m[35m (40.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "hip_park_test"[0m
+  [1m[35m (407.0ms)[0m  [1m[35mCREATE DATABASE "hip_park_development" ENCODING = 'unicode'[0m
+  [1m[35m (54.4ms)[0m  [1m[35mCREATE DATABASE "hip_park_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "spots" CASCADE[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "spots" ("id" bigserial primary key, "title" character varying NOT NULL, "description" text NOT NULL, "host_id" bigint NOT NULL, "street_address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "region" character varying NOT NULL, "zip_code" character varying NOT NULL, "country" character varying NOT NULL, "listing_type" character varying NOT NULL, "price" integer NOT NULL, "lat" float NOT NULL, "lng" float NOT NULL, "is_live" boolean NOT NULL, "max_guests" integer NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_spots_on_city" ON "spots" ("city")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_spots_on_country" ON "spots" ("country")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_spots_on_host_id" ON "spots" ("host_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_spots_on_listing_type" ON "spots" ("listing_type")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_spots_on_region" ON "spots" ("region")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_spots_on_state" ON "spots" ("state")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_spots_on_title" ON "spots" ("title")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_spots_on_zip_code" ON "spots" ("zip_code")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "date_of_birth" character varying, "phone_number" integer)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_phone_number" ON "users" ("phone_number")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_session_token" ON "users" ("session_token")[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "spots" ADD CONSTRAINT "fk_rails_6a1263a357"
+FOREIGN KEY ("host_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20221012192159)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20221009200652),
+(20221009210702),
+(20221010140835),
+(20221012184216);
+
+[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-14 04:15:13.396122"], ["updated_at", "2022-10-14 04:15:13.396122"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "cc0c00f2b9cafc6646adc4d675fe16bac123e426"], ["created_at", "2022-10-14 04:15:13.400115"], ["updated_at", "2022-10-14 04:15:13.400115"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "spots" CASCADE[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "spots" ("id" bigserial primary key, "title" character varying NOT NULL, "description" text NOT NULL, "host_id" bigint NOT NULL, "street_address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "region" character varying NOT NULL, "zip_code" character varying NOT NULL, "country" character varying NOT NULL, "listing_type" character varying NOT NULL, "price" integer NOT NULL, "lat" float NOT NULL, "lng" float NOT NULL, "is_live" boolean NOT NULL, "max_guests" integer NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_spots_on_city" ON "spots" ("city")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_spots_on_country" ON "spots" ("country")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_spots_on_host_id" ON "spots" ("host_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_spots_on_listing_type" ON "spots" ("listing_type")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_spots_on_region" ON "spots" ("region")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_spots_on_state" ON "spots" ("state")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_spots_on_title" ON "spots" ("title")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_spots_on_zip_code" ON "spots" ("zip_code")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "date_of_birth" character varying, "phone_number" integer)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_phone_number" ON "users" ("phone_number")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_session_token" ON "users" ("session_token")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "spots" ADD CONSTRAINT "fk_rails_6a1263a357"
+FOREIGN KEY ("host_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20221012192159)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20221009200652),
+(20221009210702),
+(20221010140835),
+(20221012184216);
+
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-14 04:15:13.433487"], ["updated_at", "2022-10-14 04:15:13.433487"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.1ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2022-10-14 04:15:13.435990"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "cc0c00f2b9cafc6646adc4d675fe16bac123e426"], ["created_at", "2022-10-14 04:15:13.441205"], ["updated_at", "2022-10-14 04:15:13.441205"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@user.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "first_name", "last_name", "password_digest", "session_token", "created_at", "updated_at", "date_of_birth", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["id", 1], ["email", "demo@user.io"], ["first_name", "Heather"], ["last_name", "Park"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2022-10-14 04:15:13.761413"], ["updated_at", "2022-10-14 04:15:13.761413"], ["date_of_birth", "07/12/1994"], ["phone_number", 2015277876]]
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "newnew@user.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "first_name", "last_name", "password_digest", "session_token", "created_at", "updated_at", "date_of_birth", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["id", 2], ["email", "newnew@user.io"], ["first_name", "New"], ["last_name", "Park"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2022-10-14 04:15:14.007630"], ["updated_at", "2022-10-14 04:15:14.007630"], ["date_of_birth", "05/04/1994"], ["phone_number", 2015551234]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "Bob.Michael@gmail.com"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "first_name", "last_name", "password_digest", "session_token", "created_at", "updated_at", "date_of_birth", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["id", 3], ["email", "Bob.Michael@gmail.com"], ["first_name", "Bob"], ["last_name", "Michael"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2022-10-14 04:15:14.254455"], ["updated_at", "2022-10-14 04:15:14.254455"], ["date_of_birth", "01/01/2000"], ["phone_number", 1112221212]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "Camp Tester"], ["LIMIT", 1]]
+  [1m[36mSpot Create (2.8ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "Camp Tester"], ["description", "Rerum tempora dolores. Voluptatem ut dolorem. Et aspernatur nihil."], ["host_id", 1], ["street_address", "360 Mammoth Cave Rd"], ["city", "Brownsville"], ["state", "Kentucky"], ["region", "South"], ["zip_code", "42210"], ["country", "USA"], ["listing_type", "lodge"], ["price", 104], ["lat", 37.17148], ["lng", -86.19666], ["is_live", true], ["max_guests", 8], ["created_at", "2022-10-14 04:15:14.875667"], ["updated_at", "2022-10-14 04:15:14.875667"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "Little Landing"], ["LIMIT", 1]]
+  [1m[36mSpot Create (1.1ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "Little Landing"], ["description", "Consequatur enim pariatur. Reprehenderit aut quidem. Voluptatibus odio earum.\n\nNumquam a ex. Dolore deserunt enim. Minus aperiam inventore.\n\nVoluptatem dolores ut. Cumque sit doloribus. Quia et rem."], ["host_id", 2], ["street_address", "10127 Waterton Rd"], ["city", "Littleton"], ["state", "Colorado"], ["region", "Rockies"], ["zip_code", "80125"], ["country", "USA"], ["listing_type", "campsite"], ["price", 87], ["lat", 39.48658], ["lng", -105.07412], ["is_live", true], ["max_guests", 4], ["created_at", "2022-10-14 04:15:14.881000"], ["updated_at", "2022-10-14 04:15:14.881000"]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "Curly Jack Campground"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.4ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "Curly Jack Campground"], ["description", "Omnis quis voluptatum. Et voluptate provident. Debitis ut itaque.\n\nConsequatur quae id. Sint ut qui. Dolorum dolore sit.\n\nUt eaque facere. Facere dolor sunt. Quaerat nostrum quasi."], ["host_id", 3], ["street_address", "63822 CA-96"], ["city", "Happy Camp"], ["state", "California"], ["region", "Pacific Northwest"], ["zip_code", "96039"], ["country", "USA"], ["listing_type", "campsite"], ["price", 210], ["lat", 41.78897], ["lng", -123.37559], ["is_live", true], ["max_guests", 14], ["created_at", "2022-10-14 04:15:14.884380"], ["updated_at", "2022-10-14 04:15:14.884380"]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "5th Ave Wonder by Ian"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.3ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "5th Ave Wonder by Ian"], ["description", "Veniam nam officia. Nam qui suscipit. Dolorem facilis explicabo."], ["host_id", 3], ["street_address", "100 5th Ave"], ["city", "New York"], ["state", "New York"], ["region", "East Coast"], ["zip_code", "00000"], ["country", "USA"], ["listing_type", "tent"], ["price", 5000], ["lat", 41.78897], ["lng", -123.37559], ["is_live", true], ["max_guests", 2], ["created_at", "2022-10-14 04:15:14.886612"], ["updated_at", "2022-10-14 04:15:14.886612"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "National Treasure Beauty"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.3ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "National Treasure Beauty"], ["description", "Vel beatae adipisci. Nemo numquam quasi. Ex voluptatem nihil.\n\nOptio veritatis labore. Velit qui nihil. Laboriosam non ut.\n\nLibero dolores similique. Culpa placeat ad. Quisquam est suscipit."], ["host_id", 3], ["street_address", "63822 CA-96"], ["city", "Omaha"], ["state", "Nebraska"], ["region", "Pacific Northwest"], ["zip_code", "96039"], ["country", "USA"], ["listing_type", "campsite"], ["price", 30], ["lat", 41.78897], ["lng", -123.37559], ["is_live", true], ["max_guests", 14], ["created_at", "2022-10-14 04:15:14.888732"], ["updated_at", "2022-10-14 04:15:14.888732"]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "Hi Baby Gorgeous"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.4ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "Hi Baby Gorgeous"], ["description", "Voluptas ratione at. Iure asperiores doloremque. In iure odio.\n\nEaque quas nemo. Voluptatem optio omnis. Aspernatur deleniti aut.\n\nVoluptatem debitis hic. Voluptatem officiis reprehenderit. Consequatur nulla in."], ["host_id", 3], ["street_address", "63822 CA-96"], ["city", "Salt Lake City"], ["state", "Utah"], ["region", "The Rockies"], ["zip_code", "96039"], ["country", "USA"], ["listing_type", "RV"], ["price", 120], ["lat", 41.78897], ["lng", -123.37559], ["is_live", true], ["max_guests", 14], ["created_at", "2022-10-14 04:15:14.890854"], ["updated_at", "2022-10-14 04:15:14.890854"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 00:15:25 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 47ms (Views: 0.2ms | ActiveRecord: 14.5ms | Allocations: 3725)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:15:25 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.0ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 1.0ms | Allocations: 2213)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 00:17:35 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 900)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:17:35 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.5ms | Allocations: 2120)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 00:18:16 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 1.5ms | Allocations: 900)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:18:16 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.4ms | Allocations: 2126)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 00:18:20 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 900)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:18:20 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.6ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.6ms | Allocations: 2119)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 00:19:16 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 7ms (Views: 1.6ms | ActiveRecord: 0.5ms | Allocations: 906)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:19:16 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.6ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.6ms | Allocations: 2120)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 00:19:35 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 921)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:19:35 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.5ms | Allocations: 2116)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 00:19:45 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 885)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:19:45 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.7ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 38ms (Views: 36.9ms | ActiveRecord: 0.7ms | Allocations: 2134)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 00:19:48 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 903)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:19:48 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.5ms | Allocations: 2113)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:20:37 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.8ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 10ms (Views: 3.2ms | ActiveRecord: 0.8ms | Allocations: 2134)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:21:19 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 9ms (Views: 4.9ms | ActiveRecord: 0.5ms | Allocations: 2140)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:21:19 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 2122)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:21:57 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.7ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 7ms (Views: 5.2ms | ActiveRecord: 0.7ms | Allocations: 2146)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:21:57 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.6ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.6ms | Allocations: 2125)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 00:22:56 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.5ms | Allocations: 2128)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 09:20:03 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (61.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 137ms (Views: 1.1ms | ActiveRecord: 98.9ms | Allocations: 6359)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 09:20:21 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 991)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 09:20:21 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (3.0ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 18ms (Views: 8.8ms | ActiveRecord: 8.4ms | Allocations: 11617)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 09:28:11 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 49ms (Views: 0.5ms | ActiveRecord: 25.4ms | Allocations: 4112)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 09:28:11 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.0ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 1.0ms | Allocations: 2195)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 09:49:31 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 73ms (Views: 0.3ms | ActiveRecord: 28.6ms | Allocations: 3746)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 09:49:31 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.0ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 1.0ms | Allocations: 2216)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 09:49:44 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 897)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 09:49:44 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.4ms | Allocations: 2126)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 09:49:46 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 900)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 09:49:46 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.3ms | Allocations: 2143)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 11:24:26 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 71ms (Views: 0.8ms | ActiveRecord: 26.1ms | Allocations: 3730)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 11:24:26 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.0ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 1.0ms | Allocations: 2216)
+
+

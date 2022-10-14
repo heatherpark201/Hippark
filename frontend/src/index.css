@@ -16,6 +16,7 @@ span, article, footer, time, small {
   border: 0;
   outline: 0;
   font-family: Calibre, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
   color: inherit;
   text-align: inherit;
   text-decoration: inherit;

@@ -11,16 +11,7 @@
     /* align-items: center; */
 }
 
-/* .spot-list-container {
-    display: flexbox;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-left: 20px;
-    width: 50vw;
-    height: 100vh;
-    border: 22px red solid;
 
-} */
 
 .spot-list{
     display: flex;
@@ -70,6 +61,7 @@
 
 #spot-title {
     font-family: Calibre, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
     font-weight: 500;
     font-size: 20px;
     line-height: 30px;
