@@ -25,9 +25,7 @@ function SpotsIndexPage() {
       /> 
       </div>
       <div className="map" style={{
-          backgroundImage: `url(${map})`,
-          height: '50vh',
-          width: '50vw'
+          backgroundImage: `url(${map})`
         }}>
       </div>
   </div>
