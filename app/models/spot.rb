@@ -44,6 +44,8 @@ class Spot < ApplicationRecord
     validates :max_guests, 
         presence: true,
         numericality: {in: 2..20}
+    
+
 
 
         

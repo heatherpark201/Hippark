@@ -8839,3 +8839,14 @@ Processing by Api::SpotsController#index as JSON
 Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 1.0ms | Allocations: 2216)
 
 
+  [1m[36mSpot Load (2.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  [1m[36mSpot Load (8.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE (city: 'Littleton' OR listing_type: 'RV)[0m
+  [1m[36mSpot Load (0.7ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE (city: 'Littleton' OR listing_type: 'RV) /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mSpot Load (2.2ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE (city: 'Littleon' OR listing_type: 'RV')[0m
+  [1m[36mSpot Load (0.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE (city: 'Littleon' OR listing_type: 'RV') /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mSpot Load (1.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE (city: 'Littleon' OR listing_type: 'RV')[0m
+  [1m[36mSpot Load (0.6ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE (city: 'Littleon' OR listing_type: 'RV') /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mSpot Load (1.0ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."price" = $1[0m  [["price", 30]]
+  [1m[36mSpot Load (1.2ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."first_name" = $1[0m  [["first_name", "Bob"]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE ("users"."first_name" = $1 OR "users"."last_name" = $2)[0m  [["first_name", "Bob"], ["last_name", "Park"]]

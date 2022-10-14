@@ -3,9 +3,9 @@ class Api::SpotsController < ApplicationController
     wrap_parameters include: Spot.attribute_names + ["hostId"] + ["streetAddress"]+ ["zipCode"]+ ["listingType"]+ ["isLive"] + ["maxGuests"]
   
     def index 
-      @spots = Spot.all
+      @spots = Spot.where(max_guests: guest_range) if guest_range
       render json: @spots
-    end
+    end 
 
     def show
       @spot = Spot.find(params[:id])
@@ -21,6 +21,10 @@ class Api::SpotsController < ApplicationController
       else
         render json: { errors: @spot.errors.full_messages, status: :unprocessable_entity}
       end
+    end
+
+    def search
+      
     end
    
     private
@@ -45,6 +49,13 @@ class Api::SpotsController < ApplicationController
 
       )
     end
+
+    def guest_range
+      return nil unless params[:max_guests]
+      1..params[:max_guests]
+    end
+
+  
   end
   
   
