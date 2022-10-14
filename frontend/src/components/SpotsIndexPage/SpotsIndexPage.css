@@ -7,12 +7,23 @@
     left: 0;
     bottom: 0;
     display: flex;
-    flex-direction: columm;
+    flex-wrap: wrap;
     font-family: Calibre, Helvetica, Arial, sans-serif;
     /* align-items: center; */
 }
 
+.discover-filters {
+    display: flex;
+    width: 100vw;
+    padding: 10px;
+    background-color: aqua;
+    overflow: hidden;
+    padding: 20px;
+}
 
+.under-filters {
+    display: flex;  
+}
 
 .spot-list{
     display: flex;
@@ -22,7 +33,7 @@
     margin-right: 20px;
     width: 720px;
     height: 100vh;
-    /* border: 22px red solid; */
+    border: 22px red solid;
 }
 
 .map {
@@ -39,7 +50,7 @@
     background-color: transparent;
     overflow: hidden;
     position: relative;
-    /* border: 3px blue solid; */
+    border: 3px blue solid;
     height: 375px;
     width: 360px;
     font-family: inherit;

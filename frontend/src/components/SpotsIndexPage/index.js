@@ -31,14 +31,16 @@ function SpotsIndexPage() {
         />
       </div>
 
-      <div className="spot-list-container">
-      < SpotList 
-          spots={spots}
-      /> 
-      </div>
-      <div className="map" style={{
-        backgroundImage: `url(${map})`
-      }}>
+      <div className="under-filters">
+        <div className="spot-list-container">
+        < SpotList 
+            spots={spots}
+            /> 
+        </div>
+        <div className="map" style={{
+          backgroundImage: `url(${map})`
+        }}>
+        </div>
       </div>
   </div>
   );
