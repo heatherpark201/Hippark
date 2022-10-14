@@ -18,7 +18,8 @@ export const fetchSpots = (filters) => async dispatch => {
     const filterParams = new URLSearchParams(filters);
     const response = await csrfFetch(`/api/spots?${filterParams}`);
     const data = await response.json();
-    dispatch(setSpots(data.spots));
+    dispatch(setSpots(data));
+    console.log(filterParams, 'fp')
     return response;
   };
   
