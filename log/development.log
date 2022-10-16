@@ -8850,3 +8850,1336 @@ Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 1.0ms | Allocations: 2216)
   [1m[36mSpot Load (1.2ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
   [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."first_name" = $1[0m  [["first_name", "Bob"]]
   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE ("users"."first_name" = $1 OR "users"."last_name" = $2)[0m  [["first_name", "Bob"], ["last_name", "Park"]]
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 13:17:52 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 27ms (Views: 0.2ms | ActiveRecord: 12.3ms | Allocations: 6329)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 13:20:03 -0400
+Processing by Api::SpotsController#index as JSON
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 523)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 13:20:17 -0400
+Processing by Api::SpotsController#index as JSON
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 262)
+
+
+Started GET "/api/spots?3=" for 127.0.0.1 at 2022-10-14 13:21:28 -0400
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"3"=>""}
+Completed 200 OK in 4ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 277)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-14 13:23:29 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"user@demo.io", "password"=>"[FILTERED]", "session"=>{"credential"=>"user@demo.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user@demo.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37:in `find_by_credentials'
+Completed 401 Unauthorized in 12ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 1784)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-14 13:23:31 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"user@demo.io", "password"=>"[FILTERED]", "session"=>{"credential"=>"user@demo.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user@demo.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37:in `find_by_credentials'
+Completed 401 Unauthorized in 6ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 780)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-14 13:23:33 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"user@demo.io", "password"=>"[FILTERED]", "session"=>{"credential"=>"user@demo.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user@demo.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37:in `find_by_credentials'
+Completed 401 Unauthorized in 5ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 770)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-14 13:23:33 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"user@demo.io", "password"=>"[FILTERED]", "session"=>{"credential"=>"user@demo.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user@demo.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37:in `find_by_credentials'
+Completed 401 Unauthorized in 9ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 784)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-14 13:23:33 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"user@demo.io", "password"=>"[FILTERED]", "session"=>{"credential"=>"user@demo.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user@demo.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37:in `find_by_credentials'
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 800)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 13:26:40 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 891)
+
+
+Started GET "/api/spots/1" for 127.0.0.1 at 2022-10-14 13:27:44 -0400
+Processing by Api::SpotsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mSpot Load (2.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/spots_controller.rb:11:in `show'
+  Rendering api/spots/show.json.jbuilder
+  Rendered api/spots/show.json.jbuilder (Duration: 2.7ms | Allocations: 1038)
+Completed 200 OK in 68ms (Views: 6.2ms | ActiveRecord: 10.1ms | Allocations: 13662)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 13:37:01 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 54ms (Views: 0.3ms | ActiveRecord: 14.9ms | Allocations: 4104)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 13:37:44 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 903)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 13:38:17 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 3.6ms | Allocations: 897)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 13:38:56 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 6.3ms | Allocations: 3546)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 13:39:18 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 2.1ms | Allocations: 6347)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-14 13:41:54 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"user@demo.io", "password"=>"[FILTERED]", "session"=>{"credential"=>"user@demo.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user@demo.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37:in `find_by_credentials'
+Completed 401 Unauthorized in 19ms (Views: 2.9ms | ActiveRecord: 0.5ms | Allocations: 1739)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-14 13:41:56 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"user@demo.io", "password"=>"[FILTERED]", "session"=>{"credential"=>"user@demo.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user@demo.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37:in `find_by_credentials'
+Completed 401 Unauthorized in 4ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 806)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 13:45:12 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 916)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 13:46:01 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 909)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 13:46:30 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.6ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 45ms (Views: 39.7ms | ActiveRecord: 4.4ms | Allocations: 11639)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 13:46:31 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1076)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 13:46:31 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.7ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 8ms (Views: 3.9ms | ActiveRecord: 0.7ms | Allocations: 2132)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 13:46:54 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 1.5ms | Allocations: 903)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 13:46:54 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.3ms | Allocations: 2104)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 13:48:14 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 20ms (Views: 0.2ms | ActiveRecord: 12.8ms | Allocations: 3458)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 13:48:14 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.6ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."is_live" = $1[0m  [["is_live", false]]
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.6ms | Allocations: 1412)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 13:49:37 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (6.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 13ms (Views: 0.5ms | ActiveRecord: 6.4ms | Allocations: 894)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 13:49:37 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."is_live" = $1[0m  [["is_live", false]]
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.5ms | Allocations: 941)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 13:50:38 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."is_live" = $1[0m  [["is_live", false]]
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 8ms (Views: 1.7ms | ActiveRecord: 0.4ms | Allocations: 971)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 13:51:10 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.0ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."is_live" = $1[0m  [["is_live", false]]
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 7ms (Views: 2.3ms | ActiveRecord: 1.0ms | Allocations: 962)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 13:51:39 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."is_live" = $1[0m  [["is_live", false]]
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 959)
+
+
+Started GET "/api/spots?maxGuests=11" for 127.0.0.1 at 2022-10-14 13:52:33 -0400
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"maxGuests"=>"11"}
+  [1m[36mSpot Load (0.7ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."is_live" = $1[0m  [["is_live", false]]
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 1.9ms | ActiveRecord: 0.7ms | Allocations: 966)
+
+
+Started GET "/api/spots?maxGuests=11" for 127.0.0.1 at 2022-10-14 13:53:05 -0400
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"maxGuests"=>"11"}
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."is_live" = $1[0m  [["is_live", false]]
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.3ms | Allocations: 972)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 13:53:12 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 918)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 13:53:41 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 909)
+
+
+Started GET "/api/spots?maxGuests=-1" for 127.0.0.1 at 2022-10-14 13:53:48 -0400
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"maxGuests"=>"-1"}
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."is_live" = $1[0m  [["is_live", false]]
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 0.4ms | Allocations: 969)
+
+
+Started GET "/api/spots?maxGuests=3" for 127.0.0.1 at 2022-10-14 13:55:11 -0400
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"maxGuests"=>"3"}
+  [1m[36mSpot Load (0.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."is_live" = $1[0m  [["is_live", false]]
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 13ms (Views: 7.5ms | ActiveRecord: 0.5ms | Allocations: 960)
+
+
+Started GET "/api/spots?maxGuests=1" for 127.0.0.1 at 2022-10-14 13:56:12 -0400
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"maxGuests"=>"1"}
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 1.3ms | Allocations: 313)
+
+ArgumentError - bad value for range:
+	app/controllers/api/spots_controller.rb:55:in `guest_range'
+	app/controllers/api/spots_controller.rb:6:in `index'
+
+Completed 500 Internal Server Error in 7ms (Views: 5.5ms | ActiveRecord: 0.0ms | Allocations: 3544)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 13:59:51 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 4.4ms | Allocations: 6355)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 13:59:57 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 998)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 14:06:05 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.8ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."max_guests" IS NULL[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 12ms (Views: 1.7ms | ActiveRecord: 1.8ms | Allocations: 2417)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 14:06:20 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.1ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."max_guests" IS NULL[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 18ms (Views: 9.7ms | ActiveRecord: 1.1ms | Allocations: 1102)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 14:06:22 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 16ms (Views: 0.1ms | ActiveRecord: 3.8ms | Allocations: 4602)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 14:06:22 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."max_guests" IS NULL[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms | Allocations: 1037)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 14:06:46 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 21ms (Views: 0.3ms | ActiveRecord: 1.8ms | Allocations: 3479)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 14:06:47 -0400
+Processing by Api::SpotsController#index as JSON
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 1.2ms | Allocations: 313)
+
+NoMethodError - undefined method `All' for Spot:Class
+Did you mean?  all:
+	app/controllers/api/spots_controller.rb:6:in `index'
+
+Completed 500 Internal Server Error in 17ms (Views: 10.1ms | ActiveRecord: 0.0ms | Allocations: 7194)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 14:06:47 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1113)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 14:06:47 -0400
+Processing by Api::SpotsController#index as JSON
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.1ms | Allocations: 22)
+
+NoMethodError - undefined method `All' for Spot:Class
+Did you mean?  all:
+	app/controllers/api/spots_controller.rb:6:in `index'
+
+Completed 500 Internal Server Error in 5ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 4853)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 14:06:58 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 1.5ms | Allocations: 3484)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 14:06:58 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.7ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 15ms (Views: 7.9ms | ActiveRecord: 6.6ms | Allocations: 11571)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 14:07:15 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 2.7ms | Allocations: 1085)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 14:07:15 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 2148)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 14:07:48 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 20ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 895)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 14:07:49 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.4ms | Allocations: 2138)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 14:09:08 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.6ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 7ms (Views: 4.3ms | ActiveRecord: 0.6ms | Allocations: 2120)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 14:52:42 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 88ms (Views: 0.9ms | ActiveRecord: 24.1ms | Allocations: 3920)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 15:00:31 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 5.9ms | Allocations: 6342)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 15:03:48 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 2.7ms | Allocations: 3481)
+
+
+Started GET "/api/spots/1" for 127.0.0.1 at 2022-10-14 15:15:01 -0400
+Processing by Api::SpotsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mSpot Load (4.0ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/spots_controller.rb:11:in `show'
+  Rendering api/spots/show.json.jbuilder
+  Rendered api/spots/show.json.jbuilder (Duration: 1.1ms | Allocations: 1038)
+Completed 200 OK in 27ms (Views: 2.9ms | ActiveRecord: 7.0ms | Allocations: 14660)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 15:15:12 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."listing_type" IS NULL[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 1.5ms | Allocations: 1140)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 15:16:06 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.9ms | Allocations: 963)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 15:16:09 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."listing_type" IS NULL[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.4ms | Allocations: 944)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 15:16:25 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.0ms | Allocations: 907)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 15:16:27 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.7ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."listing_type" IS NULL[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.7ms | Allocations: 959)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 15:27:27 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 29ms (Views: 0.2ms | ActiveRecord: 7.7ms | Allocations: 6115)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2022-10-14 15:28:30 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"email"=>"Ian@email.com", "firstName"=>"Ian", "lastName"=>"Verger", "dateOfBirth"=>"02/12/11", "phoneNumber"=>"1113321212", "password"=>"[FILTERED]", "user"=>{"email"=>"Ian@email.com", "password"=>"[FILTERED]", "firstName"=>"Ian", "lastName"=>"Verger", "dateOfBirth"=>"02/12/11", "phoneNumber"=>"1113321212"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "Ian@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+  [1m[36mUser Create (6.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "first_name", "last_name", "password_digest", "session_token", "created_at", "updated_at", "date_of_birth", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "Ian@email.com"], ["first_name", "Ian"], ["last_name", "Verger"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2022-10-14 19:28:31.240321"], ["updated_at", "2022-10-14 19:28:31.240321"], ["date_of_birth", "02/12/11"], ["phone_number", 1113321212]]
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.2ms | Allocations: 107)
+
+ActiveRecord::RecordNotUnique - PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "users_pkey"
+DETAIL:  Key (id)=(1) already exists.
+:
+	app/controllers/api/users_controller.rb:9:in `create'
+
+Completed 500 Internal Server Error in 298ms (Views: 0.8ms | ActiveRecord: 12.0ms | Allocations: 13004)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 15:29:41 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 6ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 1088)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 15:30:21 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.6ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 15ms (Views: 12.1ms | ActiveRecord: 1.6ms | Allocations: 6172)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 15:30:31 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 951)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 15:30:33 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.4ms | Allocations: 2137)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 15:31:32 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 919)
+
+
+Started GET "/api/spots?listingType=RV" for 127.0.0.1 at 2022-10-14 15:34:34 -0400
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"listingType"=>"RV"}
+  [1m[36mSpot Load (0.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 14ms (Views: 7.2ms | ActiveRecord: 0.5ms | Allocations: 2150)
+
+
+Started GET "/api/spots?listing_type=RV" for 127.0.0.1 at 2022-10-14 15:35:13 -0400
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"listing_type"=>"RV"}
+  [1m[36mSpot Load (0.7ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.7ms | Allocations: 2164)
+
+
+Started GET "/api/spots" for ::1 at 2022-10-14 15:36:51 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.4ms | Allocations: 2134)
+
+
+Started GET "/api/spots?region=South" for ::1 at 2022-10-14 15:37:38 -0400
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"region"=>"South"}
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.4ms | Allocations: 2131)
+
+
+Started GET "/api/spots?id=1" for ::1 at 2022-10-14 15:38:04 -0400
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.4ms | Allocations: 2128)
+
+
+Started GET "/api/spots?id=1" for ::1 at 2022-10-14 15:38:07 -0400
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.4ms | Allocations: 2140)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 15:42:02 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 2.9ms | Allocations: 928)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 15:42:10 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.8ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 16ms (Views: 13.4ms | ActiveRecord: 0.8ms | Allocations: 2125)
+
+
+  [1m[36mSpot Load (2.2ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."listing_type" = $1 LIMIT $2[0m  [["listing_type", "RV"], ["LIMIT", 1]]
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."listing_type" = $1[0m  [["listing_type", "RV"]]
+  [1m[36mSpot Load (1.6ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."listing_type" = $1 LIMIT $2[0m  [["listing_type", "tent"], ["LIMIT", 1]]
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."listing_type" = $1[0m  [["listing_type", "tent"]]
+  [1m[36mSpot Load (1.8ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."listing_type" = $1 LIMIT $2[0m  [["listing_type", "tent"], ["LIMIT", 1]]
+  [1m[36mSpot Load (1.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  [1m[36mSpot Load (1.2ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."listing_type" = $1[0m  [["listing_type", "lodge"]]
+  [1m[36mSpot Load (0.7ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."listing_type" = $1[0m  [["listing_type", "Campsite"]]
+Started GET "/api/spots" for ::1 at 2022-10-14 16:02:36 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SpotsController#index as JSON
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 4878)
+
+
+
+NoMethodError - undefined method `search' for Spot:Class:
+  app/controllers/api/spots_controller.rb:6:in `index'
+
+Started POST "/__better_errors/df18040de184eca2/variables" for ::1 at 2022-10-14 16:02:36 -0400
+Started GET "/api/spots" for ::1 at 2022-10-14 16:03:02 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.9ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 10ms (Views: 6.7ms | ActiveRecord: 2.8ms | Allocations: 11817)
+
+
+Started GET "/api/spots?listing_type=lodge" for ::1 at 2022-10-14 16:03:17 -0400
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"listing_type"=>"lodge"}
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 0.4ms | Allocations: 2288)
+
+
+Started GET "/api/spots?listing_type=%22lodge%22" for ::1 at 2022-10-14 16:03:23 -0400
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"listing_type"=>"\"lodge\""}
+  [1m[36mSpot Load (0.6ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 11ms (Views: 9.0ms | ActiveRecord: 0.6ms | Allocations: 2159)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 16:07:38 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 3.7ms | ActiveRecord: 1.8ms | Allocations: 6146)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 16:15:12 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 27ms (Views: 0.2ms | ActiveRecord: 7.8ms | Allocations: 8115)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 16:15:20 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (2.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 10ms (Views: 6.4ms | ActiveRecord: 2.5ms | Allocations: 2310)
+
+
+Started GET "/api/spots/2" for 127.0.0.1 at 2022-10-14 16:15:33 -0400
+Processing by Api::SpotsController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/spots_controller.rb:11:in `show'
+  Rendering api/spots/show.json.jbuilder
+  Rendered api/spots/show.json.jbuilder (Duration: 2.7ms | Allocations: 914)
+Completed 200 OK in 19ms (Views: 7.8ms | ActiveRecord: 0.4ms | Allocations: 5203)
+
+
+Started GET "/api/spots/1" for 127.0.0.1 at 2022-10-14 16:16:32 -0400
+Processing by Api::SpotsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/spots_controller.rb:11:in `show'
+  Rendering api/spots/show.json.jbuilder
+  Rendered api/spots/show.json.jbuilder (Duration: 0.9ms | Allocations: 495)
+Completed 200 OK in 7ms (Views: 1.5ms | ActiveRecord: 0.4ms | Allocations: 1559)
+
+
+Started GET "/api/spots" for ::1 at 2022-10-14 16:17:08 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.7ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 0.7ms | Allocations: 2171)
+
+
+Started GET "/api/spots/1" for ::1 at 2022-10-14 16:17:09 -0400
+Processing by Api::SpotsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/spots_controller.rb:11:in `show'
+  Rendering api/spots/show.json.jbuilder
+  Rendered api/spots/show.json.jbuilder (Duration: 1.4ms | Allocations: 495)
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 0.4ms | Allocations: 1396)
+
+
+Started GET "/api/spots?id=1" for ::1 at 2022-10-14 16:17:39 -0400
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mSpot Load (1.2ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 12ms (Views: 6.8ms | ActiveRecord: 1.2ms | Allocations: 2140)
+
+
+Started GET "/api/spots?id=1" for 127.0.0.1 at 2022-10-14 16:18:43 -0400
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.4ms | Allocations: 2116)
+
+
+Started GET "/api/spots?id=1" for 127.0.0.1 at 2022-10-14 16:22:13 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"id"=>"1"}
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.5ms | Allocations: 330)
+
+NameError - undefined local variable or method `search_params' for #<Api::SpotsController:0x00000000003f70>
+
+      @spots = Spot.filter(search_params)
+                           ^^^^^^^^^^^^^:
+	app/controllers/api/spots_controller.rb:6:in `index'
+
+Completed 500 Internal Server Error in 10ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 6280)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 16:24:15 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:8:in `index'
+Completed 200 OK in 11ms (Views: 6.1ms | ActiveRecord: 3.3ms | Allocations: 12130)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 16:24:39 -0400
+
+SyntaxError - syntax error, unexpected ',', expecting ')'
+      puts ('here', params[:search])
+                  ^
+/Users/heatherpark/Desktop/hippark/app/controllers/api/spots_controller.rb:7: syntax error, unexpected ')', expecting `end'
+... puts ('here', params[:search])
+...                              ^:
+  app/controllers/api/spots_controller.rb:7:in `'
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 16:25:11 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+SyntaxError - syntax error, unexpected local variable or method, expecting ')'
+      puts ("here" params[:search])
+                   ^~~~~~
+/Users/heatherpark/Desktop/hippark/app/controllers/api/spots_controller.rb:7: syntax error, unexpected ')', expecting `end'
+...  puts ("here" params[:search])
+...                              ^:
+  app/controllers/api/spots_controller.rb:7:in `'
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 16:25:33 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+SyntaxError - syntax error, unexpected ',', expecting ')'
+      puts ("here" , params[:search])
+                   ^
+/Users/heatherpark/Desktop/hippark/app/controllers/api/spots_controller.rb:7: syntax error, unexpected ')', expecting `end'
+...puts ("here" , params[:search])
+...                              ^:
+  app/controllers/api/spots_controller.rb:7:in `'
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 16:26:05 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.9ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:9:in `index'
+Completed 200 OK in 11ms (Views: 6.5ms | ActiveRecord: 2.7ms | Allocations: 12154)
+
+
+Started GET "/api/spots?listingType=tent" for 127.0.0.1 at 2022-10-14 16:28:20 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"listingType"=>"tent"}
+  [1m[36mSpot Load (1.0ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:9:in `index'
+Completed 200 OK in 11ms (Views: 6.4ms | ActiveRecord: 2.8ms | Allocations: 12180)
+
+
+Started GET "/api/spots?listing_type=tent" for 127.0.0.1 at 2022-10-14 16:29:01 -0400
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"listing_type"=>"tent"}
+  [1m[36mSpot Load (0.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:9:in `index'
+Completed 200 OK in 7ms (Views: 5.3ms | ActiveRecord: 0.5ms | Allocations: 2295)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 16:30:02 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SpotsController#index as JSON
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.5ms | Allocations: 330)
+
+ActiveModel::ForbiddenAttributesError - ActiveModel::ForbiddenAttributesError:
+	app/models/spot.rb:51:in `filter'
+	app/controllers/api/spots_controller.rb:6:in `index'
+
+Completed 500 Internal Server Error in 5ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 4153)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 17:00:59 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 19ms (Views: 0.1ms | ActiveRecord: 11.8ms | Allocations: 6367)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 17:01:05 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (1.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:9:in `index'
+Completed 200 OK in 21ms (Views: 16.4ms | ActiveRecord: 4.0ms | Allocations: 11663)
+
+
+Started GET "/api/spots?listing_type=tent" for 127.0.0.1 at 2022-10-14 17:01:58 -0400
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"listing_type"=>"tent"}
+  [1m[36mSpot Load (0.7ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:9:in `index'
+Completed 200 OK in 7ms (Views: 4.6ms | ActiveRecord: 0.7ms | Allocations: 2308)
+
+
+  [1m[36mSpot Load (2.1ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE (tent)[0m
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE (tent) /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mSpot Load (1.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE (id=1)[0m
+Started GET "/api/spots?id=1" for 127.0.0.1 at 2022-10-14 17:07:21 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mSpot Load (1.0ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:9:in `index'
+Completed 200 OK in 11ms (Views: 6.3ms | ActiveRecord: 2.8ms | Allocations: 12146)
+
+
+Started GET "/api/spots?id=1" for 127.0.0.1 at 2022-10-14 17:10:01 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mSpot Load (1.1ms)[0m  [1m[34mSELECT "spots".* FROM "spots" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/api/spots_controller.rb:8:in `index'
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 17:17:27 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SpotsController#index as JSON
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-14 17:18:19 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (3.1ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 6.7ms | ActiveRecord: 5.1ms | Allocations: 12143)
+
+
+Started GET "/api/spots?host_id=1" for 127.0.0.1 at 2022-10-14 17:19:30 -0400
+Processing by Api::SpotsController#index as JSON
+  Parameters: {"host_id"=>"1"}
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.4ms | Allocations: 2291)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-16 12:28:29 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 6.3ms | Allocations: 6355)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-16 12:28:29 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 989)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-16 12:28:40 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 901)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-16 13:02:12 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 55ms (Views: 0.7ms | ActiveRecord: 24.5ms | Allocations: 3923)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-16 13:02:41 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 940)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-16 13:02:46 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 17ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 913)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-16 13:02:51 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 934)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-16 13:03:44 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (2.6ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:8:in `index'
+Completed 200 OK in 24ms (Views: 18.7ms | ActiveRecord: 4.8ms | Allocations: 11646)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-16 13:04:40 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.3ms | Allocations: 2296)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-16 13:04:43 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 960)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-16 13:04:43 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.4ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.4ms | Allocations: 2125)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-16 13:04:48 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 916)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-16 13:04:48 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.3ms | Allocations: 2149)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-16 13:06:01 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 904)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-16 13:06:01 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.3ms | Allocations: 2122)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-16 13:07:24 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 928)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-16 13:07:24 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.5ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.5ms | Allocations: 2149)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-16 13:08:27 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (0.7ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.7ms | Allocations: 2143)
+
+
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE DATABASE "hip_park_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE DATABASE "hip_park_test" ENCODING = 'unicode'[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (6.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35mSQL (1.9ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (17.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "spots" CASCADE[0m
+  [1m[35m (13.7ms)[0m  [1m[35mCREATE TABLE "spots" ("id" bigserial primary key, "title" character varying NOT NULL, "description" text NOT NULL, "host_id" bigint NOT NULL, "street_address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "region" character varying NOT NULL, "zip_code" character varying NOT NULL, "country" character varying NOT NULL, "listing_type" character varying NOT NULL, "price" integer NOT NULL, "lat" float NOT NULL, "lng" float NOT NULL, "is_live" boolean NOT NULL, "max_guests" integer NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_spots_on_city" ON "spots" ("city")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_spots_on_country" ON "spots" ("country")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_spots_on_host_id" ON "spots" ("host_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_spots_on_listing_type" ON "spots" ("listing_type")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_spots_on_region" ON "spots" ("region")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_spots_on_state" ON "spots" ("state")[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_spots_on_title" ON "spots" ("title")[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE INDEX "index_spots_on_zip_code" ON "spots" ("zip_code")[0m
+  [1m[35m (10.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "date_of_birth" character varying, "phone_number" integer)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_phone_number" ON "users" ("phone_number")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_session_token" ON "users" ("session_token")[0m
+  [1m[35m (61.1ms)[0m  [1m[35mALTER TABLE "spots" ADD CONSTRAINT "fk_rails_6a1263a357"
+FOREIGN KEY ("host_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35mSQL (1.8ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (18.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "spots" CASCADE[0m
+  [1m[35m (13.6ms)[0m  [1m[35mCREATE TABLE "spots" ("id" bigserial primary key, "title" character varying NOT NULL, "description" text NOT NULL, "host_id" bigint NOT NULL, "street_address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "region" character varying NOT NULL, "zip_code" character varying NOT NULL, "country" character varying NOT NULL, "listing_type" character varying NOT NULL, "price" integer NOT NULL, "lat" float NOT NULL, "lng" float NOT NULL, "is_live" boolean NOT NULL, "max_guests" integer NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE INDEX "index_spots_on_city" ON "spots" ("city")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_spots_on_country" ON "spots" ("country")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_spots_on_host_id" ON "spots" ("host_id")[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE INDEX "index_spots_on_listing_type" ON "spots" ("listing_type")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE INDEX "index_spots_on_region" ON "spots" ("region")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE INDEX "index_spots_on_state" ON "spots" ("state")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_spots_on_title" ON "spots" ("title")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_spots_on_zip_code" ON "spots" ("zip_code")[0m
+  [1m[35m (3.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "date_of_birth" character varying, "phone_number" integer)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_phone_number" ON "users" ("phone_number")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_session_token" ON "users" ("session_token")[0m
+  [1m[35m (5.1ms)[0m  [1m[35mALTER TABLE "spots" ADD CONSTRAINT "fk_rails_6a1263a357"
+FOREIGN KEY ("host_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.5ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "development"], ["updated_at", "2022-10-16 17:24:57.759850"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2022-10-16 17:24:57.769298"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@user.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "first_name", "last_name", "password_digest", "session_token", "created_at", "updated_at", "date_of_birth", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["id", 1], ["email", "demo@user.io"], ["first_name", "Heather"], ["last_name", "Park"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2022-10-16 17:24:58.135300"], ["updated_at", "2022-10-16 17:24:58.135300"], ["date_of_birth", "07/12/1994"], ["phone_number", 2015277876]]
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "newnew@user.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "first_name", "last_name", "password_digest", "session_token", "created_at", "updated_at", "date_of_birth", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["id", 2], ["email", "newnew@user.io"], ["first_name", "New"], ["last_name", "Park"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2022-10-16 17:24:58.379085"], ["updated_at", "2022-10-16 17:24:58.379085"], ["date_of_birth", "05/04/1994"], ["phone_number", 2015551234]]
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "Bob.Michael@gmail.com"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "first_name", "last_name", "password_digest", "session_token", "created_at", "updated_at", "date_of_birth", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["id", 3], ["email", "Bob.Michael@gmail.com"], ["first_name", "Bob"], ["last_name", "Michael"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2022-10-16 17:24:58.621733"], ["updated_at", "2022-10-16 17:24:58.621733"], ["date_of_birth", "01/01/2000"], ["phone_number", 1112221212]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "Camp Tester"], ["LIMIT", 1]]
+  [1m[36mSpot Create (1.8ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "Camp Tester"], ["description", "Omnis debitis voluptates. Accusamus tempore minus. Est qui dolor.\n\nAlias soluta velit. Consequatur sit facilis. Nostrum cum qui."], ["host_id", 1], ["street_address", "360 Mammoth Cave Rd"], ["city", "Brownsville"], ["state", "Kentucky"], ["region", "South"], ["zip_code", "42210"], ["country", "USA"], ["listing_type", "lodge"], ["price", 104], ["lat", 37.17148], ["lng", -86.19666], ["is_live", true], ["max_guests", 8], ["created_at", "2022-10-16 17:24:59.228281"], ["updated_at", "2022-10-16 17:24:59.228281"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "Little Landing"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.4ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "Little Landing"], ["description", "Mollitia maiores quo. Sapiente quia sunt. Nostrum aut et.\n\nVoluptatem libero sint. Vel unde aperiam. Iusto eius rerum."], ["host_id", 2], ["street_address", "10127 Waterton Rd"], ["city", "Littleton"], ["state", "Colorado"], ["region", "Rockies"], ["zip_code", "80125"], ["country", "USA"], ["listing_type", "campsite"], ["price", 87], ["lat", 39.48658], ["lng", -105.07412], ["is_live", true], ["max_guests", 4], ["created_at", "2022-10-16 17:24:59.232107"], ["updated_at", "2022-10-16 17:24:59.232107"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "Curly Jack Campground"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.4ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "Curly Jack Campground"], ["description", "Odio sint rerum. Ut non quae. Quam et ut."], ["host_id", 3], ["street_address", "63822 CA-96"], ["city", "Happy Camp"], ["state", "California"], ["region", "Pacific Northwest"], ["zip_code", "96039"], ["country", "USA"], ["listing_type", "campsite"], ["price", 210], ["lat", 41.78897], ["lng", -123.37559], ["is_live", true], ["max_guests", 14], ["created_at", "2022-10-16 17:24:59.234327"], ["updated_at", "2022-10-16 17:24:59.234327"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "5th Ave Wonder by Ian"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.4ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "5th Ave Wonder by Ian"], ["description", "Sed officia ut. Dolorem assumenda consequuntur. Ea vero est."], ["host_id", 3], ["street_address", "100 5th Ave"], ["city", "New York"], ["state", "New York"], ["region", "East Coast"], ["zip_code", "00000"], ["country", "USA"], ["listing_type", "tent"], ["price", 5000], ["lat", 41.78897], ["lng", -123.37559], ["is_live", true], ["max_guests", 2], ["created_at", "2022-10-16 17:24:59.236544"], ["updated_at", "2022-10-16 17:24:59.236544"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "National Treasure Beauty"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.4ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "National Treasure Beauty"], ["description", "Nobis eius numquam. Optio est aut. Soluta ullam modi.\n\nCum officiis fugit. Sit quia adipisci. Rem quisquam error."], ["host_id", 3], ["street_address", "63822 CA-96"], ["city", "Omaha"], ["state", "Nebraska"], ["region", "Pacific Northwest"], ["zip_code", "96039"], ["country", "USA"], ["listing_type", "campsite"], ["price", 30], ["lat", 41.78897], ["lng", -123.37559], ["is_live", true], ["max_guests", 14], ["created_at", "2022-10-16 17:24:59.238774"], ["updated_at", "2022-10-16 17:24:59.238774"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "Hi Baby Gorgeous"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.4ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "Hi Baby Gorgeous"], ["description", "Omnis dolor sequi. Quo inventore voluptatem. Voluptatem consectetur rerum.\n\nSit rerum iusto. Provident minima facere. Dolor recusandae sed.\n\nMagnam sint natus. Optio eos et. Est consequatur iure."], ["host_id", 3], ["street_address", "63822 CA-96"], ["city", "Salt Lake City"], ["state", "Utah"], ["region", "The Rockies"], ["zip_code", "96039"], ["country", "USA"], ["listing_type", "RV"], ["price", 120], ["lat", 41.78897], ["lng", -123.37559], ["is_live", true], ["max_guests", 14], ["created_at", "2022-10-16 17:24:59.241078"], ["updated_at", "2022-10-16 17:24:59.241078"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE DATABASE "hip_park_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE "hip_park_test" ENCODING = 'unicode'[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (5.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "spots" CASCADE[0m
+  [1m[35m (12.5ms)[0m  [1m[35mCREATE TABLE "spots" ("id" bigserial primary key, "title" character varying NOT NULL, "description" text NOT NULL, "host_id" bigint NOT NULL, "street_address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "region" character varying NOT NULL, "zip_code" character varying NOT NULL, "country" character varying NOT NULL, "listing_type" character varying NOT NULL, "price" integer NOT NULL, "lat" float NOT NULL, "lng" float NOT NULL, "is_live" boolean NOT NULL, "max_guests" integer NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_spots_on_city" ON "spots" ("city")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_spots_on_country" ON "spots" ("country")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_spots_on_host_id" ON "spots" ("host_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_spots_on_listing_type" ON "spots" ("listing_type")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_spots_on_region" ON "spots" ("region")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_spots_on_state" ON "spots" ("state")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_spots_on_title" ON "spots" ("title")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_spots_on_zip_code" ON "spots" ("zip_code")[0m
+  [1m[35m (2.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "date_of_birth" character varying, "phone_number" integer)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_phone_number" ON "users" ("phone_number")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_session_token" ON "users" ("session_token")[0m
+  [1m[35m (3.1ms)[0m  [1m[35mALTER TABLE "spots" ADD CONSTRAINT "fk_rails_6a1263a357"
+FOREIGN KEY ("host_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (5.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "spots" CASCADE[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "spots" ("id" bigserial primary key, "title" character varying NOT NULL, "description" text NOT NULL, "host_id" bigint NOT NULL, "street_address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "region" character varying NOT NULL, "zip_code" character varying NOT NULL, "country" character varying NOT NULL, "listing_type" character varying NOT NULL, "price" integer NOT NULL, "lat" float NOT NULL, "lng" float NOT NULL, "is_live" boolean NOT NULL, "max_guests" integer NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_spots_on_city" ON "spots" ("city")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_spots_on_country" ON "spots" ("country")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_spots_on_host_id" ON "spots" ("host_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_spots_on_listing_type" ON "spots" ("listing_type")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_spots_on_region" ON "spots" ("region")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_spots_on_state" ON "spots" ("state")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_spots_on_title" ON "spots" ("title")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_spots_on_zip_code" ON "spots" ("zip_code")[0m
+  [1m[35m (2.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "date_of_birth" character varying, "phone_number" integer)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_phone_number" ON "users" ("phone_number")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_session_token" ON "users" ("session_token")[0m
+  [1m[35m (2.8ms)[0m  [1m[35mALTER TABLE "spots" ADD CONSTRAINT "fk_rails_6a1263a357"
+FOREIGN KEY ("host_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "development"], ["updated_at", "2022-10-16 17:25:26.041365"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2022-10-16 17:25:26.045696"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@user.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "first_name", "last_name", "password_digest", "session_token", "created_at", "updated_at", "date_of_birth", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["id", 1], ["email", "demo@user.io"], ["first_name", "Heather"], ["last_name", "Park"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2022-10-16 17:25:26.372235"], ["updated_at", "2022-10-16 17:25:26.372235"], ["date_of_birth", "07/12/1994"], ["phone_number", 2015277876]]
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "newnew@user.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "first_name", "last_name", "password_digest", "session_token", "created_at", "updated_at", "date_of_birth", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["id", 2], ["email", "newnew@user.io"], ["first_name", "New"], ["last_name", "Park"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2022-10-16 17:25:26.616297"], ["updated_at", "2022-10-16 17:25:26.616297"], ["date_of_birth", "05/04/1994"], ["phone_number", 2015551234]]
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "Bob.Michael@gmail.com"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "first_name", "last_name", "password_digest", "session_token", "created_at", "updated_at", "date_of_birth", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["id", 3], ["email", "Bob.Michael@gmail.com"], ["first_name", "Bob"], ["last_name", "Michael"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2022-10-16 17:25:26.859968"], ["updated_at", "2022-10-16 17:25:26.859968"], ["date_of_birth", "01/01/2000"], ["phone_number", 1112221212]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "Camp Tester"], ["LIMIT", 1]]
+  [1m[36mSpot Create (1.3ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "Camp Tester"], ["description", "Enim illo voluptatem. Ad ea et. Et est quidem."], ["host_id", 1], ["street_address", "360 Mammoth Cave Rd"], ["city", "Brownsville"], ["state", "Kentucky"], ["region", "South"], ["zip_code", "42210"], ["country", "USA"], ["listing_type", "lodge"], ["price", 104], ["lat", 37.17148], ["lng", -86.19666], ["is_live", true], ["max_guests", 8], ["created_at", "2022-10-16 17:25:27.559938"], ["updated_at", "2022-10-16 17:25:27.559938"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "Little Landing"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.4ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "Little Landing"], ["description", "Quo dicta praesentium. Sed ad asperiores. Quasi in quaerat.\n\nOmnis non qui. Deleniti officiis rerum. Minima et consequatur.\n\nFugit non placeat. Sapiente aut cupiditate. Non est eveniet."], ["host_id", 2], ["street_address", "10127 Waterton Rd"], ["city", "Littleton"], ["state", "Colorado"], ["region", "Rockies"], ["zip_code", "80125"], ["country", "USA"], ["listing_type", "campsite"], ["price", 87], ["lat", 39.48658], ["lng", -105.07412], ["is_live", true], ["max_guests", 4], ["created_at", "2022-10-16 17:25:27.563319"], ["updated_at", "2022-10-16 17:25:27.563319"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "Curly Jack Campground"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.4ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "Curly Jack Campground"], ["description", "Sapiente libero deserunt. Iusto molestiae eum. Fugiat quidem pariatur.\n\nEum quidem laudantium. Et facilis laudantium. Dolor aperiam qui.\n\nNon dolore at. Aut aliquam dolorum. Ut aspernatur vel."], ["host_id", 3], ["street_address", "63822 CA-96"], ["city", "Happy Camp"], ["state", "California"], ["region", "Pacific Northwest"], ["zip_code", "96039"], ["country", "USA"], ["listing_type", "campsite"], ["price", 210], ["lat", 41.78897], ["lng", -123.37559], ["is_live", true], ["max_guests", 14], ["created_at", "2022-10-16 17:25:27.565582"], ["updated_at", "2022-10-16 17:25:27.565582"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "5th Ave Wonder by Ian"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.4ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "5th Ave Wonder by Ian"], ["description", "Voluptatem quia aut. Sit nam est. Qui sint omnis.\n\nFuga officia quam. Aut sint modi. Laboriosam minima magnam.\n\nNostrum ratione repellendus. Rerum impedit aut. Neque sapiente quae."], ["host_id", 3], ["street_address", "100 5th Ave"], ["city", "New York"], ["state", "New York"], ["region", "East Coast"], ["zip_code", "00000"], ["country", "USA"], ["listing_type", "tent"], ["price", 5000], ["lat", 41.78897], ["lng", -123.37559], ["is_live", true], ["max_guests", 2], ["created_at", "2022-10-16 17:25:27.567784"], ["updated_at", "2022-10-16 17:25:27.567784"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "National Treasure Beauty"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.4ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "National Treasure Beauty"], ["description", "Aut quas necessitatibus. Consectetur et accusantium. Et aliquid ipsum."], ["host_id", 3], ["street_address", "63822 CA-96"], ["city", "Omaha"], ["state", "Nebraska"], ["region", "Pacific Northwest"], ["zip_code", "96039"], ["country", "USA"], ["listing_type", "campsite"], ["price", 30], ["lat", 41.78897], ["lng", -123.37559], ["is_live", true], ["max_guests", 14], ["created_at", "2022-10-16 17:25:27.570008"], ["updated_at", "2022-10-16 17:25:27.570008"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "Hi Baby Gorgeous"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.7ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "Hi Baby Gorgeous"], ["description", "Exercitationem fuga aut. Aliquam quasi odit. Omnis culpa qui.\n\nSaepe earum et. Assumenda et sunt. Eaque qui minus."], ["host_id", 3], ["street_address", "63822 CA-96"], ["city", "Salt Lake City"], ["state", "Utah"], ["region", "The Rockies"], ["zip_code", "96039"], ["country", "USA"], ["listing_type", "RV"], ["price", 120], ["lat", 41.78897], ["lng", -123.37559], ["is_live", true], ["max_guests", 14], ["created_at", "2022-10-16 17:25:27.572222"], ["updated_at", "2022-10-16 17:25:27.572222"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE DATABASE "hip_park_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE DATABASE "hip_park_test" ENCODING = 'unicode'[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (4.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "spots" CASCADE[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "spots" ("id" bigserial primary key, "title" character varying NOT NULL, "description" text NOT NULL, "host_id" bigint NOT NULL, "street_address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "region" character varying NOT NULL, "zip_code" character varying NOT NULL, "country" character varying NOT NULL, "listing_type" character varying NOT NULL, "price" integer NOT NULL, "lat" float NOT NULL, "lng" float NOT NULL, "is_live" boolean NOT NULL, "max_guests" integer NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_spots_on_city" ON "spots" ("city")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_spots_on_country" ON "spots" ("country")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_spots_on_host_id" ON "spots" ("host_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_spots_on_listing_type" ON "spots" ("listing_type")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_spots_on_region" ON "spots" ("region")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_spots_on_state" ON "spots" ("state")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_spots_on_title" ON "spots" ("title")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_spots_on_zip_code" ON "spots" ("zip_code")[0m
+  [1m[35m (2.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "date_of_birth" character varying, "phone_number" integer)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_phone_number" ON "users" ("phone_number")[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_session_token" ON "users" ("session_token")[0m
+  [1m[35m (12.7ms)[0m  [1m[35mALTER TABLE "spots" ADD CONSTRAINT "fk_rails_6a1263a357"
+FOREIGN KEY ("host_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (5.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "spots" CASCADE[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "spots" ("id" bigserial primary key, "title" character varying NOT NULL, "description" text NOT NULL, "host_id" bigint NOT NULL, "street_address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "region" character varying NOT NULL, "zip_code" character varying NOT NULL, "country" character varying NOT NULL, "listing_type" character varying NOT NULL, "price" integer NOT NULL, "lat" float NOT NULL, "lng" float NOT NULL, "is_live" boolean NOT NULL, "max_guests" integer NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_spots_on_city" ON "spots" ("city")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_spots_on_country" ON "spots" ("country")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE INDEX "index_spots_on_host_id" ON "spots" ("host_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_spots_on_listing_type" ON "spots" ("listing_type")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_spots_on_region" ON "spots" ("region")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_spots_on_state" ON "spots" ("state")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_spots_on_title" ON "spots" ("title")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_spots_on_zip_code" ON "spots" ("zip_code")[0m
+  [1m[35m (2.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "date_of_birth" character varying, "phone_number" integer)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_phone_number" ON "users" ("phone_number")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_session_token" ON "users" ("session_token")[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "spots" ADD CONSTRAINT "fk_rails_6a1263a357"
+FOREIGN KEY ("host_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "development"], ["updated_at", "2022-10-16 17:26:12.119896"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2022-10-16 17:26:12.124409"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@user.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "first_name", "last_name", "password_digest", "session_token", "created_at", "updated_at", "date_of_birth", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["id", 1], ["email", "demo@user.io"], ["first_name", "Heather"], ["last_name", "Park"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2022-10-16 17:26:12.454008"], ["updated_at", "2022-10-16 17:26:12.454008"], ["date_of_birth", "07/12/1994"], ["phone_number", 2015277876]]
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "newnew@user.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "first_name", "last_name", "password_digest", "session_token", "created_at", "updated_at", "date_of_birth", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["id", 2], ["email", "newnew@user.io"], ["first_name", "New"], ["last_name", "Park"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2022-10-16 17:26:12.703244"], ["updated_at", "2022-10-16 17:26:12.703244"], ["date_of_birth", "05/04/1994"], ["phone_number", 2015551234]]
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "Bob.Michael@gmail.com"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "first_name", "last_name", "password_digest", "session_token", "created_at", "updated_at", "date_of_birth", "phone_number") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["id", 3], ["email", "Bob.Michael@gmail.com"], ["first_name", "Bob"], ["last_name", "Michael"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2022-10-16 17:26:12.951326"], ["updated_at", "2022-10-16 17:26:12.951326"], ["date_of_birth", "01/01/2000"], ["phone_number", 1112221212]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "Camp Tester"], ["LIMIT", 1]]
+  [1m[36mSpot Create (1.7ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "Camp Tester"], ["description", "Ullam deleniti non. Cumque sunt autem. Excepturi doloremque voluptatem."], ["host_id", 1], ["street_address", "360 Mammoth Cave Rd"], ["city", "Brownsville"], ["state", "Kentucky"], ["region", "South"], ["zip_code", "42210"], ["country", "USA"], ["listing_type", "lodge"], ["price", 104], ["lat", 37.17148], ["lng", -86.19666], ["is_live", true], ["max_guests", 8], ["created_at", "2022-10-16 17:26:13.553367"], ["updated_at", "2022-10-16 17:26:13.553367"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "Little Landing"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.5ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "Little Landing"], ["description", "Nulla recusandae odio. Laborum laboriosam quidem. Sit est soluta.\n\nIllo consequatur ea. Qui ratione dolor. Quia voluptas eum.\n\nTotam in ipsum. Ut non ab. Mollitia officiis pariatur."], ["host_id", 2], ["street_address", "10127 Waterton Rd"], ["city", "Littleton"], ["state", "Colorado"], ["region", "Rockies"], ["zip_code", "80125"], ["country", "USA"], ["listing_type", "campsite"], ["price", 87], ["lat", 39.48658], ["lng", -105.07412], ["is_live", true], ["max_guests", 4], ["created_at", "2022-10-16 17:26:13.557106"], ["updated_at", "2022-10-16 17:26:13.557106"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "Curly Jack Campground"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.4ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "Curly Jack Campground"], ["description", "Nihil eaque voluptatem. Voluptas soluta repudiandae. Vel veritatis iusto."], ["host_id", 3], ["street_address", "63822 CA-96"], ["city", "Happy Camp"], ["state", "California"], ["region", "Pacific Northwest"], ["zip_code", "96039"], ["country", "USA"], ["listing_type", "campsite"], ["price", 210], ["lat", 41.78897], ["lng", -123.37559], ["is_live", true], ["max_guests", 14], ["created_at", "2022-10-16 17:26:13.559429"], ["updated_at", "2022-10-16 17:26:13.559429"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "5th Ave Wonder by Ian"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.5ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "5th Ave Wonder by Ian"], ["description", "Qui in aut. Perspiciatis est ut. Est eligendi culpa.\n\nQuia non corporis. Non ratione placeat. Cumque pariatur id.\n\nIste mollitia placeat. Nemo animi quis. Dolorem reiciendis voluptatem."], ["host_id", 3], ["street_address", "100 5th Ave"], ["city", "New York"], ["state", "New York"], ["region", "East Coast"], ["zip_code", "00000"], ["country", "USA"], ["listing_type", "tent"], ["price", 5000], ["lat", 41.78897], ["lng", -123.37559], ["is_live", true], ["max_guests", 2], ["created_at", "2022-10-16 17:26:13.561701"], ["updated_at", "2022-10-16 17:26:13.561701"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "National Treasure Beauty"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.5ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "National Treasure Beauty"], ["description", "Alias qui debitis. Ut earum nemo. Quisquam numquam minima.\n\nNeque autem minima. Tempora quo consequuntur. Qui qui ducimus.\n\nOptio itaque est. Odio id qui. Vitae unde commodi."], ["host_id", 3], ["street_address", "63822 CA-96"], ["city", "Omaha"], ["state", "Nebraska"], ["region", "Pacific Northwest"], ["zip_code", "96039"], ["country", "USA"], ["listing_type", "campsite"], ["price", 30], ["lat", 41.78897], ["lng", -123.37559], ["is_live", true], ["max_guests", 14], ["created_at", "2022-10-16 17:26:13.564053"], ["updated_at", "2022-10-16 17:26:13.564053"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSpot Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "spots" WHERE "spots"."title" = $1 LIMIT $2[0m  [["title", "Hi Baby Gorgeous"], ["LIMIT", 1]]
+  [1m[36mSpot Create (0.4ms)[0m  [1m[32mINSERT INTO "spots" ("title", "description", "host_id", "street_address", "city", "state", "region", "zip_code", "country", "listing_type", "price", "lat", "lng", "is_live", "max_guests", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["title", "Hi Baby Gorgeous"], ["description", "Magnam unde maiores. Sint illo harum. Sint non incidunt."], ["host_id", 3], ["street_address", "63822 CA-96"], ["city", "Salt Lake City"], ["state", "Utah"], ["region", "The Rockies"], ["zip_code", "96039"], ["country", "USA"], ["listing_type", "RV"], ["price", 120], ["lat", 41.78897], ["lng", -123.37559], ["is_live", true], ["max_guests", 14], ["created_at", "2022-10-16 17:26:13.566391"], ["updated_at", "2022-10-16 17:26:13.566391"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/session" for 127.0.0.1 at 2022-10-16 13:26:50 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 2.6ms | Allocations: 6427)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-16 13:26:58 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 1078)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-16 13:26:59 -0400
+Processing by Api::SpotsController#index as JSON
+  [1m[36mSpot Load (2.2ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/controllers/api/spots_controller.rb:8:in `index'
+Completed 200 OK in 16ms (Views: 8.1ms | ActiveRecord: 7.5ms | Allocations: 11705)
+
+

@@ -46,6 +46,18 @@ class Spot < ApplicationRecord
         numericality: {in: 2..20}
     
 
+    def self.filter(search)
+        if search 
+            filter_type = Spot.find_by(search)
+            if filter_type 
+                self.where(search)
+            else
+                @spots = Spot.all
+            end
+        else
+            @spots = Spot.all
+        end
+    end
 
 
         

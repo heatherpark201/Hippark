@@ -5,8 +5,10 @@ function DiscoverFilterBar({ filter, setFilter }) {
     const [listingType, setListingType] = useState();
 
     const filterButtons = e => {
+        console.log('clicked')
         setListingType(e.target.value);
     }
+   
 
 
     return (
