@@ -3,7 +3,11 @@ class Api::SpotsController < ApplicationController
     wrap_parameters include: Spot.attribute_names + ["hostId"] + ["streetAddress"]+ ["zipCode"]+ ["listingType"]+ ["isLive"] + ["maxGuests"]
   
     def index 
-      @spots = Spot.filter(params[:search])
+      if type != nil
+        @spots = Spot.where(listing_type: type)
+      else
+        @spots = Spot.all
+      end
       # debugger
       render json: @spots
     end 
@@ -51,12 +55,11 @@ class Api::SpotsController < ApplicationController
       )
     end
 
-    def guest_range
-      return nil unless params[:max_guests]
-      1..params[:max_guests]
+    def type
+      return nil if !params[:type]
+      params[:type]
     end
 
   
   end
-  
   

@@ -10,27 +10,27 @@ import DiscoverFilterBar from "./DiscoverFilterBar";
 function SpotsIndexPage() {
   const dispatch = useDispatch();
   const spots = useSelector(state => Object.values(state.spots));
-  // const [maxGuests, setMaxGuests] = useState();
-  const [listingType, setListingType] = useState()
+  const [type, setType] = useState(null);
 
   useEffect(() => {
-    if (listingType) {
-      dispatch(fetchSpots({listingType}))
-    } else {
+    if (!type) {
       dispatch(fetchSpots());
-    }
-  }, [listingType, dispatch]);
+    } else {
+      dispatch(fetchSpots(type));
 
-  // console.log(maxGuests ,'here')
+    }
+  }, [type, dispatch]);
+
+
 
 
   return (
     <div className="spot-index-bg">
       <div className="discover-filters">
-        <DiscoverFilterBar 
-          filter={listingType}
-          setFilter={setListingType}
-        />
+          <DiscoverFilterBar
+            type={type}
+            setType={setType}
+          />
       </div>
 
       <div className="under-filters">

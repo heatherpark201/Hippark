@@ -1,23 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Input } from '../Forms';
 
-function DiscoverFilterBar({ filter, setFilter }) {
-    const [listingType, setListingType] = useState();
-
-    const filterButtons = e => {
-        console.log('clicked')
-        setListingType(e.target.value);
-    }
-   
-
+function DiscoverFilterBar({ type, setType }) {
+    
 
     return (
-        <div className='discover-bar'>
-            <h3 id='filter'>Check:</h3>
-            <button onClick={filterButtons} type="button" value="All">All</button>
-            <button onClick={filterButtons} type="button" value="lodge">Lodging</button>
-            <button onClick={filterButtons} type="button" value="campsite">Camping</button>
-            <button onClick={filterButtons} type="button" value="tent">Tenting</button>
+        <div className='search-bar'>
+            <button onClick={(e) => setType(e.target.value)} type='button' value='lodge'>Lodge</button>
+            <button onClick={(e) => setType(e.target.value)} type='button' value='RV'>RV</button>
+            <button onClick={(e) => setType(e.target.value)} type='button' value='campsite'>Campsite</button>
+          
         </div>
     )
 }
