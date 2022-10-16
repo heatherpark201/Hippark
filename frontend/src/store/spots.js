@@ -14,8 +14,8 @@ const addSpot = spot => ({
 })
 
 
-export const fetchSpots = (filters) => async dispatch => {
-    const filterParams = new URLSearchParams(filters);
+export const fetchSpots = (filter) => async dispatch => {
+    const filterParams = new URLSearchParams(filter);
     const response = await csrfFetch(`/api/spots?${filterParams}`);
     const data = await response.json();
     dispatch(setSpots(data));

@@ -16,6 +16,8 @@ function SpotsIndexPage() {
   useEffect(() => {
     if (listingType) {
       dispatch(fetchSpots({listingType}))
+    } else {
+      dispatch(fetchSpots());
     }
   }, [listingType, dispatch]);
 
