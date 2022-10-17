@@ -10,7 +10,7 @@ import DiscoverFilterBar from "./DiscoverFilterBar";
 function SpotsIndexPage() {
   const dispatch = useDispatch();
   const spots = useSelector(state => Object.values(state.spots));
-  const [type, setType] = useState(null);
+  const [type, setType] = useState({type:null});
 
   useEffect(() => {
     if (!type) {

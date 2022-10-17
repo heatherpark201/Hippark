@@ -1,26 +1,17 @@
 import React, {useState} from "react";
 import Carousel from "better-react-carousel";
-import house1 from '../../assets/house1.jpeg'
-import trailer1 from '../../assets/trailer1.jpeg'
-import pic3  from '../../assets/pic3.jpeg'
+import { Link } from "react-router-dom";
 
 function SpotListItem({spot}) {
-  const {title, price, city, state, listing_type, max_guests } = spot;
-  console.log(spot, 'right here')
-  return (
-    
+  const {title, price, city, state, listing_type, max_guests, photoUrl } = spot;
 
+  return (
     <div className="spot-list-item" >
+      <Link to={`/spots/${spot.id}`}>link</Link>
       <div className="spot-carousel">
       <Carousel className="slide" >
         <Carousel.Item>
-          <img className="picz" src={house1} /> 
-        </Carousel.Item>
-        <Carousel.Item>
-          <img className="picz" src={trailer1} />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img className="picz" src={pic3} />
+          <img className="picz" src={spot.photoUrl} /> 
         </Carousel.Item>
       </Carousel>
       </div>

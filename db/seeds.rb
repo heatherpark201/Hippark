@@ -51,8 +51,7 @@ ApplicationRecord.transaction do
 puts "Creating spots..."
   random_description = proc { Faker::Lorem.paragraphs(number: rand(1..3)).join("\n\n") }
 
-  spots = Spot.create!([
-    {
+  spot1 = Spot.create!(
       title: 'Camp Tester',
       description: random_description.call,
       host_id: test1.id,
@@ -68,9 +67,10 @@ puts "Creating spots..."
       lng: -86.19666,
       is_live: 'true',
       max_guests: 8
-    },
-    {
-
+    )
+    
+    
+  spot2 = Spot.create!(
       title: 'Little Landing',
       description: random_description.call,
       host_id: test2.id,
@@ -86,8 +86,9 @@ puts "Creating spots..."
       lng: -105.07412,
       is_live: 'true',
       max_guests: 4
-    },
-    {
+    )
+
+  spot3 = Spot.create!(
       title: 'Curly Jack Campground',
       description: random_description.call,
       host_id: test3.id,
@@ -103,8 +104,9 @@ puts "Creating spots..."
       lng: -123.37559,
       is_live: 'true',
       max_guests: 14
-    },
-    {
+    )
+    
+  spot4 = Spot.create!(
       title: '5th Ave Wonder by Ian',
       description: random_description.call,
       host_id: test3.id,
@@ -120,8 +122,9 @@ puts "Creating spots..."
       lng: -123.37559,
       is_live: 'true',
       max_guests: 2
-    },
-    {
+  )
+
+  spot5 = Spot.create!(
       title: 'National Treasure Beauty',
       description: random_description.call,
       host_id: test3.id,
@@ -137,8 +140,9 @@ puts "Creating spots..."
       lng: -123.37559,
       is_live: 'true',
       max_guests: 14
-    },
-    {
+    )
+
+  spot6 = Spot.create!(
       title: 'Hi Baby Gorgeous',
       description: random_description.call,
       host_id: test3.id,
@@ -154,7 +158,11 @@ puts "Creating spots..."
       lng: -123.37559,
       is_live: 'true',
       max_guests: 14
-    }
+    )
 
-  ])
-  end
+  puts "Attaching photos..."
+  spot1.photo.attach(
+    io: File.open("db/assets/images/camp_tester.jpeg"), 
+    filename: "camp_tester.jpeg"
+  )
+ end

@@ -1,6 +1,6 @@
 class Api::SpotsController < ApplicationController
     before_action :require_logged_in, only: :create 
-    wrap_parameters include: Spot.attribute_names + ["hostId"] + ["streetAddress"]+ ["zipCode"]+ ["listingType"]+ ["isLive"] + ["maxGuests"]
+    wrap_parameters include: Spot.attribute_names + ["hostId"] + ["streetAddress"]+ ["zipCode"]+ ["listingType"]+ ["isLive"] + ["maxGuests"] + [:photo], format: :multipart_form
   
     def index 
       if type != nil
@@ -8,13 +8,15 @@ class Api::SpotsController < ApplicationController
       else
         @spots = Spot.all
       end
-      # debugger
+  
       render json: @spots
     end 
 
     def show
       @spot = Spot.find(params[:id])
+      render json: @spot
     end
+
     def create
       @spot = Spot.new(spot_params)
       

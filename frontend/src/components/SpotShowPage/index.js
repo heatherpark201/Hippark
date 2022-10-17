@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
+import { fetchSpot } from '../../store/spots';
 
 
 function SpotShowPage() {
@@ -14,9 +15,14 @@ function SpotShowPage() {
         dispatch(fetchSpot(spotId));
     }, [spotId, dispatch]);
 
-    const { description, maxGuests, lat, lng, photoUrl } = spot;
+    console.log(spotId, 'here')
+
+    // const { description, maxGuests, lat, lng, photoUrl } = spot;
+
 
     return (
+        <>
+        <h1>Hello testing</h1>
         <div className='spot-show-bg'>
             <div className='spot-header'>
                 <h1 id='spot-title'>{spot.title}</h1>
@@ -28,20 +34,20 @@ function SpotShowPage() {
                 <span></span>
             </div>
             <div className='spot-images'>
-                {photoUrl && <img src={photoUrl} alt='Spot'/> }
+                {spot.photoUrl && <img src={spot.photoUrl} alt='Spot'/> }
             </div>
             <div className='spot-info-container'>
                 <div id='spot-acres'>spot.acres</div>
-                <div id='spot-listing-type'>{listingType}</div>
+                <div id='spot-listing-type'>listingType</div>
+                <div id='descrip'>{spot.description}</div>
             </div>
             <div>
             </div>
 
         </div>
+        </>
 
     )
-    
-
-    
-
 }
+
+export default SpotShowPage;

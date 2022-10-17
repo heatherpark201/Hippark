@@ -1,5 +1,5 @@
-json.bench do
+json.spot do
     json.partial! '/api/spots/spot', spot: @spot
-  end
+end
  
   
