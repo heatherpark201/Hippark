@@ -45,7 +45,7 @@ class Spot < ApplicationRecord
         presence: true,
         numericality: {in: 2..20}
 
-        has_one_attached :photo
+    has_one_attached :photo
     
 
     def self.filter(search)

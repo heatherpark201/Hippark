@@ -165,4 +165,9 @@ puts "Creating spots..."
     io: File.open("db/assets/images/camp_tester.jpeg"), 
     filename: "camp_tester.jpeg"
   )
+
+  spot1.photo.attach(
+    io: File.open("db/assets/images/prop1a.jpeg"), 
+    filename: "prop1a.jpeg"
+  )
  end

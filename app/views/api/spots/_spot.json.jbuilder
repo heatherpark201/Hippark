@@ -16,8 +16,10 @@ json.extract! spot,
 :is_live,
 :max_guests,
 :created_at, 
-:updated_at
+:updated_at,
+:photo
+
 
 if spot.photo.attached?
-    (spot.photo.url) 
+    json.photo (spot.photo.url) 
 end

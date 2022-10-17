@@ -3,18 +3,18 @@ class Api::SpotsController < ApplicationController
     wrap_parameters include: Spot.attribute_names + ["hostId"] + ["streetAddress"]+ ["zipCode"]+ ["listingType"]+ ["isLive"] + ["maxGuests"] + [:photo], format: :multipart_form
   
     def index 
-      if type != nil
-        @spots = Spot.where(listing_type: type)
-      else
+      if !type
         @spots = Spot.all
+      else
+        @spots = Spot.where(listing_type: type)
       end
   
-      render json: @spots
+      render :index
     end 
 
     def show
       @spot = Spot.find(params[:id])
-      render json: @spot
+      render :show
     end
 
     def create
@@ -58,7 +58,7 @@ class Api::SpotsController < ApplicationController
     end
 
     def type
-      return nil if !params[:type]
+      return nil if params[:type] === 'null'
       params[:type]
     end
 
