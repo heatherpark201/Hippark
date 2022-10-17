@@ -14,7 +14,7 @@ function SpotListItem({spot}) {
       <div className="spot-carousel">
       <Carousel className="slide" >
         <Carousel.Item>
-          <img className="picz" src={house1} />
+          <img className="picz" src={house1} /> 
         </Carousel.Item>
         <Carousel.Item>
           <img className="picz" src={trailer1} />
