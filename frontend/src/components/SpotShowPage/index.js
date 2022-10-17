@@ -15,11 +15,10 @@ function SpotShowPage() {
         dispatch(fetchSpot(spotId));
     }, [spotId, dispatch]);
 
-    console.log(spotId, 'here')
-
     // const { description, maxGuests, lat, lng, photoUrl } = spot;
 
 
+   console.log(spot);
     return (
         <>
         <h1>Hello testing</h1>
@@ -34,7 +33,10 @@ function SpotShowPage() {
                 <span></span>
             </div>
             <div className='spot-images'>
-                {spot.photoUrl && <img src={spot.photoUrl} alt='Spot'/> }
+                <img src={spot.photo} alt="" style={{
+                    width: 400,
+                    height: 400
+                }}/> 
             </div>
             <div className='spot-info-container'>
                 <div id='spot-acres'>spot.acres</div>
