@@ -66,7 +66,12 @@ puts "Creating spots..."
       lat: 37.17148,
       lng: -86.19666,
       is_live: 'true',
-      max_guests: 8
+      max_guests: 8,
+      photo_urls: [
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/chris-holder-uY2UIyO5o5c-unsplash.jpg',
+         'https://hippark-photos.s3.amazonaws.com/spot_photos/denys-nevozhai-63Znf38gnXk-unsplash.jpg',
+         'https://hippark-photos.s3.amazonaws.com/spot_photos/everett-mcintire-BPCsppbNRMI-unsplash.jpg'
+        ]
     )
     
     
@@ -85,7 +90,12 @@ puts "Creating spots..."
       lat: 39.48658,
       lng: -105.07412,
       is_live: 'true',
-      max_guests: 4
+      max_guests: 4,
+      photo_urls: [
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/jonathan-forage-1azAjl8FTnU-unsplash.jpg',
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/kyle-glenn-xY4r7y-Cllo-unsplash.jpg',
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/mier-chen-TfPVLEtIG74-unsplash.jpg'
+        ]
     )
 
   spot3 = Spot.create!(
@@ -103,7 +113,11 @@ puts "Creating spots..."
       lat: 41.78897,
       lng: -123.37559,
       is_live: 'true',
-      max_guests: 14
+      max_guests: 14,
+      photo_urls: [
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/roadpass-rg-YHCIyays-unsplash.jpg',
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/scott-goodwill-y8Ngwq34_Ak-unsplash.jpg'
+      ]
     )
     
   spot4 = Spot.create!(
@@ -116,12 +130,18 @@ puts "Creating spots..."
       region: 'East Coast',
       zip_code: '00000',
       country: 'USA',
-      listing_type: 'tent',
+      listing_type: 'campsite',
       price: 5000,
       lat: 41.78897,
       lng: -123.37559,
       is_live: 'true',
-      max_guests: 2
+      max_guests: 2,
+      photo_urls: [
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/spot1a.jpeg',
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/spot1b.jpeg',
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/spot2a.jpeg',
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/spot3a.jpeg'
+      ]
   )
 
   spot5 = Spot.create!(
@@ -139,7 +159,11 @@ puts "Creating spots..."
       lat: 41.78897,
       lng: -123.37559,
       is_live: 'true',
-      max_guests: 14
+      max_guests: 14,
+      photo_urls: [
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/spot3b.jpeg',
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/spot4a.jpeg'
+      ]
     )
 
   spot6 = Spot.create!(
@@ -157,17 +181,111 @@ puts "Creating spots..."
       lat: 41.78897,
       lng: -123.37559,
       is_live: 'true',
-      max_guests: 14
+      max_guests: 14,
+      photo_urls: [
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/stijn-te-strake-0ialT4fXAaA-unsplash.jpg',
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/suhyeon-choi-aoAvYRsjr1M-unsplash.jpg'
+      ]
+    )
+  spot7 = Spot.create!(
+      title: 'Champion Way',
+      description: random_description.call,
+      host_id: test1.id,
+      street_address: '75 Gashes Creek Rd',
+      city: 'Asheville',
+      state: 'North Carolina',
+      region: 'Smokey Mountains',
+      zip_code: '28805',
+      country: 'USA',
+      listing_type: 'campsite',
+      price: 160,
+      lat: 35.58181,
+      lng: -82.49281,
+      is_live: 'true',
+      max_guests: 12,
+      photo_urls: [
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/thomas-le-UMxZIS6CPvQ-unsplash.jpg',
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/denys-nevozhai-63Znf38gnXk-unsplash.jpg',
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/denys-nevozhai-63Znf38gnXk-unsplash.jpg'
+      ]
+    )
+  spot8 = Spot.create!(
+      title: 'Santa Land Fun Park Campsite',
+      description: random_description.call,
+      host_id: test2.id,
+      street_address: '571 Wolfetown Rd',
+      city: 'Cherokee',
+      state: 'North Carolina',
+      region: 'The Rockies',
+      zip_code: '28719',
+      country: 'USA',
+      listing_type: 'campsite',
+      price: 89,
+      lat: 35.47069,
+      lng: -83.26123,
+      is_live: 'true',
+      max_guests: 8,
+      photo_urls: [
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/suhyeon-choi-aoAvYRsjr1M-unsplash.jpg',
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/spot3a.jpeg',
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/denys-nevozhai-63Znf38gnXk-unsplash.jpg'
+      ]
+    )
+  spot9 = Spot.create!(
+      title: 'York Beautiful Park',
+      description: random_description.call,
+      host_id: test1.id,
+      street_address: '2609 N York Hwy',
+      city: 'Pall Mall',
+      state: 'Tennessee',
+      region: 'Smokey Mountains',
+      zip_code: '38577',
+      country: 'USA',
+      listing_type: 'lodge',
+      price: 420,
+      lat: 36.54876,
+      lng: -84.95107,
+      is_live: 'true',
+      max_guests: 12,
+      photo_urls: [
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/spot4a.jpeg',
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/roadpass-rg-YHCIyays-unsplash.jpg',
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/scott-goodwill-y8Ngwq34_Ak-unsplash.jpg'
+      ]
+    )
+  spot10 = Spot.create!(
+      title: 'Big Sur Paradise',
+      description: random_description.call,
+      host_id: test2.id,
+      street_address: '120 Highlands Dr',
+      city: 'Carmel-By-The-Sea',
+      state: 'California',
+      region: 'Pacific Coast',
+      zip_code: '93923',
+      country: 'USA',
+      listing_type: 'lodge',
+      price: 250,
+      lat: 36.50228,
+      lng: -121.93617,
+      is_live: 'true',
+      max_guests: 10,
+      photo_urls: [
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/spot1b.jpeg',
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/roadpass-rg-YHCIyays-unsplash.jpg',
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/thomas-le-UMxZIS6CPvQ-unsplash.jpg',
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/denys-nevozhai-63Znf38gnXk-unsplash.jpg',
+        'https://hippark-photos.s3.amazonaws.com/spot_photos/denys-nevozhai-63Znf38gnXk-unsplash.jpg'
+      ]
     )
 
-  puts "Attaching photos..."
-  spot1.photo.attach(
-    io: File.open("db/assets/images/camp_tester.jpeg"), 
-    filename: "camp_tester.jpeg"
-  )
+  # puts "Attaching photos..."
+  # spot1.photo.attach(
+  #   io: File.open("db/assets/images/camp_tester.jpeg"), 
+  #   filename: "camp_tester.jpeg"
+  # )
 
-  spot1.photo.attach(
-    io: File.open("db/assets/images/prop1a.jpeg"), 
-    filename: "prop1a.jpeg"
-  )
+  # spot1.photo.attach(
+  #   io: File.open("db/assets/images/prop1a.jpeg"), 
+  #   filename: "prop1a.jpeg"
+  # )
  end

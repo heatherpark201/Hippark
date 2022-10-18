@@ -1,7 +1,11 @@
 import React from "react";
+import { LoginForm, SignupForm } from "../SessionForms";
 import './Homepage.css'
+import HomeSearchForm from "./HomeSearchForm";
 
-function Homepage() {
+
+
+function Homepage( {onSuccess} ) {
     
     return (
         <div className="homepage-bg">
@@ -18,6 +22,9 @@ function Homepage() {
                 </div>
             </div>
             <div className="under-text-container">
+                <div className="search-box">
+                    
+                </div>
 
             </div>
         </div>

@@ -17,9 +17,9 @@ json.extract! spot,
 :max_guests,
 :created_at, 
 :updated_at,
-:photo
+:photo_urls
 
 
-if spot.photo.attached?
-    json.photo (spot.photo.url) 
-end
+# if spot.photo.attached?
+#     json.photo (spot.photo.url) 
+# end
