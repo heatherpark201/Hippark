@@ -9,19 +9,27 @@ import { faSearch } from '@fortawesome/fontawesome-free-solid'
 import { faCalendar } from '@fortawesome/fontawesome-free-solid'
 import { faUser } from '@fortawesome/fontawesome-free-solid'
 
-function HomeSearchForm( {onSuccess} ) {
+function HomeSearchForm() {
     const history = useHistory();
-    const [state, onStateChange] = useInput("");
-    const [dates, onDatesChange] = useInput("");
-    const [guests, onGuestsChange] = useInput("");
-    const [errors, onSubmit] = useSubmit({ 
-        onSuccess,
-        action: spotActions.fetchSpots({state})
-    });
+    const [state, setState] = useState("");
+    const [dates, setDates] = useState("");
+    const [guests, setGuests] = useState("");
+    // const [errors, onSubmit] = useSubmit({ 
+    //     onSuccess,
+    //     action: spotActions.fetchSpots()
+    // });
 
+    const handleSubmit = ((e) => {
+        setState({state : e.target.value})
+        setDates({dates: e.target.value })
+        setGuests({guests : e.target.value})
+        history.push('/spots')
+    })
+
+    
     return (
         <>
-            <form onSubmit={onSubmit} className="spot-search-form">
+            <form onSubmit={handleSubmit} className="spot-search-form">
                     <div className="where-box">
                         <div className="label">WHERE TO?</div>
                         <div className="input-wrapper">
@@ -31,7 +39,6 @@ function HomeSearchForm( {onSuccess} ) {
                             className="home-input"
                             placeholder="Try California...."
                             value={state}
-                            onChange={onStateChange}
                         />
                         </div>
                     </div>
@@ -43,7 +50,6 @@ function HomeSearchForm( {onSuccess} ) {
                             className="dates-input"
                             placeholder="Enter Dates"
                             value={dates}
-                            onChange={onDatesChange}
                             />
                         </div>
                     </div>
@@ -55,7 +61,6 @@ function HomeSearchForm( {onSuccess} ) {
                             className="guests-input"
                             placeholder="Add Guests"
                             value={guests}
-                            onChange={onGuestsChange}
                             />
                         </div>
                     </div>

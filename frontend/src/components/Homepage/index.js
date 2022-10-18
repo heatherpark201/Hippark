@@ -24,9 +24,7 @@ function Homepage( {onSuccess} ) {
             <div className="under-text-container">
                 <div className="hp-image"></div>
                 <div className="search-box">
-                <HomeSearchForm
-                    onSuccess={onSuccess}
-                />
+                <HomeSearchForm/>
                 </div>
             </div>
         </div>
