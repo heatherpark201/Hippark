@@ -14,9 +14,6 @@ function App() {
     return (
         <>
           {!match && <Navigation />}
-            <Route path="/">
-              <Homepage/>
-            </Route>
           <Switch>
             <Route path="/signup">
               <SignupFormPage />
@@ -29,6 +26,9 @@ function App() {
              </Route>
             <Route path="/spots">
               <SpotsIndexPage />
+            </Route>
+            <Route path="/">
+              <Homepage/>
             </Route>
           </Switch>
         </>
