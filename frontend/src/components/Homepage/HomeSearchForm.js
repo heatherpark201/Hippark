@@ -2,13 +2,15 @@ import React, { useState }from "react";
 import { FormErrors, Input } from "../Forms";
 import * as spotActions from "../../store/spots";
 import { useInput, useSubmit } from "../../hooks";
-import './HomeSearchForm.css'
+import { useHistory } from "react-router-dom";
+import './HomeSearchForm.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/fontawesome-free-solid'
 import { faCalendar } from '@fortawesome/fontawesome-free-solid'
 import { faUser } from '@fortawesome/fontawesome-free-solid'
 
 function HomeSearchForm( {onSuccess} ) {
+    const history = useHistory();
     const [state, onStateChange] = useInput("");
     const [dates, onDatesChange] = useInput("");
     const [guests, onGuestsChange] = useInput("");
