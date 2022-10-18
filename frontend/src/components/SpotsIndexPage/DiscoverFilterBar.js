@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import { Input } from '../Forms';
 
 
 function DiscoverFilterBar({ type, setType }) {
@@ -7,7 +6,7 @@ function DiscoverFilterBar({ type, setType }) {
 
     const handleClick = ((e) => {
         setType({type : e.target.value})
-            setActiveButton('activeButton')
+        setActiveButton('activeButton')
     })
 
     
@@ -24,7 +23,7 @@ function DiscoverFilterBar({ type, setType }) {
             </div>
             <div className='discover-bar_filter-wrapper'>
                 <div className={activeButton}>
-                    <button className='filter-button' onClick={handleClick}  value='RV'>
+                    <button className='filter-button' onClick={handleClick} value='RV'>
                         <i className='fas fa-caravan'></i>
                         <span>RV</span>
                     </button>
@@ -32,7 +31,7 @@ function DiscoverFilterBar({ type, setType }) {
             </div>
             <div className='discover-bar_filter-wrapper'>
                 <div className={activeButton}>
-                    <button className='filter-button' onClick={handleClick}  value='lodge'>
+                    <button className='filter-button' onClick={handleClick} value='lodge'>
                         <i className='fas fa-home'></i>
                         <span>Lodging</span>
                     </button>

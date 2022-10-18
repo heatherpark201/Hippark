@@ -5,6 +5,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
 import SpotsIndexPage from "./components/SpotsIndexPage";
 import SpotShowPage from "./components/SpotShowPage";
+import Homepage from "./components/Homepage";
 
 
 
@@ -13,6 +14,9 @@ function App() {
     return (
         <>
           {!match && <Navigation />}
+            <Route path="/">
+              <Homepage/>
+            </Route>
           <Switch>
             <Route path="/signup">
               <SignupFormPage />

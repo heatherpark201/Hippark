@@ -6,6 +6,9 @@ body {
   
 } 
 
+html {
+  text-size-adjust: 100%;
+}
 html, body, header, nav, h1, a,
 ul, li, strong, main, button,
 section, img, div, h2, p, form,
@@ -20,7 +23,7 @@ span, article, footer, time, small {
   color: inherit;
   text-align: inherit;
   text-decoration: inherit;
-  vertical-align: inherit;
+  vertical-align: baseline;
   box-sizing: inherit;
 }
 
