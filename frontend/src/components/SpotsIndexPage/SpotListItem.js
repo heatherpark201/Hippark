@@ -3,17 +3,19 @@ import Carousel from "better-react-carousel";
 import { Link } from "react-router-dom";
 
 function SpotListItem({spot}) {
-  const {title, price, city, state, listing_type, max_guests, photoUrl } = spot;
-
+  const {title, price, city, state, listingType, photoUrls} = spot;
+  
   return (
     <div className="spot-list-item" >
       <Link to={`/spots/${spot.id}`}>link</Link>
-      <div className="spot-carousel">
-      <Carousel className="slide" >
-        <Carousel.Item>
-          <img className="picz" src={spot.photoUrl} /> 
-        </Carousel.Item>
-      </Carousel>
+       <div className="spot-carousel">
+        <Carousel className="slide">
+          {photoUrls.map((url, idx) => {
+            return (
+              <Carousel.Item><img className="picz" key={idx} src={url} alt=""/></Carousel.Item> 
+            )
+          })}
+        </Carousel>
       </div>
 
       <div className="list-item-info">
@@ -22,7 +24,7 @@ function SpotListItem({spot}) {
         <div className="info-field">
 
           <div className="line-1">
-            <span className="list-item-copy">X sites • {listing_type}</span>
+            <span className="list-item-copy">X sites • {listingType}</span>
           </div>
 
           <div className="line-2">

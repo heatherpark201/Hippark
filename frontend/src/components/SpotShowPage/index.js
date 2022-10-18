@@ -18,7 +18,6 @@ function SpotShowPage() {
     // const { description, maxGuests, lat, lng, photoUrl } = spot;
 
 
-   console.log(spot);
     return (
         <>
         <h1>Hello testing</h1>
