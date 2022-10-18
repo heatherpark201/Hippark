@@ -1,40 +1,44 @@
-import React, { useState, useInput, useSubmit }from "react";
+import React, { useState }from "react";
 import { FormErrors, Input } from "../Forms";
 import * as spotActions from "../../store/spots";
-
-
+import { useInput, useSubmit } from "../../hooks";
+import './HomeSearchForm.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/fontawesome-free-solid'
+import { faCalendar } from '@fortawesome/fontawesome-free-solid'
+import { faUser } from '@fortawesome/fontawesome-free-solid'
 
 function HomeSearchForm( {onSuccess} ) {
     const [state, onStateChange] = useInput("");
-    const [dates, onDatesChange] = useInput("")
+    const [dates, onDatesChange] = useInput("");
+    const [guests, onGuestsChange] = useInput("");
     const [errors, onSubmit] = useSubmit({ 
         onSuccess,
-        action: spotActions.fetchSpots({ state})
+        action: spotActions.fetchSpots({state})
     });
 
     return (
         <>
             <form onSubmit={onSubmit} className="spot-search-form">
-                <FormErrors errors={errors}/>
                     <div className="where-box">
                         <div className="label">WHERE TO?</div>
                         <div className="input-wrapper">
-                            <div className="input-icon">Magglass</div>
+                            <div className="input-icon"><FontAwesomeIcon icon={faSearch} /></div>
                         <Input 
+                            type="text"
                             className="home-input"
                             placeholder="Try California...."
                             value={state}
                             onChange={onStateChange}
-                            required
-                            />
+                        />
                         </div>
                     </div>
-                    {/* <div className="dates-box">
+                    <div className="dates-box">
                         <div className="label">DATES</div>
                         <div className="input-wrapper">
-                            <div className="input-icon">Cal</div>
+                        <div className="input-icon"><FontAwesomeIcon icon={faCalendar} /></div>
                         <Input 
-                            className="Dates-input"
+                            className="dates-input"
                             placeholder="Enter Dates"
                             value={dates}
                             onChange={onDatesChange}
@@ -44,17 +48,16 @@ function HomeSearchForm( {onSuccess} ) {
                     <div className="guest-box">
                         <div className="label">GUESTS</div>
                         <div className="input-wrapper">
-                            <div className="input-icon">Person</div>
+                        <div className="input-icon"><FontAwesomeIcon icon={faUser} /></div>
                         <Input 
-                            className="Guests-input"
+                            className="guests-input"
                             placeholder="Add Guests"
                             value={guests}
                             onChange={onGuestsChange}
                             />
                         </div>
-                    </div> */}
-
-                <button type="submit" className="home-search-submit">Search Icon</button>
+                    </div>
+                <button type="submit" className="home-search-submit"><FontAwesomeIcon icon={faSearch}/></button>
             </form>
          </>
     )
