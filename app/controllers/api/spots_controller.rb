@@ -17,7 +17,7 @@ class Api::SpotsController < ApplicationController
         @spots = Spot.where(listing_type: type) if type
         @spots = Spot.where(max_guests: guest_range) if guest_range
       else
-        @spots = Spot.All
+        @spots = Spot.all
       end
   
       render :index
@@ -72,21 +72,22 @@ class Api::SpotsController < ApplicationController
       count = 0;
 
       params.each do |k,v| 
-        if k === 'state'
+        if k == 'state'
           count += 1
-        elsif (k === 'guests')
+        elsif (k == 'guests')
           count +=  1
-        elsif (k === 'type')
+        elsif (k == 'type')
           count += 1
+        elsif (v == 'null')
+          count -= 1
         end
       end
 
-      count;
-
+      count
     end
 
     def type
-      return nil if params[:type] === 'null'
+      return nil if params[:type] == 'null'
       params[:type]
     end
 

@@ -22,12 +22,12 @@ function Homepage( {onSuccess} ) {
                 </div>
             </div>
             <div className="under-text-container">
+                <div className="hp-image"></div>
                 <div className="search-box">
                 <HomeSearchForm
                     onSuccess={onSuccess}
                 />
                 </div>
-                <div className="hp-image"></div>
             </div>
         </div>
     )
