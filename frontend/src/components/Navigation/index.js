@@ -11,7 +11,7 @@ function Navigation() {
     const location = useLocation()
 
     let active = false;
-    if (location.pathname === "/" || location.pathname === "/spots/:spotId") {
+    if ((location.pathname === "/") || (location.pathname !== "/spots")) {
         active = true;
     }
 
