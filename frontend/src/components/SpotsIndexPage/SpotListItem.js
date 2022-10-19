@@ -1,13 +1,19 @@
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 import Carousel from "better-react-carousel";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function SpotListItem({spot}) {
   const {title, price, city, state, listingType, photoUrls} = spot;
+  const history = useHistory();
   
+  const onClick = useCallback(() => {
+    const to = `/spots/${spot.id}`
+    history.push(to)
+  },[history])
+
   return (
-    <div className="spot-list-item" >
-      <Link to={`/spots/${spot.id}`}>link</Link>
+    <div className="spot-list-item" onClick={onClick} >
+      {/* <Link to={`/spots/${spot.id}`}>link</Link> */}
        <div className="spot-carousel">
         <Carousel className="slide">
           {photoUrls.map((url, idx) => {
