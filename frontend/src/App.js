@@ -21,12 +21,15 @@ function App() {
             <Route path="/signin">
               <LoginFormPage />
             </Route>
+            <Route exact path="/spots">
+              <SpotsIndexPage />
+            </Route>
+            <Route path="/spots/:place/:guests">
+              <SpotsIndexPage />
+            </Route>
             <Route path="/spots/:spotId">
               <SpotShowPage />
              </Route>
-            <Route path="/spots">
-              <SpotsIndexPage />
-            </Route>
             <Route path="/">
               <Homepage/>
             </Route>

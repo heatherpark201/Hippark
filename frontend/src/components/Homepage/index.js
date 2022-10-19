@@ -5,7 +5,7 @@ import HomeSearchForm from "./HomeSearchForm";
 
 
 
-function Homepage( {onSuccess} ) {
+function Homepage(  ) {
     
     return (
         <div className="homepage-bg">
