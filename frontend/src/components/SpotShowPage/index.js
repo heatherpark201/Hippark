@@ -76,13 +76,14 @@ function SpotShowPage() {
                 </div>      
             </div>
             <div className='spot-info-container'>
-                <div id='spot-acres'>spot.acres</div>
-                <div id='spot-listing-type'>{listingType}</div>
-                <div id='descrip'>{spot.description}</div>
+                <div className='spot-property-info'>
+                    <span id='spot-acres'>spot.acres</span>
+                    <span id='spot-listing-type'>{listingType}</span>
+                </div>
+                <div className='spot-description'>
+                    <span id='descrip'>{description}</span>
+                </div>
             </div>
-            <div>
-
-        </div>
         </>
 
     )

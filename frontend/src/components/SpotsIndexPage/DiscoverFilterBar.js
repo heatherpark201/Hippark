@@ -1,39 +1,68 @@
 import React, {useState} from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFire } from '@fortawesome/fontawesome-free-solid'
+import { faCar } from '@fortawesome/fontawesome-free-solid'
+import { faHome } from '@fortawesome/fontawesome-free-solid'
+import { faSearch } from '@fortawesome/fontawesome-free-solid'
+
 
 
 function DiscoverFilterBar({ type, setType }) {
-    const [activeButton, setActiveButton] = useState('inactiveButton')
+    const [activeButtonCamp, setActiveButtonCamp] = useState('inactiveButtonCamp')
+    const [activeButtonRv, setActiveButtonRv] = useState('inactiveButtonRv')
+    const [activeButtonLodge, setActiveButtonLodge] = useState('inactiveButtonLodge')
 
-    const handleClick = ((e) => {
+    const handleClickCamp = ((e) => {
         setType({type : e.target.value})
-        setActiveButton('activeButton')
+        setActiveButtonCamp('activeButtonCamp')
+    })
+
+    const handleClickRv = ((e) => {
+        setType({type : e.target.value})
+        setActiveButtonRv('activeButtonRv')
+    })
+
+    const handleClickLodge = ((e) => {
+        setType({type : e.target.value})
+        setActiveButtonLodge('activeButtonLodge')
+    })
+
+    const handleClickClear = (() => {
+        setType({type : 'null'})
     })
 
     
     return (
         <div className='filter-bar'>
             <div className='discover-bar_filter-wrapper'>
-                <div className={activeButton}>
-                    <button className='filter-button' onClick={handleClick} value='campsite'>
-                        <i id='filter-icon'
-                        className='fas fa-campground'></i>
+                <div className={activeButtonCamp}>
+                    <button className='filter-button' onClick={handleClickCamp} value='campsite'>
+                    <div className="input-icon-disc"><FontAwesomeIcon icon={faFire} /></div>
                         <span>Campsites</span>
                     </button>
                 </div>
             </div>
             <div className='discover-bar_filter-wrapper'>
-                <div className={activeButton}>
-                    <button className='filter-button' onClick={handleClick} value='RV'>
-                        <i className='fas fa-caravan'></i>
+                <div className={activeButtonRv}>
+                    <button className='filter-button' onClick={handleClickRv} value='RV'>
+                    <div className="input-icon-disc"><FontAwesomeIcon icon={faCar} /></div>
                         <span>RV</span>
                     </button>
                 </div>
             </div>
             <div className='discover-bar_filter-wrapper'>
-                <div className={activeButton}>
-                    <button className='filter-button' onClick={handleClick} value='lodge'>
-                        <i className='fas fa-home'></i>
+                <div className={activeButtonLodge}>
+                    <button className='filter-button' onClick={handleClickLodge} value='lodge'>
+                    <div className="input-icon-disc"><FontAwesomeIcon icon={faHome} /></div>
                         <span>Lodging</span>
+                    </button>
+                </div>
+            </div>
+            <div className='discover-bar_filter-wrapper'>
+                <div className='inactive-button'>
+                    <button className='filter-button' onClick={handleClickClear} value='null'>
+                    <div className="input-icon-disc"><FontAwesomeIcon icon={faSearch} /></div>
+                        <span>Clear Filter</span>
                     </button>
                 </div>
             </div>

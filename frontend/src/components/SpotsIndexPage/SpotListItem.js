@@ -12,7 +12,9 @@ function SpotListItem({spot}) {
         <Carousel className="slide">
           {photoUrls.map((url, idx) => {
             return (
-              <Carousel.Item><img className="picz" key={idx} src={url} alt=""/></Carousel.Item> 
+                <Carousel.Item key={idx}>
+                  <img className="picz" src={url} alt=""/>
+                </Carousel.Item> 
             )
           })}
         </Carousel>

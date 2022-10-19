@@ -203,3 +203,25 @@
 #small-pics-4 {
     float: right;
 }
+
+
+.spot-info-container {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px red solid;
+}
+
+.spot-property-info {
+    display: flex;
+}
+
+.spot-acres {
+    display: flex;
+}
