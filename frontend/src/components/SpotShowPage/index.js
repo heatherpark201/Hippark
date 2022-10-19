@@ -5,6 +5,7 @@ import { fetchSpot } from '../../store/spots';
 import './SpotShowPage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/fontawesome-free-solid';
+import { faThumbsUp } from '@fortawesome/fontawesome-free-solid'; 
 
 
 
@@ -29,16 +30,33 @@ function SpotShowPage() {
             <header className='spot-show-header-container'>
                 <div className='country-state-links'>
                     <span className='csl-1'>{country}</span>
-                    <div><FontAwesomeIcon icon={faAngleRight} /></div>
+                    <div className='arrow'>
+                        <span>
+                            <FontAwesomeIcon icon={faAngleRight} />
+                        </span>
+                    </div>
                     <span className='csl-2'>{state}</span>
                 </div>
                 <div className='title-container'>
                     <span>{title}</span>
                 </div>
                 <div className='under-title'>
-                    <div id='review-rating'>100%</div>
-                    <div id='review link'>1 Review</div>
-                    <div id='city-state'>{city}, {state}</div>
+                    <div className='thumb'>
+                        <span>
+                            <FontAwesomeIcon icon={faThumbsUp} />
+                        </span>
+                    </div>
+                    <div id='review-rating'>
+                        <span>98%</span>
+                    </div>
+                        <span class="dot">·</span>
+                    <div id='review-link'>
+                        <span>0 Reviews</span>
+                    </div>
+                        <span class="dot">·</span>
+                    <div className='city-state'>
+                        <span>{city}, {state}</span>
+                    </div>
                 </div>
             </header>
         </div>
@@ -48,12 +66,12 @@ function SpotShowPage() {
                 </div>
                 <div className='image-collage'>
                     <div className='top'>
-                        <img id='small-pics-1' src={spot.photoUrls.at(1)} alt=""></img>
-                        <img id='small-pics-2' src={spot.photoUrls.at(2)} alt=""></img>
+                        <img className='small-pics'id='small-pics-1' src={spot.photoUrls.at(1)} alt=""></img>
+                        <img className='small-pics'id='small-pics-2' src={spot.photoUrls.at(2)} alt=""></img>
                     </div>
                     <div className='bottom'>
-                    <img id='small-pics-3' src={spot.photoUrls.at(0)} alt=""></img>
-                    <img id='small-pics-4' src={spot.photoUrls.at(2)} alt=""></img>
+                    <img className='small-pics'id='small-pics-3' src={spot.photoUrls.at(0)} alt=""></img>
+                    <img className='small-pics'id='small-pics-4' src={spot.photoUrls.at(2)} alt=""></img>
                     </div>
                 </div>      
             </div>
