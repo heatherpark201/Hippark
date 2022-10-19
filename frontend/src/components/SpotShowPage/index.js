@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import { fetchSpot } from '../../store/spots';
 import './SpotShowPage.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight } from '@fortawesome/fontawesome-free-solid';
+
 
 
 function SpotShowPage() {
@@ -23,14 +26,14 @@ function SpotShowPage() {
     return (
         <>
         <div className='spot-show-bg'>
-            <header className='spot-show-container'>
+            <header className='spot-show-header-container'>
                 <div className='country-state-links'>
-                    <span>{country}</span>
-                    <div>arrow symbol</div>
-                    <span>{state}</span>
+                    <span className='csl-1'>{country}</span>
+                    <div><FontAwesomeIcon icon={faAngleRight} /></div>
+                    <span className='csl-2'>{state}</span>
                 </div>
                 <div className='title-container'>
-                <h1 id='spot-title'>{title}</h1>
+                    <span>{title}</span>
                 </div>
                 <div className='under-title'>
                     <div id='review-rating'>100%</div>
@@ -38,17 +41,20 @@ function SpotShowPage() {
                     <div id='city-state'>{city}, {state}</div>
                 </div>
             </header>
-                <span></span>
-            </div>
+        </div>
             <div className='spot-images'>
                 <div className='main-image'>
-                    <img src={spot.photoUrls.at(0)} alt=""></img>
+                    <img id='main-pic' src={spot.photoUrls.at(0)} alt=""></img>
                 </div>
                 <div className='image-collage'>
-                    <img src={spot.photoUrls.at(1)} alt=""></img>
-                    <img src={spot.photoUrls.at(2)} alt=""></img>
-                    <img src={spot.photoUrls.at(0)} alt=""></img>
-                    <img src={spot.photoUrls.at(2)} alt=""></img>
+                    <div className='top'>
+                        <img id='small-pics-1' src={spot.photoUrls.at(1)} alt=""></img>
+                        <img id='small-pics-2' src={spot.photoUrls.at(2)} alt=""></img>
+                    </div>
+                    <div className='bottom'>
+                    <img id='small-pics-3' src={spot.photoUrls.at(0)} alt=""></img>
+                    <img id='small-pics-4' src={spot.photoUrls.at(2)} alt=""></img>
+                    </div>
                 </div>      
             </div>
             <div className='spot-info-container'>
