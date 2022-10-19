@@ -6,6 +6,9 @@ import './SpotShowPage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/fontawesome-free-solid';
 import { faThumbsUp } from '@fortawesome/fontawesome-free-solid'; 
+import { faFire } from '@fortawesome/fontawesome-free-solid'
+import { faCar } from '@fortawesome/fontawesome-free-solid'
+import { faHome } from '@fortawesome/fontawesome-free-solid'
 
 
 
@@ -22,6 +25,20 @@ function SpotShowPage() {
     }, [spotId, dispatch]);
 
     // const { description, maxGuests, lat, lng, photoUrl } = spot;
+
+   let campsiteIcon = <FontAwesomeIcon icon={faFire} />
+   let rVIcon = <FontAwesomeIcon icon={faCar} />
+   let lodgeIcon = <FontAwesomeIcon icon={faFire} />
+
+   const listingTypeIcon = () => {
+        if (listingType === 'campisite') {
+            return campsiteIcon
+        } else if (listingType === 'RV') {
+            return rVIcon
+        } else {
+            return lodgeIcon;
+        };
+   };
 
 
     return (
@@ -59,8 +76,7 @@ function SpotShowPage() {
                     </div>
                 </div>
             </header>
-        </div>
-            <div className='spot-images'>
+            <div className='spot-images-container'>
                 <div className='main-image'>
                     <img id='main-pic' src={spot.photoUrls.at(0)} alt=""></img>
                 </div>
@@ -70,20 +86,38 @@ function SpotShowPage() {
                         <img className='small-pics'id='small-pics-2' src={spot.photoUrls.at(2)} alt=""></img>
                     </div>
                     <div className='bottom'>
-                    <img className='small-pics'id='small-pics-3' src={spot.photoUrls.at(0)} alt=""></img>
-                    <img className='small-pics'id='small-pics-4' src={spot.photoUrls.at(2)} alt=""></img>
+                        <img className='small-pics'id='small-pics-3' src={spot.photoUrls.at(0)} alt=""></img>
+                        <img className='small-pics'id='small-pics-4' src={spot.photoUrls.at(2)} alt=""></img>
                     </div>
                 </div>      
             </div>
             <div className='spot-info-container'>
-                <div className='spot-property-info'>
-                    <span id='spot-acres'>spot.acres</span>
-                    <span id='spot-listing-type'>{listingType}</span>
-                </div>
-                <div className='spot-description'>
-                    <span id='descrip'>{description}</span>
+                <div className='spot-info-left'>
+                    <div className='spot-property-info'>
+                        <div className='acre-site-wrapper'>
+                            <span id='spot-acres'>25 acres</span>
+                            <span id='spot-sites'>1 site</span>
+                        </div>
+                        <div className='listing-type-wrapper'>
+                            <div class='typeIcon'>
+                                <span>{campsiteIcon}</span>
+                            </div>
+                            <div className='type-name'>
+                                <span id='spot-listing-type'>{listingType}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='spot-description'>
+                        <div className='spot-descrip-preview'>
+                            <span id='descrip'>{description}</span>
+                        </div>
+                        <div className='show-more-button'>
+                            <button>Show More</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
         </>
 
     )
