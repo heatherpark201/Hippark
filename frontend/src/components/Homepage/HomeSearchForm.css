@@ -37,6 +37,8 @@
 .home-input, .dates-input, .guests-input {
     height: 46px;
     border: 0px;
+    position: relative;
+    z-index: 5;
     /* box-shadow: ; */
 }
 

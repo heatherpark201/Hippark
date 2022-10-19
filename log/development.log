@@ -22552,3 +22552,95 @@ Processing by Api::SessionsController#show as JSON
 Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 7.7ms | Allocations: 6993)
 
 
+Started GET "/api/session" for 127.0.0.1 at 2022-10-18 20:14:47 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (58.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (5.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 13.1ms | Allocations: 6995)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-18 20:20:51 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 23ms (Views: 0.1ms | ActiveRecord: 14.3ms | Allocations: 3891)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-18 20:24:15 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 2.6ms | Allocations: 856)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-18 20:28:40 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.7ms | Allocations: 828)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-18 20:33:11 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 843)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-18 20:41:53 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 25ms (Views: 0.2ms | ActiveRecord: 6.5ms | Allocations: 3677)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-18 20:41:53 -0400
+Processing by Api::SpotsController#index as JSON
+  Rendering api/spots/index.json.jbuilder
+  [1m[36mSpot Load (9.9ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/views/api/spots/index.json.jbuilder:4
+  Rendered api/spots/_spot.json.jbuilder (Duration: 1.0ms | Allocations: 565)
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.1ms | Allocations: 42)
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.1ms | Allocations: 39)
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.1ms | Allocations: 45)
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.1ms | Allocations: 40)
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.1ms | Allocations: 39)
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.1ms | Allocations: 42)
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.1ms | Allocations: 43)
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.1ms | Allocations: 42)
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.1ms | Allocations: 48)
+  Rendered api/spots/index.json.jbuilder (Duration: 31.1ms | Allocations: 14557)
+Completed 200 OK in 37ms (Views: 21.1ms | ActiveRecord: 15.2ms | Allocations: 17149)
+
+
+Started GET "/api/spots/1" for 127.0.0.1 at 2022-10-18 20:41:56 -0400
+Processing by Api::SpotsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mSpot Load (0.9ms)[0m  [1m[34mSELECT "spots".* FROM "spots" WHERE "spots"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/spots_controller.rb:27:in `show'
+  Rendering api/spots/show.json.jbuilder
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.5ms | Allocations: 341)
+  Rendered api/spots/show.json.jbuilder (Duration: 1.7ms | Allocations: 677)
+Completed 200 OK in 11ms (Views: 2.7ms | ActiveRecord: 0.9ms | Allocations: 2789)
+
+
+Started GET "/api/spots" for 127.0.0.1 at 2022-10-18 20:42:03 -0400
+Processing by Api::SpotsController#index as JSON
+  Rendering api/spots/index.json.jbuilder
+  [1m[36mSpot Load (0.3ms)[0m  [1m[34mSELECT "spots".* FROM "spots"[0m
+  ↳ app/views/api/spots/index.json.jbuilder:4
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.7ms | Allocations: 342)
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.2ms | Allocations: 42)
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.2ms | Allocations: 39)
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.2ms | Allocations: 45)
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.2ms | Allocations: 40)
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.2ms | Allocations: 39)
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.2ms | Allocations: 42)
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.2ms | Allocations: 43)
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.1ms | Allocations: 42)
+  Rendered api/spots/_spot.json.jbuilder (Duration: 0.2ms | Allocations: 48)
+  Rendered api/spots/index.json.jbuilder (Duration: 9.9ms | Allocations: 4193)
+Completed 200 OK in 12ms (Views: 10.5ms | ActiveRecord: 0.3ms | Allocations: 4703)
+
+
