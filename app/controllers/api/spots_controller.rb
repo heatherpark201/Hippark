@@ -3,22 +3,24 @@ class Api::SpotsController < ApplicationController
     wrap_parameters include: Spot.attribute_names + ["hostId"] + ["streetAddress"]+ ["zipCode"]+ ["listingType"]+ ["isLive"] + ["maxGuests"] + [:photo], format: :multipart_form
   
     def index 
+
+      # # @spots = @spots.in_bounds(bounds) if bounds
       
-      if filter_count > 1
-        if state && guest_range
-          @spots = Spot.where(state: state).where(max_guests: guest_range)
-        elsif (state && type) 
-          @spots = Spot.where(state: state).where(listing_type: type)
-        else 
-          @spots = Spot.where(max_guests: guest_range).where(listing_type: type)
-        end
-      elsif filter_count == 1
-        @spots = Spot.where(state: state) if state
-        @spots = Spot.where(listing_type: type) if type
-        @spots = Spot.where(max_guests: guest_range) if guest_range
-      else
+      # if filter_count > 1
+      #   if state && guest_range
+      #     @spots = Spot.where(state: state).where(max_guests: guest_range)
+      #   elsif (state && type) 
+      #     @spots = Spot.where(state: state).where(listing_type: type)
+      #   else 
+      #     @spots = Spot.where(max_guests: guest_range).where(listing_type: type)
+      #   end
+      # elsif filter_count == 1
+      #   @spots = Spot.where(state: state) if state
+      #   @spots = Spot.where(listing_type: type) if type
+      #   @spots = Spot.where(max_guests: guest_range) if guest_range
+      # else
         @spots = Spot.all
-      end
+      # end
   
       render :index
     end 
@@ -99,6 +101,10 @@ class Api::SpotsController < ApplicationController
     def guest_range
       return nil unless params[:guests]
       1..params[:guests]
+    end
+
+    def bounds 
+      params[:bounds]&.split(',').map(&:to_f)
     end
   
   end

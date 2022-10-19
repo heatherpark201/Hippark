@@ -21,8 +21,22 @@
 .byebug_history
 /public
 
+
+
 /storage/*
 !/storage/.keep 
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+/frontend/.eslintcache
+
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.eslintcache
