@@ -24,8 +24,14 @@ function SpotsIndexPage() {
 
 
   useEffect(() => {
-    if (noParams) {
+
       dispatch(fetchSpots());
+    }
+  }, [type, dispatch]);
+
+  useEffect(() => { //looking for newspots
+    if (noParams) {
+      dispatch(fetchSpots()); //set the newSpots using util func
       console.log(type)
     } else {
       dispatch(fetchSpots(type));

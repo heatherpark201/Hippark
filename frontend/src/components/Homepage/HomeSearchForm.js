@@ -2,7 +2,7 @@ import React, { useState }from "react";
 import { FormErrors, Input } from "../Forms";
 import * as spotActions from "../../store/spots";
 import { useInput, useSubmit } from "../../hooks";
-import { useHistory } from "react-router-dom";
+import { NavLink, Redirect, useHistory } from "react-router-dom";
 import './HomeSearchForm.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/fontawesome-free-solid'
@@ -22,9 +22,9 @@ function HomeSearchForm() {
     //     action: spotActions.fetchSpots()
     // });
 
-    const handleSubmit = ((e) => {
-        console.log('here')
-    })
+    // const handleSubmit = ((e) => {
+    //     return (<Redirect to='')
+    // })
 
     
     return (
