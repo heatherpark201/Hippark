@@ -2,7 +2,7 @@ import React, {useCallback, useState} from "react";
 import Carousel from "better-react-carousel";
 import { Link, useHistory } from "react-router-dom";
 
-function SpotListItem({spot}) {
+function SpotListItem({spot, isHighlighted, setHighlightedSpot}) {
   const {title, price, city, state, listingType, photoUrls} = spot;
   const history = useHistory();
   
@@ -12,7 +12,12 @@ function SpotListItem({spot}) {
   },[history])
 
   return (
-    <div className="spot-list-item" onClick={onClick} >
+    <div 
+      className={"spot-list-item" + (isHighlighted ? " highlighted" : "")} 
+      onClick={onClick}
+      onMouseEnter={() => setHighlightedSpot(spot.id)}
+      onMouseLeave={() => setHighlightedSpot(null)}
+    >
       {/* <Link to={`/spots/${spot.id}`}>link</Link> */}
        <div className="spot-carousel">
         <Carousel className="slide">

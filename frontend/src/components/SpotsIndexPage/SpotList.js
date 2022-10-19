@@ -2,7 +2,7 @@ import React from "react";
 import SpotListItem from "./SpotListItem";
 
 
-function SpotList({ spots }) {
+function SpotList({ spots, highlightedSpot, setHighlightedSpot }) {
   return (
     <div className="spot-list">
       {/* <h1>Spots: </h1> */}
@@ -11,6 +11,8 @@ function SpotList({ spots }) {
           <SpotListItem
           key={spot.id}
           spot={spot}
+          isHighlighted={highlightedSpot === spot.id}
+          setHighlightedSpot={setHighlightedSpot}
           />
           ))}
     
