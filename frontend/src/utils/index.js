@@ -1,4 +1,4 @@
-export const SortSpots = (spots, {type, guests, place}) => {
+// export const SortSpots = (spots, {type, guests, place}) => {
     // let trueCount = 3
     // let typeProp = true;
     // let guestsProp = true;
@@ -38,16 +38,16 @@ export const SortSpots = (spots, {type, guests, place}) => {
     // } else {
     //     return spots;
     // }
-    let sorted = [];
+//     let sorted = [];
 
-    if (type === null) {
-        spots.forEach =(spot) => {
-            if (spot.maxGuests <= guests && spot.state ===  place) {
-                sorted.push(spot);
-            }
-        }
-    }
+//     if (type === null) {
+//         spots.forEach =(spot) => {
+//             if (spot.maxGuests <= guests && spot.state ===  place) {
+//                 sorted.push(spot);
+//             }
+//         }
+//     }
 
- return 'hello'
-}
+//  return 'hello'
+// }
 

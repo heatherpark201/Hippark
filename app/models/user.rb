@@ -17,6 +17,13 @@ class User < ApplicationRecord
   has_secure_password
   before_validation :ensure_session_token
 
+  has_many :reviews, 
+    primary_key: :id,
+    foreign_key: :author_id,
+    class_name: :Review,
+    dependent: :destroy,
+    inverse_of: :author
+
   has_many :spots, 
     primary_key: :id,
     foreign_key: :host_id,

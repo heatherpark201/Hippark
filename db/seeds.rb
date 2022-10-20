@@ -257,7 +257,7 @@ puts "Creating spots..."
       title: 'Big Sur Paradise',
       description: random_description.call,
       host_id: test2.id,
-      street_address: '120 Highlands Dr',
+      street_address: '120 Highlands Dr',   
       city: 'Carmel-By-The-Sea',
       state: 'California',
       region: 'Pacific Coast',
@@ -278,8 +278,11 @@ puts "Creating spots..."
       ]
     )
 
+
+puts "Creating reviews..."
+
   r1 = Review.create!(
-    title: 'Love',
+      title: 'Love',
       body: 'so cool loved my stay here! I would definitely stay here again',
       rating: 5,
       recommends: 'true',
@@ -295,7 +298,7 @@ puts "Creating spots..."
       author_id: test2.id
   )
   r3 = Review.create!(
-    title: 'Getaway to the Stars',
+      title: 'Getaway to the Stars',
       body: 'My wife and I took a last minute glamping trip and we could not have picked a better spot than the Neversink sanctuary. The campsite is beautiful, and des & Tracy are extremely helpful. We will definitely be returning next year!',
       rating: 5,
       recommends: 'true',

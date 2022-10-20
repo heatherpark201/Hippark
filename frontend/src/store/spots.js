@@ -28,7 +28,7 @@ export const fetchSpots = (filter) => async dispatch => {
     const response = await csrfFetch(`/api/spots/${spotId}`);
     const data = await response.json();
     dispatch(addSpot(data));
-    dispatch(addUsers(data));
+    dispatch(addUsers(data.users));
     dispatch(addReviews(data.reviews));
     return response;
   }
@@ -49,6 +49,7 @@ export const fetchSpots = (filter) => async dispatch => {
         return action.payload;
       case ADD_SPOT:
         const spot = action.payload;
+        console.log(spot, 'here')
         return { ...state, [spot.id]: spot };
       default:
         return state;

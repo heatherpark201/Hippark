@@ -17,7 +17,7 @@
 
 .discover-filters {
     position: relative;
-    max-width: 100% !important;
+    display: flex;
 }
 
 .filter-bar {
@@ -128,34 +128,38 @@
     display: flex;
     /* justify-content: space-between; */
     flex-wrap: wrap;
-    width: 95%;    
+    width: 50vw;    
     /* border: 22px red solid; */
     align-items: center;
     overflow-y: auto;
 }
 
-/* .map { */
-    /* height: calc(100vh - 0px),calc(100vh - 0px),calc(100vh - 70px); */
-    /* border: 5px red solid; */
-    /* width: 742px;
-    height: 942px; */
-/* }  */
 
 @media screen and (min-width: 1024px) {
-    .map-container, .map {
+    .map-container {
         position: sticky;
         display: flex;
         height: calc(100vh - 70px);
     }
+
+    .map {
+        height: 1000px;
+        width: 1000px;
+    }
 }
 
-@media screen and (min-width: 600px) {
-    .map-container, .map {
+@media screen and (min-width: 0px) {
+    .map-container {
         position: sticky;
-        top: 70px;
         display: flex;
-        height: calc(100vh - 177.222px);
-    };
+        height: calc(100vh - 70px);
+        border: 5px red solid;
+    }
+
+    .map {
+        height: 1000px;
+        width: 1000px;
+    }
 };
 
 .spot-list-item {
@@ -174,19 +178,6 @@
     cursor: pointer;
 }
 
-@media screen and (min-width: 1024px) {
-    .spot-list-item {
-        /* flex-basis: 50%; */
-    }
-}
-@media screen and (min-width: 500px) {
-    .spot-list-item {
-        /* flex-basis: 100%; */
-        width: 529px;
-        height: 440px;
-        flex-basis: auto;
-    }
-}
 
 
 .spot-carousel {

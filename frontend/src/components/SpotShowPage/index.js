@@ -11,6 +11,7 @@ import { faCar } from '@fortawesome/fontawesome-free-solid'
 import { faHome } from '@fortawesome/fontawesome-free-solid'
 import { destroyReview, getSpotReviews } from '../../store/reviews';
 import ReviewForm from './ReviewForm';
+import ReviewListItem from './ReviewListItem';
 
 
 
@@ -22,30 +23,22 @@ function SpotShowPage() {
     const spot = useSelector(state => state.spots[spotId]);
     const reviews = useSelector(getSpotReviews(parseInt(spotId)));
 
-    const {title, price, city, state, listingType, photoUrls, country, description} = spot;
+    // const {title, price, city, state, listingType, photoUrls, country, description} = spot;
+    const {price, city, state, listingType, photoUrls, country, description} = spot;
     // const hasReviewed = sessionUser && reviews.some(review => review.authorId === sessionUser.id);
     
+
+
     useEffect(() => {
         dispatch(fetchSpot(spotId));
     }, [spotId, dispatch]); 
-  
-    // const { description, maxGuests, lat, lng, photoUrl } = spot;
+
 
    let campsiteIcon = <FontAwesomeIcon icon={faFire} />
    let rVIcon = <FontAwesomeIcon icon={faCar} />
    let lodgeIcon = <FontAwesomeIcon icon={faFire} />
 
-   const listingTypeIcon = () => {
-        if (listingType === 'campisite') {
-            return campsiteIcon
-        } else if (listingType === 'RV') {
-            return rVIcon
-        } else {
-            return lodgeIcon;
-        };
-   };
-
-
+    console.log(reviews, 'here');
     return (
         <>
         <div className='spot-show-bg'>
@@ -60,7 +53,7 @@ function SpotShowPage() {
                     <span className='csl-2'>{state}</span>
                 </div>
                 <div className='title-container'>
-                    <span>{title}</span>
+                    <span>{spot.title}</span>
                 </div>
                 <div className='under-title'>
                     <div className='thumb'>
@@ -71,11 +64,11 @@ function SpotShowPage() {
                     <div id='review-rating'>
                         <span>98%</span>
                     </div>
-                        <span class="dot">·</span>
+                        <span className="dot">·</span>
                     <div id='review-link'>
                         <span>0 Reviews</span>
                     </div>
-                        <span class="dot">·</span>
+                        <span className="dot">·</span>
                     <div className='city-state'>
                         <span>{city}, {state}</span>
                     </div>
@@ -104,7 +97,7 @@ function SpotShowPage() {
                             <span id='spot-sites'>1 site</span>
                         </div>
                         <div className='listing-type-wrapper'>
-                            <div class='typeIcon'>
+                            <div className='typeIcon'>
                                 <span>{campsiteIcon}</span>
                             </div>
                             <div className='type-name'>
@@ -123,19 +116,18 @@ function SpotShowPage() {
                 </div>
             </div>
             <div className='review-section-container'>
-                <div>review rating percentage</div>
-                <div>review ratings</div>
-                <div>review count</div>
-                {reviews.map(review => (
-                    <div className='review-post' key={review.id}>
-                        <div>userpic</div>
-                        <div>{review.recommends}</div>
-                        <div>timestamp</div>
-                        <div>benchtitle</div>
-                        <div>reviewtitle</div>
-                        <div>reviewbody</div>
-                    </div>
-                ))}
+                <div className='reviews-header'>
+                    <div>review rating percentage</div>
+                    <div>review count</div>
+                </div>
+                <div className='reviews-list'>
+                    {reviews.map((review) => (
+                        <ReviewListItem 
+                            key={review.id}
+                            review={review}
+                        />
+                    ))}
+                </div>
                 <div>Delete button</div>
                 <LeaveReview spot={spot}/>
             </div>

@@ -23,13 +23,14 @@ export const addReviews = reviews => ({
 
 
 export const getSpotReviews = spotId => state => (
-    Object.values(state)
-        .filter(review => review.spotId === spotId)
-        .map(review => ({
-            ...review,
-            author: state.user[review.authorId]?.firstName 
-        }))
+    Object.values(state.reviews)
+    .filter(review => review.spotId === spotId)
+    .map(review => ({
+        ...review,
+        author: state.users[review.authorId]?.firstName
+    }))
 );
+
         
 
 export const createReview = (review) => async dispatch => {
@@ -69,7 +70,7 @@ function reviewsReducer(state = {}, action) {
         case ADD_REVIEWS:
             const reviews = action.payload;
             return { ...state, ...reviews };
-      default:
+        default:
             return state;
     };
 };
