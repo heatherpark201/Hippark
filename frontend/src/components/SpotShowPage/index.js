@@ -6,7 +6,7 @@ import './SpotShowPage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/fontawesome-free-solid';
 import { faThumbsUp } from '@fortawesome/fontawesome-free-solid'; 
-import { faFire } from '@fortawesome/fontawesome-free-solid'
+import { faFire } from '@fortawesome/fontawesome-free-solid'    
 import { faCar } from '@fortawesome/fontawesome-free-solid'
 import { faHome } from '@fortawesome/fontawesome-free-solid'
 import { destroyReview, getSpotReviews } from '../../store/reviews';
@@ -22,13 +22,24 @@ function SpotShowPage() {
     const sessionUser = useSelector(state => state.session.user);
     const spot = useSelector(state => state.spots[spotId]);
     const reviews = useSelector(getSpotReviews(parseInt(spotId)));
-
-    // const {title, price, city, state, listingType, photoUrls, country, description} = spot;
-    const {price, city, state, listingType, photoUrls, country, description} = spot;
-    // const hasReviewed = sessionUser && reviews.some(review => review.authorId === sessionUser.id);
     
 
+    const {title, price, city, state, listingType, photoUrls, country, description} = spot;
+    // const hasReviewed = sessionUser && reviews.some(review => review.authorId === sessionUser.id);
+    console.log(reviews, 'here');
+ 
+    const ratings = (reviews) => {
+        let totalAmount = reviews.length;
+        let numTotal = 0;
 
+        reviews.forEach = (review) => {
+            numTotal += review.rating
+        }
+
+        let avg = (numTotal / totalAmount);
+        return avg 
+
+    }
     useEffect(() => {
         dispatch(fetchSpot(spotId));
     }, [spotId, dispatch]); 
@@ -38,7 +49,11 @@ function SpotShowPage() {
    let rVIcon = <FontAwesomeIcon icon={faCar} />
    let lodgeIcon = <FontAwesomeIcon icon={faFire} />
 
-    console.log(reviews, 'here');
+   
+    const reviewRating = (ratings) => {
+
+    }
+
     return (
         <>
         <div className='spot-show-bg'>
@@ -53,7 +68,7 @@ function SpotShowPage() {
                     <span className='csl-2'>{state}</span>
                 </div>
                 <div className='title-container'>
-                    <span>{spot.title}</span>
+                    <span>{title}</span>
                 </div>
                 <div className='under-title'>
                     <div className='thumb'>
@@ -62,11 +77,11 @@ function SpotShowPage() {
                         </span>
                     </div>
                     <div id='review-rating'>
-                        <span>98%</span>
+                        <span>{ratings(reviews)}</span>
                     </div>
                         <span className="dot">·</span>
                     <div id='review-link'>
-                        <span>0 Reviews</span>
+                        <span>{reviews.length}</span>
                     </div>
                         <span className="dot">·</span>
                     <div className='city-state'>
@@ -117,8 +132,8 @@ function SpotShowPage() {
             </div>
             <div className='review-section-container'>
                 <div className='reviews-header'>
-                    <div>review rating percentage</div>
-                    <div>review count</div>
+                    <div>{ratings(reviews)}</div>
+                    <div>{reviews.length}</div>
                 </div>
                 <div className='reviews-list'>
                     {reviews.map((review) => (

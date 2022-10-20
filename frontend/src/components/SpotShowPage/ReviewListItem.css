@@ -1,6 +1,88 @@
 .review-item-container {
     display: flex;
-    width: 500px;
-    height: 500px;
-    background-color: pink;
+    width: 610px;
+    height: 250px;
+    max-width: 616px;
+    border: 3px solid pink;
+    flex-direction: column;
+    text-align: left;
+    margin-top: 32px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: Calibre, Helvetica, Arial, sans-serif; 
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+.review-header {
+    display: flex;
+    /* width: 100%; */
+    /* padding-left: 10px; */
+}
+.right-of-pic {
+    display: flex;
+    flex-direction: column;
+}
+.user-name-wrapper {
+    display:flex;
+    flex-direction: column;
+    /* margin-left: 12px;
+    margin-right: 12px; */
+}
+
+.row-1 {
+    display: flex;
+}
+
+.timestamp-wrapper {
+    display: flex;
+}
+
+.review-spot-title-wrapper,
+.review-title-wrapper,
+.review-body-wrapper {
+    display: flex;
+    padding-top: 10px;
+}
+
+
+
+.user-icon-photo {
+    display: flex;
+    /* width: 40px; */
+    padding-right: 10px;
+}
+#user-icon {
+    display: block;
+    font-size: 30px;
+    align-self: center;
+}
+
+#user-name {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.22px;
+    font-weight: 500;
+    padding-right: 10px;
+
+}
+
+#user-recommends, #spot-title-for-review {
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.22px;
+    font-weight: 400;
+}
+
+#review-title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#review-body {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.22px;
+    font-weight: 400;
+    padding-right: 10px;
 }
