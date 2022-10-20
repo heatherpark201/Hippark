@@ -28,8 +28,7 @@ function SpotShowPage() {
     useEffect(() => {
         dispatch(fetchSpot(spotId));
     }, [spotId, dispatch]); 
-    console.log(spotId,'e');
-
+  
     // const { description, maxGuests, lat, lng, photoUrl } = spot;
 
    let campsiteIcon = <FontAwesomeIcon icon={faFire} />

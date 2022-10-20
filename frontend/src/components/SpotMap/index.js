@@ -69,11 +69,11 @@ function SpotMap({
                   A 1 1 0 0 1 1,0
                   z
                 `,
-                fillOpacity: 1,
-                fillColor: 'white',
+                fillOpacity: .5,
+                fillColor: 'pink',
                 strokeColor: 'black',
                 strokeWeight: 1,
-                scale: 15,
+                scale: 50,
                 labelOrigin: new window.google.maps.Point(1.5, 1),
                 anchor: new window.google.maps.Point(1.5, 1)
               }, 

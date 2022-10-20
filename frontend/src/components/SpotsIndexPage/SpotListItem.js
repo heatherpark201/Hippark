@@ -11,6 +11,8 @@ function SpotListItem({spot, isHighlighted, setHighlightedSpot}) {
     history.push(to)
   },[history, spot])
 
+  
+
   return (
     <div 
       className={"spot-list-item" + (isHighlighted ? " highlighted" : "")} 
