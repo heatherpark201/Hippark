@@ -18,15 +18,15 @@ function SpotsIndexPage() {
   const [type, setType] = useState(null);
   const [highlightedSpot, setHighlightedSpot] = useState(null);
   const [bounds, setBounds] = useState(null);
-  const params = location.pathname.split('/')   
-  const guests = params.at(3);
-  const place = params.at(2);
+  // const params = location.pathname.split('/')   
+  // const guests = params.at(3);
+  // const place = params.at(2);
   
   // console.log(spots, 'here');
   
   useEffect(() => { //looking for newspots
     dispatch(fetchSpots()); //set the newSpots using utile)
-  }, []);
+  }, [dispatch]);
   
   // const sortedSpots = SortSpots(spots, {type, guests, place})
   // console.log(sortedSpots, 'here')

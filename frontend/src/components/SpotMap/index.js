@@ -123,6 +123,7 @@ function SpotMap({
 
 
 function SpotMapWrapper(props) {
+
     return (
         <Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY}>
           <SpotMap {...props} />
