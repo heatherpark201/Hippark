@@ -278,6 +278,32 @@ puts "Creating spots..."
       ]
     )
 
+  r1 = Review.create!(
+    title: 'Love',
+      body: 'so cool loved my stay here! I would definitely stay here again',
+      rating: 5,
+      recommends: 'true',
+      spot_id: spot1.id,
+      author_id: test1.id
+  )
+  r2 = Review.create!(
+      title: 'Truly Amazing',
+      body: 'We had such a great time at this campsite. Almost anything imaginable was available there including the tiny cabin, smart tv, yard games, a smoker, pizza oven, etc. The site is very private with direct access to the Neversink river. It’s close to some really nice hiking too. Des and Tracy were very responsive and knowledgeable of the area. Highly recommend!',
+      rating: 5,
+      recommends: 'true',
+      spot_id: spot1.id,
+      author_id: test2.id
+  )
+  r3 = Review.create!(
+    title: 'Getaway to the Stars',
+      body: 'My wife and I took a last minute glamping trip and we could not have picked a better spot than the Neversink sanctuary. The campsite is beautiful, and des & Tracy are extremely helpful. We will definitely be returning next year!',
+      rating: 5,
+      recommends: 'true',
+      spot_id: spot1.id,
+      author_id: test3.id
+  )
+
+
   # puts "Attaching photos..."
   # spot1.photo.attach(
   #   io: File.open("db/assets/images/camp_tester.jpeg"), 

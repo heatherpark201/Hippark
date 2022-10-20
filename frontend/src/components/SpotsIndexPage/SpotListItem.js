@@ -9,7 +9,7 @@ function SpotListItem({spot, isHighlighted, setHighlightedSpot}) {
   const onClick = useCallback(() => {
     const to = `/spots/${spot.id}`
     history.push(to)
-  },[history])
+  },[history, spot])
 
   return (
     <div 

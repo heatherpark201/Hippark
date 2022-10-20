@@ -19,7 +19,7 @@ class Api::SpotsController < ApplicationController
       #   @spots = Spot.where(listing_type: type) if type
       #   @spots = Spot.where(max_guests: guest_range) if guest_range
       # else
-        @.spots = Spot.includes(:reviews)
+        @spots = Spot.includes(:reviews)
         @spots = Spot.all
       # end
   

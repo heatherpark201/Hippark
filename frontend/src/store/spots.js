@@ -1,4 +1,6 @@
 import csrfFetch from "./csrf";
+import { addReviews } from "./reviews";
+import { addUsers } from './users';
 
 const SET_SPOTS = 'spots/setSpots';
 const ADD_SPOT = 'spots/addSpot';
@@ -8,7 +10,7 @@ const setSpots = spots => ({
     payload: spots
 })
 
-const addSpot = spot => ({
+export const addSpot = spot => ({
     type: ADD_SPOT,
     payload: spot
 })
@@ -26,6 +28,8 @@ export const fetchSpots = (filter) => async dispatch => {
     const response = await csrfFetch(`/api/spots/${spotId}`);
     const data = await response.json();
     dispatch(addSpot(data));
+    dispatch(addUsers(data));
+    dispatch(addReviews(data.reviews));
     return response;
   }
   

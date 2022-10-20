@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :users, only: :create
     resources :spots, only: [:create, :show, :index]
     resource :session, only: [:show, :create, :destroy]
+    resources :reviews, only: [:create, :destroy]
   end
 
   get '*path', to: "static_pages#frontend_index", constraints: ->(req) {

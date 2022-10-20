@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import { fetchSpot } from '../../store/spots';
@@ -9,6 +9,8 @@ import { faThumbsUp } from '@fortawesome/fontawesome-free-solid';
 import { faFire } from '@fortawesome/fontawesome-free-solid'
 import { faCar } from '@fortawesome/fontawesome-free-solid'
 import { faHome } from '@fortawesome/fontawesome-free-solid'
+import { destroyReview, getSpotReviews } from '../../store/reviews';
+import ReviewForm from './ReviewForm';
 
 
 
@@ -18,11 +20,15 @@ function SpotShowPage() {
 
     const sessionUser = useSelector(state => state.session.user);
     const spot = useSelector(state => state.spots[spotId]);
+    const reviews = useSelector(getSpotReviews(parseInt(spotId)));
+
     const {title, price, city, state, listingType, photoUrls, country, description} = spot;
+    // const hasReviewed = sessionUser && reviews.some(review => review.authorId === sessionUser.id);
     
     useEffect(() => {
         dispatch(fetchSpot(spotId));
-    }, [spotId, dispatch]);
+    }, [spotId, dispatch]); 
+    console.log(spotId,'e');
 
     // const { description, maxGuests, lat, lng, photoUrl } = spot;
 
@@ -117,10 +123,41 @@ function SpotShowPage() {
                     </div>
                 </div>
             </div>
-        </div>
+            <div className='review-section-container'>
+                <div>review rating percentage</div>
+                <div>review ratings</div>
+                <div>review count</div>
+                {reviews.map(review => (
+                    <div className='review-post' key={review.id}>
+                        <div>userpic</div>
+                        <div>{review.recommends}</div>
+                        <div>timestamp</div>
+                        <div>benchtitle</div>
+                        <div>reviewtitle</div>
+                        <div>reviewbody</div>
+                    </div>
+                ))}
+                <div>Delete button</div>
+                <LeaveReview spot={spot}/>
+            </div>
+        </div> 
         </>
-
-    )
+     )
 }
+
+function LeaveReview({ spot }) {
+    const [showReviewForm, setShowReviewForm] = useState(false);
+  
+    return showReviewForm ? (
+      <ReviewForm 
+        spot={spot}
+        closeForm={() => setShowReviewForm(false)}
+      />
+    ) : (
+      <button className="button" onClick={() => setShowReviewForm(true)}>
+        Leave a Review
+      </button>
+    );
+  }
 
 export default SpotShowPage;
