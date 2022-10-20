@@ -45,6 +45,8 @@ class Spot < ApplicationRecord
         presence: true,
         numericality: {in: 2..20}
 
+    has_many :reviews, dependent: :destroy
+
     has_one_attached :photo
     
 
@@ -64,6 +66,11 @@ class Spot < ApplicationRecord
     def self.in_bounds(bounds)
         lower_lat, lower_lng, upper_lat, upper_lng = bounds
         where(lat: lower_lat..upper_lat, lng: lower_lng..upper_lng)
-      end
+    end
+
+    def average_rating
+        average = reviews.average(:rating)
+        average && average.round(1)
+    end
         
 end

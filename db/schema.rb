@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_17_215656) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_20_021508) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,6 +46,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_215656) do
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "body", null: false
+    t.integer "rating", null: false
+    t.boolean "recommends", null: false
+    t.bigint "spot_id", null: false
+    t.bigint "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.index ["author_id"], name: "index_reviews_on_author_id"
+    t.index ["spot_id", "author_id"], name: "index_reviews_on_spot_id_and_author_id", unique: true
   end
 
   create_table "spots", force: :cascade do |t|
@@ -94,5 +107,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_215656) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "reviews", "spots"
+  add_foreign_key "reviews", "users", column: "author_id"
   add_foreign_key "spots", "users", column: "host_id"
 end
