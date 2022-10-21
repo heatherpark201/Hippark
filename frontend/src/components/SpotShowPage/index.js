@@ -22,24 +22,34 @@ function SpotShowPage() {
     const sessionUser = useSelector(state => state.session.user);
     const spot = useSelector(state => state.spots[spotId]);
     const reviews = useSelector(getSpotReviews(parseInt(spotId)));
+    const hasReviewed = sessionUser && reviews.some(review => review.authorId === sessionUser.id);
+
     
 
     const {title, price, city, state, listingType, photoUrls, country, description} = spot;
     // const hasReviewed = sessionUser && reviews.some(review => review.authorId === sessionUser.id);
-    console.log(reviews, 'here');
- 
-    const ratings = (reviews) => {
-        let totalAmount = reviews.length;
-        let numTotal = 0;
+    
+    // const ratings = (reviews) => {
+    //     let totalAmount = reviews.length;
+    //     let numTotal = 0;
 
-        reviews.forEach = (review) => {
-            numTotal += review.rating
-        }
+    //     reviews.forEach = (review) => {
+    //         numTotal += review.rating
+    //     }
 
-        let avg = (numTotal / totalAmount);
-        return avg 
+    const avgRating = (reviews) => {
+        let total = 0;
 
+        reviews.forEach(review => {
+            total += review.rating;
+        })
+
+        let num = (total / reviews.length);
+
+        return Math.round(num * 20) + '%';
     }
+
+    
     useEffect(() => {
         dispatch(fetchSpot(spotId));
     }, [spotId, dispatch]); 
@@ -50,9 +60,6 @@ function SpotShowPage() {
    let lodgeIcon = <FontAwesomeIcon icon={faFire} />
 
    
-    const reviewRating = (ratings) => {
-
-    }
 
     return (
         <>
@@ -77,11 +84,11 @@ function SpotShowPage() {
                         </span>
                     </div>
                     <div id='review-rating'>
-                        <span>{ratings(reviews)}</span>
+                        <span>{avgRating(reviews)}</span>
                     </div>
                         <span className="dot">·</span>
                     <div id='review-link'>
-                        <span>{reviews.length}</span>
+                        <span>{reviews.length} reviews</span>
                     </div>
                         <span className="dot">·</span>
                     <div className='city-state'>
@@ -124,16 +131,26 @@ function SpotShowPage() {
                         <div className='spot-descrip-preview'>
                             <span id='descrip'>{description}</span>
                         </div>
-                        <div className='show-more-button'>
+                        {/* <div className='show-more-button'>
                             <button>Show More</button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
             <div className='review-section-container'>
                 <div className='reviews-header'>
-                    <div>{ratings(reviews)}</div>
-                    <div>{reviews.length}</div>
+                    <div className='review-total-wrapper'>   
+                        <div className='thumb' id='review-thumb'>
+                            <span>
+                                <FontAwesomeIcon icon={faThumbsUp} />
+                            </span>
+                        </div>
+                        <div>{avgRating(reviews)}</div>
+                    </div>
+                    <div id='reviews-amount'>{reviews.length} reviews</div>
+                    <div className='leave-review-button'>
+                        {!hasReviewed && <LeaveReview spot={spot}/>}
+                    </div>
                 </div>
                 <div className='reviews-list'>
                     {reviews.map((review) => (
@@ -143,8 +160,6 @@ function SpotShowPage() {
                         />
                     ))}
                 </div>
-                <div>Delete button</div>
-                <LeaveReview spot={spot}/>
             </div>
         </div> 
         </>
@@ -160,7 +175,7 @@ function LeaveReview({ spot }) {
         closeForm={() => setShowReviewForm(false)}
       />
     ) : (
-      <button className="button" onClick={() => setShowReviewForm(true)}>
+      <button className="leave-review-button" onClick={() => setShowReviewForm(true)}>
         Leave a Review
       </button>
     );

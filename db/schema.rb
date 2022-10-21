@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_20_021508) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_21_125134) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_021508) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo_urls", default: [], array: true
+    t.integer "acres"
+    t.integer "sites"
     t.index ["city"], name: "index_spots_on_city"
     t.index ["country"], name: "index_spots_on_country"
     t.index ["host_id"], name: "index_spots_on_host_id"

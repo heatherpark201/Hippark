@@ -31,14 +31,16 @@ function ProfileButton({ user }) {
   return (
     <>
       <button onClick={openMenu}>
-        <i className="fa-solid fa-user-circle" />
+        <div className="profile-image-container">
+          <img id="pro-pic" src={`https://hippark-photos.s3.amazonaws.com/hippark-logos/user-profile-logo.png`} alt=""></img>
+        </div>
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
-          <li>{user.username}</li>
+          <li>{user.firstName}</li>
           <li>{user.email}</li>
           <li>
-            <button onClick={logout}>Log Out</button>
+            <button onClick={logout} className="log-out-button">Log Out</button>
           </li>
         </ul>
       )}

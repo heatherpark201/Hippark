@@ -13,6 +13,15 @@
     border-style: solid;
 }
 
+.label {
+    font-size: 14px;
+    color: black;
+    letter-spacing: 0.7px;
+    font-weight: 500;
+    vertical-align: baseline;
+    margin-bottom: 6px;
+}
+
 .where-box,  .dates-box, .guest-box {
     display: flex;
     flex-direction: column;

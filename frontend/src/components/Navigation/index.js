@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, useLocation} from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import tempLogo from '../../assets/tempLogo.png'
+
 import './Navigation.css';
 
 
@@ -30,12 +30,18 @@ function Navigation() {
     }
     
     return (
-        <header className={active ? "main-header" : "other-header"}>
-            <NavLink exact to="/" className="nav-logo">
-                <a href="" className="logo"><img className="logo" src={tempLogo} alt=""/></a>
-            </NavLink>
-            <div className="session-links">{sessionLinks}</div>
-        </header>
+        <div className='nav-bar-container'>
+            <header className={active? "main-header" : "other-header"}>
+                <div className='nav-logo-wrapper'>
+                    <NavLink exact to="/" className="green-logo">
+                        <a href="" className="green-logo"><img className="green-logo" src={`https://hippark-photos.s3.amazonaws.com/hippark-logos/hippark-logo-green.png`} alt=""/></a>
+                    </NavLink>
+                </div>
+                <div className='session-links-wrapper'>
+                    <div className="session-links">{sessionLinks}</div>
+                </div>
+            </header>
+        </div>
     )
 }
 

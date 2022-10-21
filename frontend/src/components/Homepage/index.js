@@ -15,9 +15,16 @@ function Homepage(  ) {
                 </h2>
                 <div className="inner-text-container">
                     <div className="small-headline-box">
-                        <h1 className="discover-parks-text">
-                            Discover and book tent camping, RV parks, cabins, treehouses, and glamping.
-                        </h1>  
+                        <div id="disco-top">
+                            <h3 className="discover-parks-text">
+                                Discover and book tent camping, RV 
+                            </h3>  
+                        </div>
+                        <div id="disco-bottom">
+                            <h3 className="discover-parks-text">
+                                parks, cabins, treehouses, and glamping.
+                            </h3>  
+                        </div>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,6 @@ import { useHistory, useLocation } from "react-router-dom";
 import { fetchSpots } from "../../store/spots";
 import SpotList from "./SpotList";
 import './SpotsIndexPage.css';
-import map from '../../assets/mapPlaceholder.png'
 import DiscoverFilterBar from "./DiscoverFilterBar";
 import SpotMap from "../SpotMap"
 import SpotMapWrapper from "../SpotMap";

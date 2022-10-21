@@ -45,20 +45,59 @@ ApplicationRecord.transaction do
     	password: 'password',
     	date_of_birth: '01/01/2000'
     )
+    test4 = User.create!(
+        id: 4,
+        first_name: 'Han',
+    	last_name: 'Chen',
+    	phone_number: 1132213212,
+    	email: 'HanChen@appacademy.com',
+    	password: 'password',
+    	date_of_birth: '01/01/2000'
+    )
+    test5 = User.create!(
+        id: 5,
+        first_name: 'Tommy',
+    	last_name: 'Wommy',
+    	phone_number: 2111112121,
+    	email: 'TommyWommy@gmail.com',
+    	password: 'password',
+    	date_of_birth: '01/01/2000'
+    )
+    test6 = User.create!(
+        id: 6,
+        first_name: 'Ivy',
+    	last_name: 'Liu',
+    	phone_number: 2113121312,
+    	email: 'Ivy@gmail.com',
+    	password: 'password',
+    	date_of_birth: '10/10/1010'
+    )
+    test7 = User.create!(
+        id: 7,
+        first_name: 'Brian',
+    	last_name: 'Brian',
+    	phone_number: 1112221211,
+    	email: 'Brian@demo.com',
+    	password: 'password',
+    	date_of_birth: '01/01/2000'
+    )
+   
 
    
 
 puts "Creating spots..."
-  random_description = proc { Faker::Lorem.paragraphs(number: rand(1..3)).join("\n\n") }
+  random_description = proc { Faker::Lorem.paragraphs(number: rand(1..8)).join("\n\n") }
 
   spot1 = Spot.create!(
-      title: 'Camp Tester',
+      title: 'Camp Happy App Academy',
       description: random_description.call,
       host_id: test1.id,
       street_address: '360 Mammoth Cave Rd',
       city: 'Brownsville',
       state: 'Kentucky',
       region: 'South',
+      acres: 56,
+      sites: 2,
       zip_code: '42210',
       country: 'USA',
       listing_type: 'lodge',
@@ -70,7 +109,8 @@ puts "Creating spots..."
       photo_urls: [
         'https://hippark-photos.s3.amazonaws.com/spot_photos/chris-holder-uY2UIyO5o5c-unsplash.jpg',
          'https://hippark-photos.s3.amazonaws.com/spot_photos/denys-nevozhai-63Znf38gnXk-unsplash.jpg',
-         'https://hippark-photos.s3.amazonaws.com/spot_photos/everett-mcintire-BPCsppbNRMI-unsplash.jpg'
+         'https://hippark-photos.s3.amazonaws.com/spot_photos/everett-mcintire-BPCsppbNRMI-unsplash.jpg',
+         'https://hippark-photos.s3.amazonaws.com/spot_photos/mier-chen-TfPVLEtIG74-unsplash.jpg'
         ]
     )
     
@@ -86,6 +126,8 @@ puts "Creating spots..."
       zip_code: '80125',
       country: 'USA',
       listing_type: 'campsite',
+      acres: 43,
+      sites: 1,
       price: 87,
       lat: 39.48658,
       lng: -105.07412,
@@ -108,6 +150,8 @@ puts "Creating spots..."
       region: 'Pacific Northwest',
       zip_code: '96039',
       country: 'USA',
+      acres: 4,
+      sites: 2,
       listing_type: 'campsite',
       price: 210,
       lat: 41.78897,
@@ -129,6 +173,8 @@ puts "Creating spots..."
       state: 'New York',
       region: 'East Coast',
       zip_code: '00000',
+      acres: 34,
+      sites: 23,
       country: 'USA',
       listing_type: 'campsite',
       price: 5000,
@@ -153,6 +199,8 @@ puts "Creating spots..."
       state: 'Nebraska',
       region: 'Pacific Northwest',
       zip_code: '96039',
+      acres: 345,
+      sites: 2,
       country: 'USA',
       listing_type: 'campsite',
       price: 30,
@@ -176,6 +224,8 @@ puts "Creating spots..."
       region: 'The Rockies',
       zip_code: '96039',
       country: 'USA',
+      acres: 25,
+      sites: 1,
       listing_type: 'RV',
       price: 120,
       lat: 41.78897,
@@ -195,6 +245,8 @@ puts "Creating spots..."
       city: 'Asheville',
       state: 'North Carolina',
       region: 'Smokey Mountains',
+      acres: 21,
+      sites: 1,
       zip_code: '28805',
       country: 'USA',
       listing_type: 'campsite',
@@ -216,6 +268,8 @@ puts "Creating spots..."
       street_address: '571 Wolfetown Rd',
       city: 'Cherokee',
       state: 'North Carolina',
+      acres: 34,
+      sites: 1,
       region: 'The Rockies',
       zip_code: '28719',
       country: 'USA',
@@ -240,6 +294,8 @@ puts "Creating spots..."
       state: 'Tennessee',
       region: 'Smokey Mountains',
       zip_code: '38577',
+      acres: 45,
+      sites: 1,
       country: 'USA',
       listing_type: 'lodge',
       price: 420,
@@ -263,6 +319,8 @@ puts "Creating spots..."
       region: 'Pacific Coast',
       zip_code: '93923',
       country: 'USA',
+      acres: 23,
+      sites: 1,
       listing_type: 'lodge',
       price: 250,
       lat: 36.50228,
@@ -292,19 +350,28 @@ puts "Creating reviews..."
   r2 = Review.create!(
       title: 'Truly Amazing',
       body: 'We had such a great time at this campsite. Almost anything imaginable was available there including the tiny cabin, smart tv, yard games, a smoker, pizza oven, etc. The site is very private with direct access to the Neversink river. It’s close to some really nice hiking too. Des and Tracy were very responsive and knowledgeable of the area. Highly recommend!',
-      rating: 5,
+      rating: 4,
       recommends: 'true',
       spot_id: spot1.id,
       author_id: test2.id
   )
   r3 = Review.create!(
-      title: 'Getaway to the Stars',
+      title: 'Bussin',
       body: 'My wife and I took a last minute glamping trip and we could not have picked a better spot than the Neversink sanctuary. The campsite is beautiful, and des & Tracy are extremely helpful. We will definitely be returning next year!',
       rating: 5,
       recommends: 'true',
       spot_id: spot1.id,
       author_id: test3.id
   )
+  r4 = Review.create!(
+      title: 'Getaway to the Stars',
+      body: 'This is a fun little spot to do some car camping and they have some tentr spots and winnebagos you can rent. I brought some friends here for some weekend hang time. The sites are pretty classic. Space for a few tents, a fire ring, a grill, even a couple Adirondack chairs. Bathroom and cute camp store nearby. Everything you need, it’s all pretty cozy and the hosts are nice. The drive in is through a construction business and you can’t really leave the campground for hikes as it’s all private land. So if you want to go and do nature stuff you have to drive through the construction co driveway. But if you just wanna grill burgers and sit by the fire with your friends it’s perfect.',
+      rating: 4,
+      recommends: 'true',
+      spot_id: spot6.id,
+      author_id: test4.id
+  )
+  
 
 
   # puts "Attaching photos..."

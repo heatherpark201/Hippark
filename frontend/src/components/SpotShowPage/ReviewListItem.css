@@ -3,7 +3,7 @@
     width: 610px;
     height: 250px;
     max-width: 616px;
-    border: 3px solid pink;
+    /* border: 3px solid pink; */
     flex-direction: column;
     text-align: left;
     margin-top: 32px;
@@ -12,6 +12,16 @@
     font-family: Calibre, Helvetica, Arial, sans-serif; 
     vertical-align: baseline;
     box-sizing: border-box;
+    /* border-top: 1px solid rgb(222, 222, 222);
+    border-right-color: rgb(222, 222, 222);
+    border-bottom-color: rgb(222, 222, 222);
+    border-left-color: rgb(222, 222, 222); */
+}
+
+#user-icon-r {
+    height:40px;
+    width: 40px;
+    border: 1px whitesmoke;
 }
 
 .review-header {
@@ -74,6 +84,10 @@
     font-weight: 400;
 }
 
+#review-timestamp {
+    font-size: 12px;
+}
+
 #review-title {
     font-size: 18px;
     font-weight: 500;
@@ -85,4 +99,15 @@
     letter-spacing: 0.22px;
     font-weight: 400;
     padding-right: 10px;
+    margin-bottom: 15px;
 }
+
+.text-delete {
+    margin-top: 5px;
+    font-size: 15px;
+    background-color: transparent;
+    cursor: pointer;
+    font-style: italic;
+}
+
+

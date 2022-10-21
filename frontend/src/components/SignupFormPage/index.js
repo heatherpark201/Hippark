@@ -5,7 +5,6 @@ import { SignupForm } from "../SessionForms";
 import { Modal } from "../../context/Modal";
 import { NavLink } from 'react-router-dom';
 import './SignupFormPage.css';
-import tempLogo from '../../assets/tempLogo.png'
 import bg from '../../assets/bg.jpg'
 import { Gallery } from "react-grid-gallery";
 
@@ -35,7 +34,7 @@ function SignupFormPage( { onClose, onSuccess }) {
         <NavLink to="/signin" className="log-in-button">Log In</NavLink>
           <div className="modal">
               <NavLink exact to="/" className="logo">
-                <a href="" className="logo"><img className="logo" src={tempLogo} alt=""/></a>
+                <a href="" className="logo"><img className="logo" src={`https://hippark-photos.s3.amazonaws.com/hippark_logos/hippark-logo-green.png`} alt=""/></a>
               </NavLink>
               <h3>Search, discover and book
                 <br></br>
