@@ -34,8 +34,8 @@ function SignupFormPage( { onClose, onSuccess }) {
         <NavLink to="/signin" className="log-in-button">Log In</NavLink>
           <div className="modal">
               <NavLink exact to="/" className="logo">
-                <a href="" className="logo"><img className="logo" src={`https://hippark-photos.s3.amazonaws.com/hippark_logos/hippark-logo-green.png`} alt=""/></a>
-              </NavLink>
+                <a href="" className="pink-logo"><img className="logo" src={`https://hippark-photos.s3.amazonaws.com/hippark-logos/hippark-logo-pink.png`} alt=""/></a>
+              </NavLink>`
               <h3>Search, discover and book
                 <br></br>
                 Everywhere you want to camp.</h3>

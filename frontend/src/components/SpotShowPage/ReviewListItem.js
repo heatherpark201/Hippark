@@ -2,7 +2,7 @@ import React, {useCallback, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/fontawesome-free-solid';
-import { ReviewModal } from "./ReviewFormModal";
+import { ReviewModal } from "./ReviewModal";
 import './ReviewListItem.css';
 import { destroyReview } from '../../store/reviews';
 

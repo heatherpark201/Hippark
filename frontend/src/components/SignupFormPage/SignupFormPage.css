@@ -19,9 +19,16 @@
     }
 }
 
-.logo {
+.pink-logo {
     margin: auto;
-    display: block;
+    /* display: block; */
+    display: flex;
+    align-self: center;
+    height: 20px;
+    width: 130;
+    overflow: hidden;
+    text-align: center;
+    justify-content: center;
 }
 
 h1, h3 {

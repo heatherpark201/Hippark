@@ -5,16 +5,19 @@
     flex-direction: column;
     align-self: center;
     padding: 10px;
-    color: black;
+    border: 2px red solid;
 }
 
 .review-form {
     border-radius: 20px;
     display: flex;
+    background-color: white;
     border: rgb(222, 222, 222) 2px solid;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border: 6px solid pink;
+    flex-direction: column;
 }
 .form-header {
     border-radius: 20px;

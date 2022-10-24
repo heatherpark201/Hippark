@@ -12,6 +12,7 @@ import { faHome } from '@fortawesome/fontawesome-free-solid'
 import { destroyReview, getSpotReviews } from '../../store/reviews';
 import ReviewForm from './ReviewForm';
 import ReviewListItem from './ReviewListItem';
+import LeaveReviewButton from './LeaveReviewButton';
 
 
 
@@ -140,17 +141,19 @@ function SpotShowPage() {
             <div className='review-section-container'>
                 <div className='reviews-header'>
                     <div className='review-total-wrapper'>   
-                        <div className='thumb' id='review-thumb'>
-                            <span>
-                                <FontAwesomeIcon icon={faThumbsUp} />
-                            </span>
+                        <div className='review-header-left'>
+                            <div className='thumb' id='review-thumb'>
+                                <span>
+                                    <FontAwesomeIcon icon={faThumbsUp} />
+                                </span>
+                            </div>
+                            <div>{avgRating(reviews)}</div>
+                            </div>
+                        <div className='leave-review-button-wrapper'>
+                            {!hasReviewed && <LeaveReviewButton spot={spot}/>}
                         </div>
-                        <div>{avgRating(reviews)}</div>
                     </div>
                     <div id='reviews-amount'>{reviews.length} reviews</div>
-                    <div className='leave-review-button'>
-                        {!hasReviewed && <LeaveReview spot={spot}/>}
-                    </div>
                 </div>
                 <div className='reviews-list'>
                     {reviews.map((review) => (
@@ -165,20 +168,5 @@ function SpotShowPage() {
         </>
      )
 }
-
-function LeaveReview({ spot }) {
-    const [showReviewForm, setShowReviewForm] = useState(false);
-  
-    return showReviewForm ? (
-      <ReviewForm 
-        spot={spot}
-        closeForm={() => setShowReviewForm(false)}
-      />
-    ) : (
-      <button className="leave-review-button" onClick={() => setShowReviewForm(true)}>
-        Leave a Review
-      </button>
-    );
-  }
 
 export default SpotShowPage;
