@@ -9,7 +9,7 @@ import { faThumbsUp } from '@fortawesome/fontawesome-free-solid';
 import { faThumbsDown } from '@fortawesome/fontawesome-free-solid'; 
 import './ReviewForm.css';
 
-function ReviewForm ( {spot, onSuccess} ) {
+function ReviewForm ( {spot, onSuccess, closeForm} ) {
     const [rating, onRatingChange] = useInput(5);
     const [body, onBodyChange] = useInput("");
     const [title, onTitleChange] = useInput("");
@@ -25,7 +25,7 @@ function ReviewForm ( {spot, onSuccess} ) {
                 <form onSubmit={onSubmit} className="review-form">
                 <div className='form-header'>
                     
-                    {/* <button onClick={closeForm} className="close-button" type="button"><FontAwesomeIcon icon={faTimes} /></button> */}
+                    <button onClick={closeForm} className="close-button" type="button"><FontAwesomeIcon icon={faTimes} /></button>
                     <div className="review-title-container">
                         <Input
                             label="Title"
@@ -35,38 +35,51 @@ function ReviewForm ( {spot, onSuccess} ) {
                             onChange={onTitleChange}
                             />
                     </div>
-                    <div className="ratings-and-reco-container">
-                        <div className="ratings-star">
-                            <Input
-                                label="rating"
-                                className="review-rating"
-                                type="text"
-                                value={rating}
-                                onChange={onRatingChange}
-                            />
-                        </div>
-                    <div className="reco-radio-box">
-                            <Input
-                                label={<FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon>}
-                                id="yes"
-                                type="radio"
-                                name='recommends-radio'
-                                value="true"
-                                onChange={((e) => setRecommends({recommends: e.target.value}))}
-                                />
-
-                            <Input
-                                label={<FontAwesomeIcon icon={faThumbsDown}></FontAwesomeIcon>}
-                                id="no"
-                                type="radio"
-                                name='recommends-radio'
-                                value="false"
-                                onChange={((e) => setRecommends({recommends: e.target.value}))}
-                                />
-                        </div>
-                    </div>
-        
                 </div>
+                <div className="ratings-and-reco-container">
+                    <div className="ratings-star">
+                        <div className="rating-label-wrapper">How do you rate this spot?</div>
+                        <Input
+                            className="review-rating"
+                            type="number"
+                            min="1"
+                            max="5"
+                            value={rating}
+                            onChange={onRatingChange}
+                        />
+                    </div>
+                     <div className="reco-radio-box">
+                        <div className="reco-label">Do you recommend others to stay here?</div>
+                            <div className="reco-radio-buttons">
+                                <div className="yes-checkbox">
+
+                                <Input
+                                    className="yes-input"
+                                    label={<FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon>}
+                                    id="yes"
+                                    type="radio"
+                                    name='recommends-radio'
+                                    value="true"
+                                    onChange={((e) => setRecommends(e.target.value))}
+                                    />
+                                </div>
+                                <div className="no-checkbox">
+
+                                <Input
+                                    className="no-input"
+                                    label={<FontAwesomeIcon icon={faThumbsDown}></FontAwesomeIcon>}
+                                    id="no"
+                                    type="radio"
+                                    name='recommends-radio'
+                                    value="false"
+                                    onChange={((e) => setRecommends(e.target.value))}
+                                    />
+                                </div>
+                            </div>
+                        
+                    </div>
+                </div>
+        
                     <div className="text-commment-area-container">
                     <TextArea
                         className="comment-area"
@@ -79,7 +92,7 @@ function ReviewForm ( {spot, onSuccess} ) {
                         />
                     </div>
                     <div className="review-form-button">
-                        <button className="review-submit-button" type="submit">{spot.title} thanks you!</button>
+                        <button className="review-submit-button" type="submit">Submit</button>
                     </div>
 
                 </form>

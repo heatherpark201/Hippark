@@ -13,6 +13,7 @@ export function ReviewModal({ spot, onSuccess, onClose }) {
         <ReviewForm 
         spot={spot} 
         onSuccess={onSuccess}
+        closeForm={onClose}
         />
       </div>
     </Modal>

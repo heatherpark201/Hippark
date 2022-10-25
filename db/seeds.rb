@@ -21,7 +21,6 @@ ApplicationRecord.transaction do
         first_name: 'Heather', 
         last_name: 'Park', 
         email: 'demo@user.io', 
-        phone_number: 2015277876,
         date_of_birth: '07/12/1994',
         password: 'password'
     )
@@ -30,7 +29,6 @@ ApplicationRecord.transaction do
         id: 2,
         first_name: 'New',
     	last_name: 'Park',
-    	phone_number: 2015551234,
     	email: 'newnew@user.io',
     	password: 'password123',
     	date_of_birth: '05/04/1994'
@@ -40,7 +38,6 @@ ApplicationRecord.transaction do
         id: 3,
         first_name: 'Bob',
     	last_name: 'Michael',
-    	phone_number: 1112221212,
     	email: 'Bob.Michael@gmail.com',
     	password: 'password',
     	date_of_birth: '01/01/2000'
@@ -49,7 +46,6 @@ ApplicationRecord.transaction do
         id: 4,
         first_name: 'Han',
     	last_name: 'Chen',
-    	phone_number: 1132213212,
     	email: 'HanChen@appacademy.com',
     	password: 'password',
     	date_of_birth: '01/01/2000'
@@ -58,7 +54,6 @@ ApplicationRecord.transaction do
         id: 5,
         first_name: 'Tommy',
     	last_name: 'Wommy',
-    	phone_number: 2111112121,
     	email: 'TommyWommy@gmail.com',
     	password: 'password',
     	date_of_birth: '01/01/2000'
@@ -67,7 +62,6 @@ ApplicationRecord.transaction do
         id: 6,
         first_name: 'Ivy',
     	last_name: 'Liu',
-    	phone_number: 2113121312,
     	email: 'Ivy@gmail.com',
     	password: 'password',
     	date_of_birth: '10/10/1010'
@@ -76,7 +70,6 @@ ApplicationRecord.transaction do
         id: 7,
         first_name: 'Brian',
     	last_name: 'Brian',
-    	phone_number: 1112221211,
     	email: 'Brian@demo.com',
     	password: 'password',
     	date_of_birth: '01/01/2000'

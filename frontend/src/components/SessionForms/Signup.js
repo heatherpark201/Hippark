@@ -13,12 +13,11 @@ function SignupForm({ onSuccess }) {
     const [firstName, onFirstNameChange] = useInput("");
     const [lastName, onLastNameChange] = useInput("");
     const [dateOfBirth, onDateOfBirthChange] =  useInput("");
-    const [phoneNumber, onPhoneNumberChange] = useInput("");
     const [password, onPasswordChange] = useInput("");
     const [confirmPassword, onConfirmPasswordChange] = useInput("");
     const [errors, onSubmit] = useSubmit({ 
       onSuccess,
-      action: sessionActions.signup({ email, firstName, lastName, dateOfBirth, phoneNumber, password }),
+      action: sessionActions.signup({ email, firstName, lastName, dateOfBirth, password }),
       validate: () => {
         if (password !== confirmPassword) {
           return ['Confirm Password field must be the same as the Password field'];
@@ -70,15 +69,6 @@ function SignupForm({ onSuccess }) {
               type="text"
               value={dateOfBirth}
               onChange={onDateOfBirthChange}
-              required
-              />
-
-            <Input 
-              id="info"
-              placeholder="Phone Number"
-              type="text"
-              value={phoneNumber}
-              onChange={onPhoneNumberChange}
               required
               />
 
