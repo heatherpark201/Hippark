@@ -21,19 +21,19 @@ function SpotsIndexPage() {
   // const guests = params.at(3);
   // const place = params.at(2);
   
-  // console.log(spots, 'here');
+ 
   
   useEffect(() => { //looking for newspots
     dispatch(fetchSpots()); //set the newSpots using utile)
   }, [dispatch]);
   
   // const sortedSpots = SortSpots(spots, {type, guests, place})
-  // console.log(sortedSpots, 'here')
+
   // useEffect(() => { 
   //   sortedSpots  =  SortSpots(spots, {type, guests, place})
   // }, [spots, type, guests, place]);
   
-// console.log(sortedSpots);
+
   const mapEventHandlers = useMemo(() => ({
     click: event => {
       const search = new URLSearchParams(event.latLng.toJSON()).toString();
@@ -42,7 +42,7 @@ function SpotsIndexPage() {
     idle: map => setBounds(map.getBounds().toUrlValue())
   }), [history]);
 
-  // console.log(params, 'here')
+ 
 
   return (
     <div className="spot-index-bg">

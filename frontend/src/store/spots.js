@@ -49,7 +49,6 @@ export const fetchSpots = (filter) => async dispatch => {
         return action.payload;
       case ADD_SPOT:
         const spot = action.payload;
-        console.log(spot, 'here')
         return { ...state, [spot.id]: spot };
       default:
         return state;
