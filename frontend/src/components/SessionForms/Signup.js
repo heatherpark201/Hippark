@@ -12,12 +12,12 @@ function SignupForm({ onSuccess }) {
     const [email, onEmailChange] = useInput("");
     const [firstName, onFirstNameChange] = useInput("");
     const [lastName, onLastNameChange] = useInput("");
-    const [dateOfBirth, onDateOfBirthChange] =  useInput("");
+    const [zipCode, onZipCodeChange] =  useInput("");
     const [password, onPasswordChange] = useInput("");
     const [confirmPassword, onConfirmPasswordChange] = useInput("");
     const [errors, onSubmit] = useSubmit({ 
       onSuccess,
-      action: sessionActions.signup({ email, firstName, lastName, dateOfBirth, password }),
+      action: sessionActions.signup({ email, firstName, lastName, zipCode, password }),
       validate: () => {
         if (password !== confirmPassword) {
           return ['Confirm Password field must be the same as the Password field'];
@@ -54,21 +54,13 @@ function SignupForm({ onSuccess }) {
           </div>
 
           <div className="form-content">
+
             <Input
               id="info"
               placeholder="Email"
               type="text"
               value={email}
               onChange={onEmailChange}
-              required
-              />
-
-            <Input             
-              id="info"
-              placeholder="DOB"
-              type="text"
-              value={dateOfBirth}
-              onChange={onDateOfBirthChange}
               required
               />
 
@@ -89,6 +81,16 @@ function SignupForm({ onSuccess }) {
               onChange={onConfirmPasswordChange}
               required
               />
+
+            <Input
+              id="info"
+              placeholder="Zip Code"
+              type="text"
+              value={zipCode}
+              onChange={onZipCodeChange}
+              required
+              />
+
           </div>
 
           <button type="submit" className="sign-up-form-button">Join Hippark</button>
