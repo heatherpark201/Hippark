@@ -30,13 +30,6 @@ function SpotShowPage() {
     const {title, price, city, state, listingType, photoUrls, country, description} = spot;
     // const hasReviewed = sessionUser && reviews.some(review => review.authorId === sessionUser.id);
     
-    // const ratings = (reviews) => {
-    //     let totalAmount = reviews.length;
-    //     let numTotal = 0;
-
-    //     reviews.forEach = (review) => {
-    //         numTotal += review.rating
-    //     }
 
     const avgRating = (reviews) => {
         let total = 0;

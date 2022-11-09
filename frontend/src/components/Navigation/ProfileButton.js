@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
+import { Modal } from "../../context/Modal";
 import * as sessionActions from '../../store/session';
+import './ProfileButton.css';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
-  const [showMenu, setShowMenu] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
+  const openModal = () => {
+    if (showModal) return;
+    setShowModal(true);
   };
   
   useEffect(() => {
-    if (!showMenu) return;
+    if (!showModal) return;
 
-    const closeMenu = () => {
-      setShowMenu(false);
+    const closeModal = () => {
+      setShowModal(false);
     };
 
-    document.addEventListener('click', closeMenu);
+    document.addEventListener('click', closeModal);
   
-    return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
+    return () => document.removeEventListener("click", closeModal);
+  }, [showModal]);
 
   const logout = (e) => {
     e.preventDefault();
@@ -30,22 +32,23 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <div className="profile-image-container">
-          <img id="pro-pic" src={`https://hippark-photos.s3.amazonaws.com/hippark-logos/user-profile-logo.png`} alt=""></img>
-        </div>
+      <button 
+        onMouseEnter={openModal}
+        onMouseOut={() => setShowModal(false)}>
+          <div className="profile-image-container">
+            <img id="pro-pic" src={`https://hippark-photos.s3.amazonaws.com/hippark-logos/user-profile-logo.png`} alt=""></img>
+          </div>
       </button>
-      {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.firstName}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout} className="log-out-button">Log Out</button>
-          </li>
-        </ul>
-      )}
+      {showModal ? (
+        <Modal className="profile-menu-modal">
+          <div className="profile-menu-container">
+            <button onClick={logout}>logout</button>
+          </div>
+        </Modal>
+      ) : null}
     </>
   );
 }
 
 export default ProfileButton;
+

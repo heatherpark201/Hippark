@@ -3,10 +3,15 @@ import Carousel from "better-react-carousel";
 import { Link, useHistory } from "react-router-dom";
 import './SpotListItem.css'
 import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight } from '@fortawesome/fontawesome-free-solid';
+import { faThumbsUp } from '@fortawesome/fontawesome-free-solid'; 
+import { getSpotReviews } from "../../store/reviews";
 
 
 function SpotListItem({spot, isHighlighted, setHighlightedSpot}) {
   const {title, price, city, state, listingType, photoUrls, sites, acres} = spot;
+  const reviews = useSelector(getSpotReviews(spot.id));
   const sessionUser = useSelector(state => state.session.user);
   const history = useHistory();
   
@@ -14,6 +19,18 @@ function SpotListItem({spot, isHighlighted, setHighlightedSpot}) {
     const to = `/spots/${spot.id}`
     history.push(to)
   },[history, spot])
+
+  const avgRating = (reviews) => {
+    let total = 0;
+
+    reviews.forEach(review => {
+        total += review.rating;
+    })
+
+    let num = (total / reviews.length);
+
+    return Math.round(num * 20) + '%';
+}
 
 
   
@@ -36,6 +53,14 @@ function SpotListItem({spot, isHighlighted, setHighlightedSpot}) {
             )
           })}
         </Carousel>
+      </div>
+
+      <div className="list-item-review-container">
+        <div className='thumb' id='review-thumb'>
+            <span><FontAwesomeIcon icon={faThumbsUp} /></span>
+        </div>
+         <div>{avgRating(reviews)}</div>
+
       </div>
 
       <div className="list-item-info" onClick={onClick}>

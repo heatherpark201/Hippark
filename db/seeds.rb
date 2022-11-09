@@ -21,8 +21,8 @@ ApplicationRecord.transaction do
         first_name: 'Heather', 
         last_name: 'Park', 
         email: 'demo@user.io', 
-        date_of_birth: '07/12/1994',
-        password: 'password'
+        password: 'password',
+        zip_code: '07650'
     )
 
     test2 = User.create!(
@@ -31,7 +31,8 @@ ApplicationRecord.transaction do
     	last_name: 'Park',
     	email: 'newnew@user.io',
     	password: 'password123',
-    	date_of_birth: '05/04/1994'
+      zip_code: '77449'
+  
     )
 
     test3 = User.create!(
@@ -40,7 +41,7 @@ ApplicationRecord.transaction do
     	last_name: 'Michael',
     	email: 'Bob.Michael@gmail.com',
     	password: 'password',
-    	date_of_birth: '01/01/2000'
+    	zip_code: '11368'
     )
     test4 = User.create!(
         id: 4,
@@ -48,7 +49,7 @@ ApplicationRecord.transaction do
     	last_name: 'Chen',
     	email: 'HanChen@appacademy.com',
     	password: 'password',
-    	date_of_birth: '01/01/2000'
+    	zip_code: '60629'
     )
     test5 = User.create!(
         id: 5,
@@ -56,7 +57,7 @@ ApplicationRecord.transaction do
     	last_name: 'Wommy',
     	email: 'TommyWommy@gmail.com',
     	password: 'password',
-    	date_of_birth: '01/01/2000'
+      zip_code: '79936'
     )
     test6 = User.create!(
         id: 6,
@@ -64,7 +65,7 @@ ApplicationRecord.transaction do
     	last_name: 'Liu',
     	email: 'Ivy@gmail.com',
     	password: 'password',
-    	date_of_birth: '10/10/1010'
+      zip_code: '90210'
     )
     test7 = User.create!(
         id: 7,
@@ -72,7 +73,7 @@ ApplicationRecord.transaction do
     	last_name: 'Brian',
     	email: 'Brian@demo.com',
     	password: 'password',
-    	date_of_birth: '01/01/2000'
+      zip_code: '11226'
     )
    
 
